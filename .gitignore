@@ -1,0 +1,49 @@
+# ROS 2 / colcon
+build/
+install/
+log/
+
+# C++ / CMake
+*.o
+*.so
+*.a
+*.dylib
+*.dll
+*.exe
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.ipynb_checkpoints/
+
+# Large or private research artifacts
+output/
+results/raw/
+archive/
+data/
+models/
+*.zip
+*.tar.gz
+*.npz
+*.bag
+*.h5
+*.hdf5
+*.osim
+
+# Local environment and secrets
+.env
+.env.*
+credentials*
+*.key
+*.pem
+
+# Editors and OS
+.vscode/
+.idea/
+.DS_Store
