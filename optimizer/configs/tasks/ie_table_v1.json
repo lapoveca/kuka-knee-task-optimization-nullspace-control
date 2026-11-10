@@ -1,0 +1,57 @@
+{
+  "schema": "knee_station_motion_spec_v1",
+  "model_sha256": "1a51a844094c1574a484ee1827c8666e37f0af0695f38e4dbaf114442f5c2fdc",
+  "coordinate_names": [
+    "flexion_extension_rz",
+    "varus_valgus_rz",
+    "internal_external_rotation_rz"
+  ],
+  "tibia_body": "tibia",
+  "femur_body": "femur_base",
+  "timing_defaults": {
+    "positive_out_s": 10,
+    "positive_return_s": 10,
+    "negative_out_s": 10,
+    "negative_return_s": 10,
+    "transfer_s": 15,
+    "max_sample_dt_s": 0.5
+  },
+  "excluded_stations": [
+    {
+      "flexion_deg": 90,
+      "reason": "Outside model flexion range; exclusion confirmed by user"
+    }
+  ],
+  "note": "Motion/compiler input, not a force-controller prescription. Runtime5deg robot reserve belongs in evaluation config.",
+  "task_id": "ie_table_v1",
+  "active_coordinate_index": 2,
+  "source_table_positive_deg": [
+    10,
+    17,
+    20,
+    21,
+    19
+  ],
+  "source_table_negative_deg": [
+    10,
+    17,
+    17,
+    17,
+    18
+  ],
+  "flexion_stations_deg": [
+    0,
+    15,
+    30,
+    45,
+    60
+  ],
+  "angle_multiplier": 1,
+  "angle_multiplier_provenance": "TABLE II as provided; no supervisor instruction to double IE",
+  "required_peak_moment_Nm": 5,
+  "anatomical_labels": {
+    "positive": "internal",
+    "negative": "external",
+    "status": "Existing interface convention; physical sign mapping not independently revalidated here"
+  }
+}

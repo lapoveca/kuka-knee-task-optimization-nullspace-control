@@ -1,0 +1,9 @@
+geometry_msgs/PoseStamped pose_start
+geometry_msgs/PoseStamped pose_goal
+float32 translational_velocity_goal
+float32 rotational_velocity_goal
+---
+bool success
+---
+float32 time_progress
+float32 distance_progress

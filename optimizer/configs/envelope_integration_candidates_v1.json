@@ -1,0 +1,14 @@
+[
+  {
+    "id": "pitch_90",
+    "roll_deg": 0,
+    "pitch_deg": 90,
+    "yaw_deg": 0
+  },
+  {
+    "id": "r0_p120_y90",
+    "roll_deg": 0,
+    "pitch_deg": 120,
+    "yaw_deg": 90
+  }
+]

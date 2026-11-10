@@ -1,0 +1,231 @@
+{
+  "files": {
+    "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/attachment.py": "f166be133b8f02df084471918871fc2279e7d9d22c9a5f3c2db9d25e98e3fef0",
+    "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/audit_pilot_saved_paths.py": "136dd9bf727c73263ae54788c93cc245424bcf24c38cc8ab81c963773e604306",
+    "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/evaluate_mounts_pilot_v1.py": "38144b1b78429c639af988791c47921127166ff34d7c955eb97d2446b9ff464a",
+    "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/models/med14_runtime.urdf": "ae0c657636ec294f098c240557f3337dd6314002571c2c9833f510e26d825112",
+    "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/output/audited_paths_dt001_v1/whole_traj_pitch90_manual_placement_stride2/whole_trajectory_path.npz": "044299778915955d76606065b430a9c491d43d3991a0b3eeb5314b2f49ea1cfb",
+    "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/output/phased_vv_pitch90_development_v1/phased_vv_protocol.json": "d0148530628968f9ffc98ad13c7a5a5cf9803dc7ff044a8323b3a96c89d3b917",
+    "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/output/phased_vv_pitch90_development_v1/phased_vv_protocol.npz": "a34274f65a2b93b1fb409c346f2506e6c8d9bb74aa09115cc91109ebebe2a80a",
+    "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/recombine_audited_paths_v1.py": "d9cda428fee2bf8456792586885de9956c255cc16f4bf17c2c740e19ae204dd5",
+    "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/robot_model.py": "53599d3e5b0a2d90a0a881914f2c9c603aab9c16d71a39f34d0e63293a9109be",
+    "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/run_mount_batch_v1.py": "d695ac981019d4dd607d65eed4ffd8310dbe4bf405f20218ebd00213cdb35d38",
+    "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/screening_budget_historical_v1.json": "6194c03fe9482a39eda8b14f7dddf40671d78fda67527a7f9a840a7bba3279e1",
+    "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/summarize_pilot_paths.py": "619584ea65af99e138188546f6250d7b9bff6dd7bd04dbe730cba573fa0aaf2b",
+    "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/tibia_task_map.py": "3c39cf7c23151c9600c34b496f463c0fcafc284f77789b95bc7d810bba702621",
+    "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/transforms.py": "eb14067be68109426358fe7235d759a56d13307717b680d9d05ba8a6bf89d8e2",
+    "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/view_whole_trajectory_v5_camera.py": "a37a1a9ab68d6809ea61bd8e5a59ec743da2ceec4f924649ba80996f80af2ddc",
+    "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/view_whole_trajectory_v6_playback.py": "520441daead8362373715c985bf02c8a36e5e8aba9df193261f4f520749c0742",
+    "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/view_whole_trajectory_v7_playback.py": "a7ace0981a8070c71ba912d9fba88326e3cdfd09408b69b9793111f065f24d15",
+    "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/workspace.py": "a740881af38ea5af1456dc9dd4762fcfc5d068d8c333c3e8e258c0fba65fd233",
+    "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/wrench_margin.py": "8a2552c3d44fab384cb3649bfab341c836b2b4068cd0bb5645aed4a07659f81b"
+  },
+  "candidates": [
+    {
+      "id": "pitch_90",
+      "roll_deg": 0,
+      "pitch_deg": 90,
+      "yaw_deg": 0
+    },
+    {
+      "id": "pitch_90_yaw_45",
+      "roll_deg": 0,
+      "pitch_deg": 90,
+      "yaw_deg": 45
+    },
+    {
+      "id": "r0_p60_y0",
+      "roll_deg": 0,
+      "pitch_deg": 60,
+      "yaw_deg": 0
+    },
+    {
+      "id": "r0_p120_y0",
+      "roll_deg": 0,
+      "pitch_deg": 120,
+      "yaw_deg": 0
+    },
+    {
+      "id": "r-30_p60_y0",
+      "roll_deg": -30,
+      "pitch_deg": 60,
+      "yaw_deg": 0
+    },
+    {
+      "id": "r-30_p60_y45",
+      "roll_deg": -30,
+      "pitch_deg": 60,
+      "yaw_deg": 45
+    },
+    {
+      "id": "r-30_p60_y90",
+      "roll_deg": -30,
+      "pitch_deg": 60,
+      "yaw_deg": 90
+    },
+    {
+      "id": "r-30_p90_y0",
+      "roll_deg": -30,
+      "pitch_deg": 90,
+      "yaw_deg": 0
+    },
+    {
+      "id": "r-30_p90_y45",
+      "roll_deg": -30,
+      "pitch_deg": 90,
+      "yaw_deg": 45
+    },
+    {
+      "id": "r-30_p90_y90",
+      "roll_deg": -30,
+      "pitch_deg": 90,
+      "yaw_deg": 90
+    },
+    {
+      "id": "r-30_p120_y0",
+      "roll_deg": -30,
+      "pitch_deg": 120,
+      "yaw_deg": 0
+    },
+    {
+      "id": "r-30_p120_y45",
+      "roll_deg": -30,
+      "pitch_deg": 120,
+      "yaw_deg": 45
+    },
+    {
+      "id": "r-30_p120_y90",
+      "roll_deg": -30,
+      "pitch_deg": 120,
+      "yaw_deg": 90
+    },
+    {
+      "id": "r0_p60_y45",
+      "roll_deg": 0,
+      "pitch_deg": 60,
+      "yaw_deg": 45
+    },
+    {
+      "id": "r0_p60_y90",
+      "roll_deg": 0,
+      "pitch_deg": 60,
+      "yaw_deg": 90
+    },
+    {
+      "id": "r0_p90_y90",
+      "roll_deg": 0,
+      "pitch_deg": 90,
+      "yaw_deg": 90
+    },
+    {
+      "id": "r0_p120_y45",
+      "roll_deg": 0,
+      "pitch_deg": 120,
+      "yaw_deg": 45
+    },
+    {
+      "id": "r0_p120_y90",
+      "roll_deg": 0,
+      "pitch_deg": 120,
+      "yaw_deg": 90
+    },
+    {
+      "id": "r30_p60_y0",
+      "roll_deg": 30,
+      "pitch_deg": 60,
+      "yaw_deg": 0
+    },
+    {
+      "id": "r30_p60_y45",
+      "roll_deg": 30,
+      "pitch_deg": 60,
+      "yaw_deg": 45
+    },
+    {
+      "id": "r30_p60_y90",
+      "roll_deg": 30,
+      "pitch_deg": 60,
+      "yaw_deg": 90
+    },
+    {
+      "id": "r30_p90_y0",
+      "roll_deg": 30,
+      "pitch_deg": 90,
+      "yaw_deg": 0
+    },
+    {
+      "id": "r30_p90_y45",
+      "roll_deg": 30,
+      "pitch_deg": 90,
+      "yaw_deg": 45
+    },
+    {
+      "id": "r30_p90_y90",
+      "roll_deg": 30,
+      "pitch_deg": 90,
+      "yaw_deg": 90
+    },
+    {
+      "id": "r30_p120_y0",
+      "roll_deg": 30,
+      "pitch_deg": 120,
+      "yaw_deg": 0
+    },
+    {
+      "id": "r30_p120_y45",
+      "roll_deg": 30,
+      "pitch_deg": 120,
+      "yaw_deg": 45
+    },
+    {
+      "id": "r30_p120_y90",
+      "roll_deg": 30,
+      "pitch_deg": 120,
+      "yaw_deg": 90
+    },
+    {
+      "id": "pitch_45_yaw_45",
+      "roll_deg": 0,
+      "pitch_deg": 45,
+      "yaw_deg": 45
+    },
+    {
+      "id": "reference",
+      "roll_deg": 0,
+      "pitch_deg": 0,
+      "yaw_deg": 0
+    },
+    {
+      "id": "yaw_90",
+      "roll_deg": 0,
+      "pitch_deg": 0,
+      "yaw_deg": 90
+    }
+  ],
+  "seeds": [
+    42,
+    7
+  ],
+  "pilot_options": {
+    "stride_s": 2,
+    "edge_dt": 0.1,
+    "audit_dt": 0.01,
+    "seeds": 12,
+    "max_tracks": 5,
+    "max_nfev": 200,
+    "reserve_deg": 3
+  },
+  "selected_budget": {
+    "id": "historical_screening_zero_bias_v1",
+    "limits_Nm": [
+      200,
+      200,
+      176,
+      176,
+      110,
+      40,
+      40
+    ],
+    "note": "Explicit provisional screening assumption, not verified hardware capacity. Zero bias; no gravity/inertia/friction."
+  }
+}

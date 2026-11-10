@@ -1,0 +1,38 @@
+{
+  "schema": "envelope_path_report_v1",
+  "status": "sampled_path_pass",
+  "candidate": "global_robotinformed_p000_a09",
+  "task_id": "vv_supervisor_scaled_distal_force_v1",
+  "reserve_deg": 5.0,
+  "minimum_hard_margin_deg": 19.616471165578858,
+  "worst_track_margin_deg": 14.61647116557886,
+  "max_ee_error_mm": 4.081314855308009,
+  "max_ee_error_deg": 0.4985640073847485,
+  "max_velocity_utilization": 0.07714466662054051,
+  "group_capability": [
+    {
+      "group_id": "flexion_0",
+      "min_lambda": 27.63962415640113
+    },
+    {
+      "group_id": "flexion_15",
+      "min_lambda": 28.503961114336896
+    },
+    {
+      "group_id": "flexion_30",
+      "min_lambda": 31.144929044296248
+    },
+    {
+      "group_id": "flexion_45",
+      "min_lambda": 28.406827362207814
+    },
+    {
+      "group_id": "flexion_60",
+      "min_lambda": 27.25079097576053
+    }
+  ],
+  "min_lambda": 27.25079097576053,
+  "mean_group_min_lambda": 28.589226530600524,
+  "budget_id": "historical_screening_zero_bias_v1",
+  "scope": "Sampled linear-joint kinematics and zero-bias task torque only; collision and dynamics excluded"
+}

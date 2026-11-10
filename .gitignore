@@ -1,9 +1,36 @@
-# ROS 2 / colcon
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# ROS workspace outputs
 build/
 install/
 log/
 
-# C++ / CMake
+# Local trial outputs
+/runs/
+
+# Local colcon exclusion, not part of the release package
+/controller/COLCON_IGNORE
+
+# Numerical arrays: retain only declared example/input locations
+*.npz
+!examples/**/*.npz
+!optimizer/inputs/task_envelopes/**/*.npz
+
+# Generated reference caches are not source evidence
+**/ee_trajectory.npz
+
+.DS_Store
+
+# Local Python environments and tooling
+*.egg-info/
+.venv/
+venv/
+.ipynb_checkpoints/
+
+# Compiled artifacts
 *.o
 *.so
 *.a
@@ -14,36 +41,18 @@ CMakeCache.txt
 CMakeFiles/
 cmake_install.cmake
 
-# Python
-__pycache__/
-*.py[cod]
-*.egg-info/
-.venv/
-venv/
-.ipynb_checkpoints/
-
-# Large or private research artifacts
-output/
-results/raw/
-archive/
-data/
-models/
-*.zip
-*.tar.gz
-*.npz
-*.bag
-*.h5
-*.hdf5
-*.osim
-
-# Local environment and secrets
+# Local credentials and environment files
 .env
 .env.*
 credentials*
 *.key
 *.pem
 
-# Editors and OS
+# Large raw recordings
+*.bag
+*.db3
+*.mcap
+
+# Editor-local configuration
 .vscode/
 .idea/
-.DS_Store

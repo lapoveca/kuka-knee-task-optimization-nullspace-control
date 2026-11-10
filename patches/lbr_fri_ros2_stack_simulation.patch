@@ -1,0 +1,71 @@
+diff --git a/lbr_ros2_control/config/controllers/gazebo.yaml b/lbr_ros2_control/config/controllers/gazebo.yaml
+index 76264c3..a06ad49 100644
+--- a/lbr_ros2_control/config/controllers/gazebo.yaml
++++ b/lbr_ros2_control/config/controllers/gazebo.yaml
+@@ -2,7 +2,7 @@
+ # managers regardless of their namespace. Usefull in multi-robot setups.
+ /**/controller_manager:
+   ros__parameters:
+-    update_rate: 100
++    update_rate: 200
+     enforce_command_limits: true # can be removed from Kilted onward
+ 
+     # ROS 2 control broadcasters
+@@ -15,6 +15,14 @@
+ 
+     forward_position_controller:
+       type: position_controllers/JointGroupPositionController
++    
++    # lbr_impedance_control controller
++    joint_impedance_controller:
++      type: lbr_impedance_control/JointImpedanceController
++
++    # lbr_impedance_control controller    
++    cartesian_impedance_controller:
++      type: lbr_impedance_control/CartesianImpedanceController
+ 
+ # ROS 2 control controllers
+ /**/joint_trajectory_controller:
+@@ -46,3 +54,21 @@
+       - lbr_A6
+       - lbr_A7
+     interface_name: position
++
++/**/joint_impedance_controller:
++  ros__parameters:
++    robot_name: lbr
++    simulation: true
++    stiffness: 100.0
++    damping_ratio: 0.7
++
++/**/cartesian_impedance_controller:
++  ros__parameters:
++    robot_name: lbr
++    simulation: true
++    base_link: lbr_link_0
++    end_effector_link: lbr_link_ee
++    translational_stiffness: 100.0
++    translational_damping_ratio: 0.7
++    rotational_stiffness: 5.0
++    rotational_damping_ratio: 0.7
+\ No newline at end of file
+diff --git a/lbr_ros2_control/urdf/lbr_system_interface.xacro b/lbr_ros2_control/urdf/lbr_system_interface.xacro
+index 61d140e..542a859 100644
+--- a/lbr_ros2_control/urdf/lbr_system_interface.xacro
++++ b/lbr_ros2_control/urdf/lbr_system_interface.xacro
+@@ -80,12 +80,11 @@
+             <xacro:macro name="joint_interface"
+                 params="name mode initial_position">
+                 <joint name="${name}">
+-                    <command_interface name="position"/>
+-                    <!-- only single command interface, refer
+-                    https://github.com/ros-controls/gz_ros2_control/issues/182 -->
++                    <!-- position excluded in gazebo: gz_ros2_control only supports single command interface (#182) -->
+                     <xacro:unless value="${mode == 'gazebo'}">
+-                        <command_interface name="effort"/>
++                        <command_interface name="position"/>
+                     </xacro:unless>
++                    <command_interface name="effort"/>
+                     <state_interface name="position"> 
+                       <param name="initial_value">${initial_position}</param>
+                     </state_interface>

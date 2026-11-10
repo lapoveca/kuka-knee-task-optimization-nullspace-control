@@ -1,0 +1,12 @@
+{
+  "schema": "joint_score_weights_v1",
+  "w_min": 0.80,
+  "w_mean": 0.10,
+  "w_joint": 0.10,
+  "comfort_extra_room_deg": 10.0,
+  "utility_saturation": 1000.0,
+  "lambda_ref": {
+    "vv_supervisor_scaled_distal_force_v1": 14.330259667040709,
+    "ie_table_v1": 9.151272684457684
+  }
+}

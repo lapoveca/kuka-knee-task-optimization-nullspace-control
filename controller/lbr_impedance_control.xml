@@ -1,0 +1,12 @@
+<library path="lbr_impedance_control_controllers">
+  <class name="lbr_impedance_control/JointImpedanceController"
+         type="lbr_impedance_control::JointImpedanceController"
+         base_class_type="controller_interface::ControllerInterface">
+    <description>Joint torque-based impedance controller for KUKA LBR Med 14</description>
+  </class>
+  <class name="lbr_impedance_control/CartesianImpedanceController"
+         type="lbr_impedance_control::CartesianImpedanceController"
+         base_class_type="controller_interface::ControllerInterface">
+    <description>Cartesian torque-based impedance controller for KUKA LBR Med 14</description>
+  </class>
+</library>

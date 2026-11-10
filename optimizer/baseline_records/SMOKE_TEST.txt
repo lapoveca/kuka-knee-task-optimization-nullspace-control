@@ -1,0 +1,5 @@
+Legacy VV array keys: ['time_s', 'angles_rad', 'knee_coordinate_rates_rad_s', 'knee_coordinate_accelerations_rad_s2', 'capability_case_active', 'capability_cases_T', 'X_GT', 'X_GF', 'X_BT', 'X_BE_required', 'A', 'X_BG']
+Duration: 260.0 samples: 521
+X_GF shape: (521, 4, 4)
+Baseline X_BG: [[-1.0, 0.0, -1.2246467991473532e-16, 1.0], [-1.2246467991473532e-16, 0.0, 1.0, -1.2246467991473533e-17], [0.0, 1.0, 0.0, 0.0], [0.0, 0.0, 0.0, 1.0]]
+Core import/model/budget/FK smoke test: PASS

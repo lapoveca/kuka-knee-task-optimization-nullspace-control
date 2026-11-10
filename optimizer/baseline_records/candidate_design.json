@@ -1,0 +1,212 @@
+{
+  "accepted": [
+    {
+      "id": "pitch_90",
+      "roll_deg": 0,
+      "pitch_deg": 90,
+      "yaw_deg": 0
+    },
+    {
+      "id": "pitch_90_yaw_45",
+      "roll_deg": 0,
+      "pitch_deg": 90,
+      "yaw_deg": 45
+    },
+    {
+      "id": "r0_p60_y0",
+      "roll_deg": 0,
+      "pitch_deg": 60,
+      "yaw_deg": 0
+    },
+    {
+      "id": "r0_p120_y0",
+      "roll_deg": 0,
+      "pitch_deg": 120,
+      "yaw_deg": 0
+    },
+    {
+      "id": "r-30_p60_y0",
+      "roll_deg": -30,
+      "pitch_deg": 60,
+      "yaw_deg": 0
+    },
+    {
+      "id": "r-30_p60_y45",
+      "roll_deg": -30,
+      "pitch_deg": 60,
+      "yaw_deg": 45
+    },
+    {
+      "id": "r-30_p60_y90",
+      "roll_deg": -30,
+      "pitch_deg": 60,
+      "yaw_deg": 90
+    },
+    {
+      "id": "r-30_p90_y0",
+      "roll_deg": -30,
+      "pitch_deg": 90,
+      "yaw_deg": 0
+    },
+    {
+      "id": "r-30_p90_y45",
+      "roll_deg": -30,
+      "pitch_deg": 90,
+      "yaw_deg": 45
+    },
+    {
+      "id": "r-30_p90_y90",
+      "roll_deg": -30,
+      "pitch_deg": 90,
+      "yaw_deg": 90
+    },
+    {
+      "id": "r-30_p120_y0",
+      "roll_deg": -30,
+      "pitch_deg": 120,
+      "yaw_deg": 0
+    },
+    {
+      "id": "r-30_p120_y45",
+      "roll_deg": -30,
+      "pitch_deg": 120,
+      "yaw_deg": 45
+    },
+    {
+      "id": "r-30_p120_y90",
+      "roll_deg": -30,
+      "pitch_deg": 120,
+      "yaw_deg": 90
+    },
+    {
+      "id": "r0_p60_y45",
+      "roll_deg": 0,
+      "pitch_deg": 60,
+      "yaw_deg": 45
+    },
+    {
+      "id": "r0_p60_y90",
+      "roll_deg": 0,
+      "pitch_deg": 60,
+      "yaw_deg": 90
+    },
+    {
+      "id": "r0_p90_y90",
+      "roll_deg": 0,
+      "pitch_deg": 90,
+      "yaw_deg": 90
+    },
+    {
+      "id": "r0_p120_y45",
+      "roll_deg": 0,
+      "pitch_deg": 120,
+      "yaw_deg": 45
+    },
+    {
+      "id": "r0_p120_y90",
+      "roll_deg": 0,
+      "pitch_deg": 120,
+      "yaw_deg": 90
+    },
+    {
+      "id": "r30_p60_y0",
+      "roll_deg": 30,
+      "pitch_deg": 60,
+      "yaw_deg": 0
+    },
+    {
+      "id": "r30_p60_y45",
+      "roll_deg": 30,
+      "pitch_deg": 60,
+      "yaw_deg": 45
+    },
+    {
+      "id": "r30_p60_y90",
+      "roll_deg": 30,
+      "pitch_deg": 60,
+      "yaw_deg": 90
+    },
+    {
+      "id": "r30_p90_y0",
+      "roll_deg": 30,
+      "pitch_deg": 90,
+      "yaw_deg": 0
+    },
+    {
+      "id": "r30_p90_y45",
+      "roll_deg": 30,
+      "pitch_deg": 90,
+      "yaw_deg": 45
+    },
+    {
+      "id": "r30_p90_y90",
+      "roll_deg": 30,
+      "pitch_deg": 90,
+      "yaw_deg": 90
+    },
+    {
+      "id": "r30_p120_y0",
+      "roll_deg": 30,
+      "pitch_deg": 120,
+      "yaw_deg": 0
+    },
+    {
+      "id": "r30_p120_y45",
+      "roll_deg": 30,
+      "pitch_deg": 120,
+      "yaw_deg": 45
+    },
+    {
+      "id": "r30_p120_y90",
+      "roll_deg": 30,
+      "pitch_deg": 120,
+      "yaw_deg": 90
+    },
+    {
+      "id": "pitch_45_yaw_45",
+      "roll_deg": 0,
+      "pitch_deg": 45,
+      "yaw_deg": 45
+    },
+    {
+      "id": "reference",
+      "roll_deg": 0,
+      "pitch_deg": 0,
+      "yaw_deg": 0
+    },
+    {
+      "id": "yaw_90",
+      "roll_deg": 0,
+      "pitch_deg": 0,
+      "yaw_deg": 90
+    }
+  ],
+  "rejected": [],
+  "duplicates": [
+    {
+      "id": "r0_p60_y0",
+      "roll_deg": 0,
+      "pitch_deg": 60,
+      "yaw_deg": 0
+    },
+    {
+      "id": "r0_p90_y0",
+      "roll_deg": 0,
+      "pitch_deg": 90,
+      "yaw_deg": 0
+    },
+    {
+      "id": "r0_p90_y45",
+      "roll_deg": 0,
+      "pitch_deg": 90,
+      "yaw_deg": 45
+    },
+    {
+      "id": "r0_p120_y0",
+      "roll_deg": 0,
+      "pitch_deg": 120,
+      "yaw_deg": 0
+    }
+  ],
+  "note": "Local 3D Euler design plus controls, fixed0.35m; not exhaustive orientations; cone filter is not collision checking"
+}

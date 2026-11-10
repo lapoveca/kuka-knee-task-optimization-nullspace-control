@@ -1,0 +1,28 @@
+{
+  "status": "distal_force_envelope_PASS",
+  "task_id": "vv_supervisor_scaled_distal_force_v1",
+  "saved_postures_checked": 521,
+  "application_point_T_m": [
+    0.35,
+    -0.0,
+    0.0
+  ],
+  "positive_force_T_N": [
+    3.705213647852341e-37,
+    1.4659877916193074e-06,
+    -19.417475761968834
+  ],
+  "positive_moment_about_T_Nm": [
+    0.0,
+    6.796116516689092,
+    5.130957270667576e-07
+  ],
+  "force_magnitude_N": 19.41747576196889,
+  "generalized_moment_min_Nm": 9.999999999986345,
+  "generalized_moment_max_Nm": 10.00000000003234,
+  "max_generalized_moment_error_Nm": 3.234035261812096e-11,
+  "distal_direct_couple_norm_Nm": 0.0,
+  "pose_regression_max_matrix_error": 0.0,
+  "motion_and_activation_unchanged": true,
+  "scope": "New model-based load scenario; no IK/capability reranking or physical load approval. Existing pure-couple results remain valid for their own scenario."
+}

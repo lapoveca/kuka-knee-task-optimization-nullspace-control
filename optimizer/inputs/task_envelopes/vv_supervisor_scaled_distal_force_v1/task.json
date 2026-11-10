@@ -1,0 +1,404 @@
+{
+  "schema": "kinematic_wrench_task_envelope_v1",
+  "task_id": "vv_supervisor_scaled_distal_force_v1",
+  "arrays_file": "task_arrays.npz",
+  "reference_frame": "F: fixed femur_body femur_base",
+  "task_frame": "T: tibia_body tibia",
+  "pose_semantics": "X_FT maps task frame T into anatomical reference F",
+  "placement_semantics": "X_BF constant per trial, supplied separately by evaluator",
+  "wrench_order": [
+    "Fx",
+    "Fy",
+    "Fz",
+    "Mx",
+    "My",
+    "Mz"
+  ],
+  "wrench_frame": "T",
+  "wrench_origin": "T origin",
+  "wrench_action": "robot_on_tibia",
+  "wrench_semantics": "alternative signed peak capacity, not simultaneous loads or commanded waveform",
+  "motion_interpolation": "linear translation and rotation SLERP between saved samples",
+  "wrench_interpolation": "constant per-case vectors in T",
+  "activation_rule": "union of phase active_case_indices on closed intervals; empty inside transfer; no summation of alternative cases",
+  "tolerance_rule": "minimum applicable phase tolerance at shared boundaries",
+  "phases": [
+    {
+      "id": "flex_0_positive_out",
+      "kind": "station",
+      "group_id": "flexion_0",
+      "start_time_s": 0.0,
+      "end_time_s": 10.0,
+      "active_case_indices": [
+        1
+      ],
+      "position_tolerance_m": 0.02,
+      "orientation_tolerance_rad": 0.03490658503988659
+    },
+    {
+      "id": "flex_0_positive_return",
+      "kind": "station",
+      "group_id": "flexion_0",
+      "start_time_s": 10.0,
+      "end_time_s": 20.0,
+      "active_case_indices": [
+        1
+      ],
+      "position_tolerance_m": 0.02,
+      "orientation_tolerance_rad": 0.03490658503988659
+    },
+    {
+      "id": "flex_0_negative_out",
+      "kind": "station",
+      "group_id": "flexion_0",
+      "start_time_s": 20.0,
+      "end_time_s": 30.0,
+      "active_case_indices": [
+        0
+      ],
+      "position_tolerance_m": 0.02,
+      "orientation_tolerance_rad": 0.03490658503988659
+    },
+    {
+      "id": "flex_0_negative_return",
+      "kind": "station",
+      "group_id": "flexion_0",
+      "start_time_s": 30.0,
+      "end_time_s": 40.0,
+      "active_case_indices": [
+        0
+      ],
+      "position_tolerance_m": 0.02,
+      "orientation_tolerance_rad": 0.03490658503988659
+    },
+    {
+      "id": "transfer_0_to_15",
+      "kind": "transfer",
+      "group_id": null,
+      "start_time_s": 40.0,
+      "end_time_s": 55.0,
+      "active_case_indices": [],
+      "position_tolerance_m": 0.03,
+      "orientation_tolerance_rad": 0.05235987755982989
+    },
+    {
+      "id": "flex_15_positive_out",
+      "kind": "station",
+      "group_id": "flexion_15",
+      "start_time_s": 55.0,
+      "end_time_s": 65.0,
+      "active_case_indices": [
+        1
+      ],
+      "position_tolerance_m": 0.02,
+      "orientation_tolerance_rad": 0.03490658503988659
+    },
+    {
+      "id": "flex_15_positive_return",
+      "kind": "station",
+      "group_id": "flexion_15",
+      "start_time_s": 65.0,
+      "end_time_s": 75.0,
+      "active_case_indices": [
+        1
+      ],
+      "position_tolerance_m": 0.02,
+      "orientation_tolerance_rad": 0.03490658503988659
+    },
+    {
+      "id": "flex_15_negative_out",
+      "kind": "station",
+      "group_id": "flexion_15",
+      "start_time_s": 75.0,
+      "end_time_s": 85.0,
+      "active_case_indices": [
+        0
+      ],
+      "position_tolerance_m": 0.02,
+      "orientation_tolerance_rad": 0.03490658503988659
+    },
+    {
+      "id": "flex_15_negative_return",
+      "kind": "station",
+      "group_id": "flexion_15",
+      "start_time_s": 85.0,
+      "end_time_s": 95.0,
+      "active_case_indices": [
+        0
+      ],
+      "position_tolerance_m": 0.02,
+      "orientation_tolerance_rad": 0.03490658503988659
+    },
+    {
+      "id": "transfer_15_to_30",
+      "kind": "transfer",
+      "group_id": null,
+      "start_time_s": 95.0,
+      "end_time_s": 110.0,
+      "active_case_indices": [],
+      "position_tolerance_m": 0.03,
+      "orientation_tolerance_rad": 0.05235987755982989
+    },
+    {
+      "id": "flex_30_positive_out",
+      "kind": "station",
+      "group_id": "flexion_30",
+      "start_time_s": 110.0,
+      "end_time_s": 120.0,
+      "active_case_indices": [
+        1
+      ],
+      "position_tolerance_m": 0.02,
+      "orientation_tolerance_rad": 0.03490658503988659
+    },
+    {
+      "id": "flex_30_positive_return",
+      "kind": "station",
+      "group_id": "flexion_30",
+      "start_time_s": 120.0,
+      "end_time_s": 130.0,
+      "active_case_indices": [
+        1
+      ],
+      "position_tolerance_m": 0.02,
+      "orientation_tolerance_rad": 0.03490658503988659
+    },
+    {
+      "id": "flex_30_negative_out",
+      "kind": "station",
+      "group_id": "flexion_30",
+      "start_time_s": 130.0,
+      "end_time_s": 140.0,
+      "active_case_indices": [
+        0
+      ],
+      "position_tolerance_m": 0.02,
+      "orientation_tolerance_rad": 0.03490658503988659
+    },
+    {
+      "id": "flex_30_negative_return",
+      "kind": "station",
+      "group_id": "flexion_30",
+      "start_time_s": 140.0,
+      "end_time_s": 150.0,
+      "active_case_indices": [
+        0
+      ],
+      "position_tolerance_m": 0.02,
+      "orientation_tolerance_rad": 0.03490658503988659
+    },
+    {
+      "id": "transfer_30_to_45",
+      "kind": "transfer",
+      "group_id": null,
+      "start_time_s": 150.0,
+      "end_time_s": 165.0,
+      "active_case_indices": [],
+      "position_tolerance_m": 0.03,
+      "orientation_tolerance_rad": 0.05235987755982989
+    },
+    {
+      "id": "flex_45_positive_out",
+      "kind": "station",
+      "group_id": "flexion_45",
+      "start_time_s": 165.0,
+      "end_time_s": 175.0,
+      "active_case_indices": [
+        1
+      ],
+      "position_tolerance_m": 0.02,
+      "orientation_tolerance_rad": 0.03490658503988659
+    },
+    {
+      "id": "flex_45_positive_return",
+      "kind": "station",
+      "group_id": "flexion_45",
+      "start_time_s": 175.0,
+      "end_time_s": 185.0,
+      "active_case_indices": [
+        1
+      ],
+      "position_tolerance_m": 0.02,
+      "orientation_tolerance_rad": 0.03490658503988659
+    },
+    {
+      "id": "flex_45_negative_out",
+      "kind": "station",
+      "group_id": "flexion_45",
+      "start_time_s": 185.0,
+      "end_time_s": 195.0,
+      "active_case_indices": [
+        0
+      ],
+      "position_tolerance_m": 0.02,
+      "orientation_tolerance_rad": 0.03490658503988659
+    },
+    {
+      "id": "flex_45_negative_return",
+      "kind": "station",
+      "group_id": "flexion_45",
+      "start_time_s": 195.0,
+      "end_time_s": 205.0,
+      "active_case_indices": [
+        0
+      ],
+      "position_tolerance_m": 0.02,
+      "orientation_tolerance_rad": 0.03490658503988659
+    },
+    {
+      "id": "transfer_45_to_60",
+      "kind": "transfer",
+      "group_id": null,
+      "start_time_s": 205.0,
+      "end_time_s": 220.0,
+      "active_case_indices": [],
+      "position_tolerance_m": 0.03,
+      "orientation_tolerance_rad": 0.05235987755982989
+    },
+    {
+      "id": "flex_60_positive_out",
+      "kind": "station",
+      "group_id": "flexion_60",
+      "start_time_s": 220.0,
+      "end_time_s": 230.0,
+      "active_case_indices": [
+        1
+      ],
+      "position_tolerance_m": 0.02,
+      "orientation_tolerance_rad": 0.03490658503988659
+    },
+    {
+      "id": "flex_60_positive_return",
+      "kind": "station",
+      "group_id": "flexion_60",
+      "start_time_s": 230.0,
+      "end_time_s": 240.0,
+      "active_case_indices": [
+        1
+      ],
+      "position_tolerance_m": 0.02,
+      "orientation_tolerance_rad": 0.03490658503988659
+    },
+    {
+      "id": "flex_60_negative_out",
+      "kind": "station",
+      "group_id": "flexion_60",
+      "start_time_s": 240.0,
+      "end_time_s": 250.0,
+      "active_case_indices": [
+        0
+      ],
+      "position_tolerance_m": 0.02,
+      "orientation_tolerance_rad": 0.03490658503988659
+    },
+    {
+      "id": "flex_60_negative_return",
+      "kind": "station",
+      "group_id": "flexion_60",
+      "start_time_s": 250.0,
+      "end_time_s": 260.0,
+      "active_case_indices": [
+        0
+      ],
+      "position_tolerance_m": 0.02,
+      "orientation_tolerance_rad": 0.03490658503988659
+    }
+  ],
+  "groups": [
+    "flexion_0",
+    "flexion_15",
+    "flexion_30",
+    "flexion_45",
+    "flexion_60"
+  ],
+  "source_spec": {
+    "schema": "knee_station_motion_spec_v1",
+    "model_sha256": "1a51a844094c1574a484ee1827c8666e37f0af0695f38e4dbaf114442f5c2fdc",
+    "coordinate_names": [
+      "flexion_extension_rz",
+      "varus_valgus_rz",
+      "internal_external_rotation_rz"
+    ],
+    "tibia_body": "tibia",
+    "femur_body": "femur_base",
+    "timing_defaults": {
+      "positive_out_s": 10,
+      "positive_return_s": 10,
+      "negative_out_s": 10,
+      "negative_return_s": 10,
+      "transfer_s": 15,
+      "max_sample_dt_s": 0.5
+    },
+    "excluded_stations": [
+      {
+        "flexion_deg": 90,
+        "reason": "Outside model flexion range; exclusion confirmed by user"
+      }
+    ],
+    "note": "Motion/compiler input, not a force-controller prescription. Runtime5deg robot reserve belongs in evaluation config.",
+    "task_id": "vv_supervisor_scaled_distal_force_v1",
+    "active_coordinate_index": 1,
+    "source_table_positive_deg": [
+      2.5,
+      5,
+      5,
+      6,
+      7
+    ],
+    "source_table_negative_deg": [
+      2.5,
+      5,
+      5,
+      6,
+      7
+    ],
+    "flexion_stations_deg": [
+      0,
+      15,
+      30,
+      45,
+      60
+    ],
+    "angle_multiplier": 2,
+    "angle_multiplier_provenance": "Supervisor requested doubling TABLE I angular targets only",
+    "required_peak_moment_Nm": 10,
+    "anatomical_labels": {
+      "positive": "varus",
+      "negative": "valgus",
+      "status": "Existing interface convention; physical sign mapping not independently revalidated here"
+    }
+  },
+  "model_sha256": "1a51a844094c1574a484ee1827c8666e37f0af0695f38e4dbaf114442f5c2fdc",
+  "motion_source_sha256": "844fe0cbc31aa4400b384ab59cec7bc572a4c996081eef3a12ac044e60f23884",
+  "task_arrays_sha256": "daa2e155c68242272c9f287055a16cdae6bf82bc1a6cfda658ad3ad07e58700f",
+  "scope": "Task geometry and nominal capacity requirements only. Robot reserve5deg, budget, attachment and placement supplied by separate evaluation config. No robot path feasibility, collision or dynamics claim.",
+  "loading_model": {
+    "id": "single_distal_force_zero_distal_couple_v1",
+    "required_coordinate": "varus_valgus_rz",
+    "required_generalized_moment_Nm": 10.0,
+    "application_point_T_m": [
+      0.35,
+      -0.0,
+      0.0
+    ],
+    "direct_application_point_couple_Nm": [
+      0,
+      0,
+      0
+    ],
+    "positive_force_T_N": [
+      3.705213647852341e-37,
+      1.4659877916193074e-06,
+      -19.417475761968834
+    ],
+    "equivalent_positive_moment_about_T_Nm": [
+      0.0,
+      6.796116516689092,
+      5.130957270667576e-07
+    ],
+    "source_pure_couple_envelope": "inputs/task_envelopes/vv_supervisor_scaled_v1",
+    "source_task_sha256": "7e4c837f1b19f1ebbe01ab88939a23a3252b31857867f9f10ceeca28f9284a44",
+    "geometry_status": "Model-based fixed offset from T origin; not independent physical measurement",
+    "other_knee_coordinate_reactions": "Not constrained to zero by this loading policy"
+  }
+}

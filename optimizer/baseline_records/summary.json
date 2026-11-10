@@ -1,0 +1,3379 @@
+{
+  "candidates": [
+    {
+      "candidate": "pitch_90",
+      "finished_seed_jobs": 2,
+      "required_seed_jobs": 2,
+      "eligible_complete_comparison": true,
+      "successful_seed_jobs": 2,
+      "best": {
+        "candidate": "pitch_90",
+        "rng_seed": 7,
+        "status": "audited_path_found",
+        "attempt": 1,
+        "best": {
+          "status": "sampled_path_pass",
+          "candidate": "pitch_90",
+          "reserve_deg": 3.0,
+          "worst_track_margin_deg": 5.0713605915636535,
+          "max_ee_error_mm": 3.521529537773566,
+          "max_ee_error_deg": 0.4407808525730767,
+          "max_velocity_utilization": 0.05054857243635944,
+          "station_capability": [
+            {
+              "flexion_deg": 0.0,
+              "min_lambda": 7.834351439265912
+            },
+            {
+              "flexion_deg": 15.0,
+              "min_lambda": 4.989682867242219
+            },
+            {
+              "flexion_deg": 30.0,
+              "min_lambda": 4.049085693350297
+            },
+            {
+              "flexion_deg": 45.0,
+              "min_lambda": 4.188971258579464
+            },
+            {
+              "flexion_deg": 60.0,
+              "min_lambda": 6.397071372865083
+            }
+          ],
+          "min_lambda": 4.049085693350297,
+          "mean_station_min_lambda": 5.491832526260595,
+          "budget_id": "historical_screening_zero_bias_v1",
+          "path": "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/output/mount_coarse_batch_v1/pitch_90/seed_7/attempt_001/result/pitch_90/path_01"
+        },
+        "independent_audit": "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/output/mount_coarse_batch_v1/pitch_90/seed_7/attempt_001/audit/independent_audit.json",
+        "runtime_s": 108.79480862617493
+      }
+    },
+    {
+      "candidate": "pitch_90_yaw_45",
+      "finished_seed_jobs": 2,
+      "required_seed_jobs": 2,
+      "eligible_complete_comparison": true,
+      "successful_seed_jobs": 2,
+      "best": {
+        "candidate": "pitch_90_yaw_45",
+        "rng_seed": 7,
+        "status": "audited_path_found",
+        "attempt": 1,
+        "best": {
+          "status": "sampled_path_pass",
+          "candidate": "pitch_90_yaw_45",
+          "reserve_deg": 3.0,
+          "worst_track_margin_deg": 6.928664671097991,
+          "max_ee_error_mm": 3.8094687277079426,
+          "max_ee_error_deg": 1.8261812145527494,
+          "max_velocity_utilization": 0.08475198112417295,
+          "station_capability": [
+            {
+              "flexion_deg": 0.0,
+              "min_lambda": 11.081255089408161
+            },
+            {
+              "flexion_deg": 15.0,
+              "min_lambda": 6.56262080901362
+            },
+            {
+              "flexion_deg": 30.0,
+              "min_lambda": 4.219292149976969
+            },
+            {
+              "flexion_deg": 45.0,
+              "min_lambda": 4.053799008208586
+            },
+            {
+              "flexion_deg": 60.0,
+              "min_lambda": 5.943731054868107
+            }
+          ],
+          "min_lambda": 4.053799008208586,
+          "mean_station_min_lambda": 6.372139622295089,
+          "budget_id": "historical_screening_zero_bias_v1",
+          "path": "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/output/mount_coarse_batch_v1/pitch_90_yaw_45/seed_7/attempt_001/result/pitch_90_yaw_45/path_01"
+        },
+        "independent_audit": "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/output/mount_coarse_batch_v1/pitch_90_yaw_45/seed_7/attempt_001/audit/independent_audit.json",
+        "runtime_s": 115.94589042663574
+      }
+    },
+    {
+      "candidate": "r0_p60_y0",
+      "finished_seed_jobs": 2,
+      "required_seed_jobs": 2,
+      "eligible_complete_comparison": true,
+      "successful_seed_jobs": 2,
+      "best": {
+        "candidate": "r0_p60_y0",
+        "rng_seed": 42,
+        "status": "audited_path_found",
+        "attempt": 1,
+        "best": {
+          "status": "sampled_path_pass",
+          "candidate": "r0_p60_y0",
+          "reserve_deg": 3.0,
+          "worst_track_margin_deg": 2.5444437451708134e-14,
+          "max_ee_error_mm": 3.4034977804649595,
+          "max_ee_error_deg": 0.8533087574819063,
+          "max_velocity_utilization": 0.05370264903036737,
+          "station_capability": [
+            {
+              "flexion_deg": 0.0,
+              "min_lambda": 11.643052183589736
+            },
+            {
+              "flexion_deg": 15.0,
+              "min_lambda": 6.454799785363091
+            },
+            {
+              "flexion_deg": 30.0,
+              "min_lambda": 4.193603049630931
+            },
+            {
+              "flexion_deg": 45.0,
+              "min_lambda": 4.180237544803588
+            },
+            {
+              "flexion_deg": 60.0,
+              "min_lambda": 6.547695802996128
+            }
+          ],
+          "min_lambda": 4.180237544803588,
+          "mean_station_min_lambda": 6.603877673276695,
+          "budget_id": "historical_screening_zero_bias_v1",
+          "path": "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/output/mount_coarse_batch_v1/r0_p60_y0/seed_42/attempt_001/result/r0_p60_y0/path_03"
+        },
+        "independent_audit": "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/output/mount_coarse_batch_v1/r0_p60_y0/seed_42/attempt_001/audit/independent_audit.json",
+        "runtime_s": 115.69321703910828
+      }
+    },
+    {
+      "candidate": "r0_p120_y0",
+      "finished_seed_jobs": 2,
+      "required_seed_jobs": 2,
+      "eligible_complete_comparison": true,
+      "successful_seed_jobs": 2,
+      "best": {
+        "candidate": "r0_p120_y0",
+        "rng_seed": 42,
+        "status": "audited_path_found",
+        "attempt": 1,
+        "best": {
+          "status": "sampled_path_pass",
+          "candidate": "r0_p120_y0",
+          "reserve_deg": 3.0,
+          "worst_track_margin_deg": 7.1355689381989595,
+          "max_ee_error_mm": 3.2359161713878715,
+          "max_ee_error_deg": 0.8265476677386265,
+          "max_velocity_utilization": 0.04767810003684109,
+          "station_capability": [
+            {
+              "flexion_deg": 0.0,
+              "min_lambda": 4.886170587289422
+            },
+            {
+              "flexion_deg": 15.0,
+              "min_lambda": 4.047743670619332
+            },
+            {
+              "flexion_deg": 30.0,
+              "min_lambda": 4.073692217421683
+            },
+            {
+              "flexion_deg": 45.0,
+              "min_lambda": 4.9774035856992755
+            },
+            {
+              "flexion_deg": 60.0,
+              "min_lambda": 7.817730387078612
+            }
+          ],
+          "min_lambda": 4.047743670619332,
+          "mean_station_min_lambda": 5.160548089621665,
+          "budget_id": "historical_screening_zero_bias_v1",
+          "path": "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/output/mount_coarse_batch_v1/r0_p120_y0/seed_42/attempt_001/result/r0_p120_y0/path_01"
+        },
+        "independent_audit": "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/output/mount_coarse_batch_v1/r0_p120_y0/seed_42/attempt_001/audit/independent_audit.json",
+        "runtime_s": 109.69039130210876
+      }
+    },
+    {
+      "candidate": "r-30_p60_y0",
+      "finished_seed_jobs": 2,
+      "required_seed_jobs": 2,
+      "eligible_complete_comparison": true,
+      "successful_seed_jobs": 2,
+      "best": {
+        "candidate": "r-30_p60_y0",
+        "rng_seed": 7,
+        "status": "audited_path_found",
+        "attempt": 1,
+        "best": {
+          "status": "sampled_path_pass",
+          "candidate": "r-30_p60_y0",
+          "reserve_deg": 3.0,
+          "worst_track_margin_deg": 2.5444437451708134e-14,
+          "max_ee_error_mm": 3.6833529037765222,
+          "max_ee_error_deg": 1.3554354325681166,
+          "max_velocity_utilization": 0.05401159664364403,
+          "station_capability": [
+            {
+              "flexion_deg": 0.0,
+              "min_lambda": 12.308760971320035
+            },
+            {
+              "flexion_deg": 15.0,
+              "min_lambda": 6.79141066729499
+            },
+            {
+              "flexion_deg": 30.0,
+              "min_lambda": 4.3989179244199175
+            },
+            {
+              "flexion_deg": 45.0,
+              "min_lambda": 4.052136356992019
+            },
+            {
+              "flexion_deg": 60.0,
+              "min_lambda": 5.807276685069453
+            }
+          ],
+          "min_lambda": 4.052136356992019,
+          "mean_station_min_lambda": 6.671700521019282,
+          "budget_id": "historical_screening_zero_bias_v1",
+          "path": "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/output/mount_coarse_batch_v1/r-30_p60_y0/seed_7/attempt_001/result/r-30_p60_y0/path_00"
+        },
+        "independent_audit": "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/output/mount_coarse_batch_v1/r-30_p60_y0/seed_7/attempt_001/audit/independent_audit.json",
+        "runtime_s": 88.45267605781555
+      }
+    },
+    {
+      "candidate": "r-30_p60_y45",
+      "finished_seed_jobs": 2,
+      "required_seed_jobs": 2,
+      "eligible_complete_comparison": true,
+      "successful_seed_jobs": 2,
+      "best": {
+        "candidate": "r-30_p60_y45",
+        "rng_seed": 42,
+        "status": "audited_path_found",
+        "attempt": 1,
+        "best": {
+          "status": "sampled_path_pass",
+          "candidate": "r-30_p60_y45",
+          "reserve_deg": 3.0,
+          "worst_track_margin_deg": 0.12711333848190756,
+          "max_ee_error_mm": 6.684157803553513,
+          "max_ee_error_deg": 1.8465281253056358,
+          "max_velocity_utilization": 0.07505762618524872,
+          "station_capability": [
+            {
+              "flexion_deg": 0.0,
+              "min_lambda": 11.313708498984754
+            },
+            {
+              "flexion_deg": 15.0,
+              "min_lambda": 7.195291033973877
+            },
+            {
+              "flexion_deg": 30.0,
+              "min_lambda": 4.392225524288099
+            },
+            {
+              "flexion_deg": 45.0,
+              "min_lambda": 4.458366821482929
+            },
+            {
+              "flexion_deg": 60.0,
+              "min_lambda": 7.621001302425512
+            }
+          ],
+          "min_lambda": 4.392225524288099,
+          "mean_station_min_lambda": 6.996118636231034,
+          "budget_id": "historical_screening_zero_bias_v1",
+          "path": "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/output/mount_coarse_batch_v1/r-30_p60_y45/seed_42/attempt_001/result/r-30_p60_y45/path_00"
+        },
+        "independent_audit": "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/output/mount_coarse_batch_v1/r-30_p60_y45/seed_42/attempt_001/audit/independent_audit.json",
+        "runtime_s": 95.6638731956482
+      }
+    },
+    {
+      "candidate": "r-30_p60_y90",
+      "finished_seed_jobs": 2,
+      "required_seed_jobs": 2,
+      "eligible_complete_comparison": true,
+      "successful_seed_jobs": 0,
+      "best": null
+    },
+    {
+      "candidate": "r-30_p90_y0",
+      "finished_seed_jobs": 2,
+      "required_seed_jobs": 2,
+      "eligible_complete_comparison": true,
+      "successful_seed_jobs": 2,
+      "best": {
+        "candidate": "r-30_p90_y0",
+        "rng_seed": 7,
+        "status": "audited_path_found",
+        "attempt": 1,
+        "best": {
+          "status": "sampled_path_pass",
+          "candidate": "r-30_p90_y0",
+          "reserve_deg": 3.0,
+          "worst_track_margin_deg": 7.041052156426123,
+          "max_ee_error_mm": 4.2187265832376255,
+          "max_ee_error_deg": 1.8187416137871733,
+          "max_velocity_utilization": 0.09068686469807143,
+          "station_capability": [
+            {
+              "flexion_deg": 0.0,
+              "min_lambda": 8.231363900820273
+            },
+            {
+              "flexion_deg": 15.0,
+              "min_lambda": 5.239529098885801
+            },
+            {
+              "flexion_deg": 30.0,
+              "min_lambda": 4.124565163656563
+            },
+            {
+              "flexion_deg": 45.0,
+              "min_lambda": 4.054146203506998
+            },
+            {
+              "flexion_deg": 60.0,
+              "min_lambda": 5.9017536071117735
+            }
+          ],
+          "min_lambda": 4.054146203506998,
+          "mean_station_min_lambda": 5.510271594796282,
+          "budget_id": "historical_screening_zero_bias_v1",
+          "path": "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/output/mount_coarse_batch_v1/r-30_p90_y0/seed_7/attempt_001/result/r-30_p90_y0/path_00"
+        },
+        "independent_audit": "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/output/mount_coarse_batch_v1/r-30_p90_y0/seed_7/attempt_001/audit/independent_audit.json",
+        "runtime_s": 132.72665858268738
+      }
+    },
+    {
+      "candidate": "r-30_p90_y45",
+      "finished_seed_jobs": 2,
+      "required_seed_jobs": 2,
+      "eligible_complete_comparison": true,
+      "successful_seed_jobs": 2,
+      "best": {
+        "candidate": "r-30_p90_y45",
+        "rng_seed": 42,
+        "status": "audited_path_found",
+        "attempt": 1,
+        "best": {
+          "status": "sampled_path_pass",
+          "candidate": "r-30_p90_y45",
+          "reserve_deg": 3.0,
+          "worst_track_margin_deg": 9.85865204215292,
+          "max_ee_error_mm": 3.4101831580185644,
+          "max_ee_error_deg": 0.4579960187952174,
+          "max_velocity_utilization": 0.0505476460567251,
+          "station_capability": [
+            {
+              "flexion_deg": 0.0,
+              "min_lambda": 5.016285701522693
+            },
+            {
+              "flexion_deg": 15.0,
+              "min_lambda": 4.066074784786398
+            },
+            {
+              "flexion_deg": 30.0,
+              "min_lambda": 4.036025214185831
+            },
+            {
+              "flexion_deg": 45.0,
+              "min_lambda": 4.737801944817057
+            },
+            {
+              "flexion_deg": 60.0,
+              "min_lambda": 7.902521156177962
+            }
+          ],
+          "min_lambda": 4.036025214185831,
+          "mean_station_min_lambda": 5.1517417602979885,
+          "budget_id": "historical_screening_zero_bias_v1",
+          "path": "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/output/mount_coarse_batch_v1/r-30_p90_y45/seed_42/attempt_001/result/r-30_p90_y45/path_00"
+        },
+        "independent_audit": "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/output/mount_coarse_batch_v1/r-30_p90_y45/seed_42/attempt_001/audit/independent_audit.json",
+        "runtime_s": 106.93109130859375
+      }
+    },
+    {
+      "candidate": "r-30_p90_y90",
+      "finished_seed_jobs": 2,
+      "required_seed_jobs": 2,
+      "eligible_complete_comparison": true,
+      "successful_seed_jobs": 2,
+      "best": {
+        "candidate": "r-30_p90_y90",
+        "rng_seed": 42,
+        "status": "audited_path_found",
+        "attempt": 1,
+        "best": {
+          "status": "sampled_path_pass",
+          "candidate": "r-30_p90_y90",
+          "reserve_deg": 3.0,
+          "worst_track_margin_deg": 0.2558327881864019,
+          "max_ee_error_mm": 3.972471410416718,
+          "max_ee_error_deg": 1.9995296099243438,
+          "max_velocity_utilization": 0.0809494382913463,
+          "station_capability": [
+            {
+              "flexion_deg": 0.0,
+              "min_lambda": 11.554221606812511
+            },
+            {
+              "flexion_deg": 15.0,
+              "min_lambda": 7.158398467510768
+            },
+            {
+              "flexion_deg": 30.0,
+              "min_lambda": 4.265530842797898
+            },
+            {
+              "flexion_deg": 45.0,
+              "min_lambda": 4.078086862322763
+            },
+            {
+              "flexion_deg": 60.0,
+              "min_lambda": 5.601735172493689
+            }
+          ],
+          "min_lambda": 4.078086862322763,
+          "mean_station_min_lambda": 6.531594590387526,
+          "budget_id": "historical_screening_zero_bias_v1",
+          "path": "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/output/mount_coarse_batch_v1/r-30_p90_y90/seed_42/attempt_001/result/r-30_p90_y90/path_01"
+        },
+        "independent_audit": "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/output/mount_coarse_batch_v1/r-30_p90_y90/seed_42/attempt_001/audit/independent_audit.json",
+        "runtime_s": 96.41475200653076
+      }
+    },
+    {
+      "candidate": "r-30_p120_y0",
+      "finished_seed_jobs": 2,
+      "required_seed_jobs": 2,
+      "eligible_complete_comparison": true,
+      "successful_seed_jobs": 2,
+      "best": {
+        "candidate": "r-30_p120_y0",
+        "rng_seed": 7,
+        "status": "audited_path_found",
+        "attempt": 1,
+        "best": {
+          "status": "sampled_path_pass",
+          "candidate": "r-30_p120_y0",
+          "reserve_deg": 3.0,
+          "worst_track_margin_deg": 6.959212855341279,
+          "max_ee_error_mm": 3.373833588924097,
+          "max_ee_error_deg": 0.4831657861204593,
+          "max_velocity_utilization": 0.047744387229034686,
+          "station_capability": [
+            {
+              "flexion_deg": 0.0,
+              "min_lambda": 5.2606724626836385
+            },
+            {
+              "flexion_deg": 15.0,
+              "min_lambda": 4.097142810809956
+            },
+            {
+              "flexion_deg": 30.0,
+              "min_lambda": 4.033124644596379
+            },
+            {
+              "flexion_deg": 45.0,
+              "min_lambda": 4.758600411025685
+            },
+            {
+              "flexion_deg": 60.0,
+              "min_lambda": 7.147549078671445
+            }
+          ],
+          "min_lambda": 4.033124644596379,
+          "mean_station_min_lambda": 5.059417881557421,
+          "budget_id": "historical_screening_zero_bias_v1",
+          "path": "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/output/mount_coarse_batch_v1/r-30_p120_y0/seed_7/attempt_001/result/r-30_p120_y0/path_00"
+        },
+        "independent_audit": "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/output/mount_coarse_batch_v1/r-30_p120_y0/seed_7/attempt_001/audit/independent_audit.json",
+        "runtime_s": 135.74284672737122
+      }
+    },
+    {
+      "candidate": "r-30_p120_y45",
+      "finished_seed_jobs": 2,
+      "required_seed_jobs": 2,
+      "eligible_complete_comparison": true,
+      "successful_seed_jobs": 2,
+      "best": {
+        "candidate": "r-30_p120_y45",
+        "rng_seed": 7,
+        "status": "audited_path_found",
+        "attempt": 1,
+        "best": {
+          "status": "sampled_path_pass",
+          "candidate": "r-30_p120_y45",
+          "reserve_deg": 3.0,
+          "worst_track_margin_deg": 0.0390094114385358,
+          "max_ee_error_mm": 3.3935484174545274,
+          "max_ee_error_deg": 1.0215277732490333,
+          "max_velocity_utilization": 0.0389395722151628,
+          "station_capability": [
+            {
+              "flexion_deg": 0.0,
+              "min_lambda": 11.31370849898476
+            },
+            {
+              "flexion_deg": 15.0,
+              "min_lambda": 5.0581588797475305
+            },
+            {
+              "flexion_deg": 30.0,
+              "min_lambda": 4.280386175745818
+            },
+            {
+              "flexion_deg": 45.0,
+              "min_lambda": 4.279524654000179
+            },
+            {
+              "flexion_deg": 60.0,
+              "min_lambda": 5.18675605088925
+            }
+          ],
+          "min_lambda": 4.279524654000179,
+          "mean_station_min_lambda": 6.0237068518735075,
+          "budget_id": "historical_screening_zero_bias_v1",
+          "path": "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/output/mount_coarse_batch_v1/r-30_p120_y45/seed_7/attempt_001/result/r-30_p120_y45/path_02"
+        },
+        "independent_audit": "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/output/mount_coarse_batch_v1/r-30_p120_y45/seed_7/attempt_001/audit/independent_audit.json",
+        "runtime_s": 101.63660264015198
+      }
+    },
+    {
+      "candidate": "r-30_p120_y90",
+      "finished_seed_jobs": 2,
+      "required_seed_jobs": 2,
+      "eligible_complete_comparison": true,
+      "successful_seed_jobs": 2,
+      "best": {
+        "candidate": "r-30_p120_y90",
+        "rng_seed": 42,
+        "status": "audited_path_found",
+        "attempt": 1,
+        "best": {
+          "status": "sampled_path_pass",
+          "candidate": "r-30_p120_y90",
+          "reserve_deg": 3.0,
+          "worst_track_margin_deg": 0.7909264613226369,
+          "max_ee_error_mm": 3.2514078711428223,
+          "max_ee_error_deg": 0.4012485802399308,
+          "max_velocity_utilization": 0.03937264858040446,
+          "station_capability": [
+            {
+              "flexion_deg": 0.0,
+              "min_lambda": 6.159750676586372
+            },
+            {
+              "flexion_deg": 15.0,
+              "min_lambda": 4.929530905215867
+            },
+            {
+              "flexion_deg": 30.0,
+              "min_lambda": 4.6199636569414135
+            },
+            {
+              "flexion_deg": 45.0,
+              "min_lambda": 4.618830551660146
+            },
+            {
+              "flexion_deg": 60.0,
+              "min_lambda": 5.36649382144494
+            }
+          ],
+          "min_lambda": 4.618830551660146,
+          "mean_station_min_lambda": 5.138913922369748,
+          "budget_id": "historical_screening_zero_bias_v1",
+          "path": "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/output/mount_coarse_batch_v1/r-30_p120_y90/seed_42/attempt_001/result/r-30_p120_y90/path_01"
+        },
+        "independent_audit": "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/output/mount_coarse_batch_v1/r-30_p120_y90/seed_42/attempt_001/audit/independent_audit.json",
+        "runtime_s": 100.04439783096313
+      }
+    },
+    {
+      "candidate": "r0_p60_y45",
+      "finished_seed_jobs": 2,
+      "required_seed_jobs": 2,
+      "eligible_complete_comparison": true,
+      "successful_seed_jobs": 2,
+      "best": {
+        "candidate": "r0_p60_y45",
+        "rng_seed": 7,
+        "status": "audited_path_found",
+        "attempt": 1,
+        "best": {
+          "status": "sampled_path_pass",
+          "candidate": "r0_p60_y45",
+          "reserve_deg": 3.0,
+          "worst_track_margin_deg": 0.0016107770586721707,
+          "max_ee_error_mm": 9.590544334182228,
+          "max_ee_error_deg": 1.1014943444773195,
+          "max_velocity_utilization": 0.11840014840688787,
+          "station_capability": [
+            {
+              "flexion_deg": 0.0,
+              "min_lambda": 11.056436076967135
+            },
+            {
+              "flexion_deg": 15.0,
+              "min_lambda": 7.191297562354182
+            },
+            {
+              "flexion_deg": 30.0,
+              "min_lambda": 4.376381566473305
+            },
+            {
+              "flexion_deg": 45.0,
+              "min_lambda": 4.453386903432748
+            },
+            {
+              "flexion_deg": 60.0,
+              "min_lambda": 7.54012531253827
+            }
+          ],
+          "min_lambda": 4.376381566473305,
+          "mean_station_min_lambda": 6.923525484353128,
+          "budget_id": "historical_screening_zero_bias_v1",
+          "path": "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/output/mount_coarse_batch_v1/r0_p60_y45/seed_7/attempt_001/result/r0_p60_y45/path_01"
+        },
+        "independent_audit": "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/output/mount_coarse_batch_v1/r0_p60_y45/seed_7/attempt_001/audit/independent_audit.json",
+        "runtime_s": 105.83058190345764
+      }
+    },
+    {
+      "candidate": "r0_p60_y90",
+      "finished_seed_jobs": 2,
+      "required_seed_jobs": 2,
+      "eligible_complete_comparison": true,
+      "successful_seed_jobs": 0,
+      "best": null
+    },
+    {
+      "candidate": "r0_p90_y90",
+      "finished_seed_jobs": 2,
+      "required_seed_jobs": 2,
+      "eligible_complete_comparison": true,
+      "successful_seed_jobs": 2,
+      "best": {
+        "candidate": "r0_p90_y90",
+        "rng_seed": 42,
+        "status": "audited_path_found",
+        "attempt": 1,
+        "best": {
+          "status": "sampled_path_pass",
+          "candidate": "r0_p90_y90",
+          "reserve_deg": 3.0,
+          "worst_track_margin_deg": 8.555571503012937,
+          "max_ee_error_mm": 3.3735652349104712,
+          "max_ee_error_deg": 0.3874521881557812,
+          "max_velocity_utilization": 0.0505557326352144,
+          "station_capability": [
+            {
+              "flexion_deg": 0.0,
+              "min_lambda": 4.8282020967948505
+            },
+            {
+              "flexion_deg": 15.0,
+              "min_lambda": 4.037758068862825
+            },
+            {
+              "flexion_deg": 30.0,
+              "min_lambda": 4.077432368762985
+            },
+            {
+              "flexion_deg": 45.0,
+              "min_lambda": 4.83151158022439
+            },
+            {
+              "flexion_deg": 60.0,
+              "min_lambda": 7.960885600272816
+            }
+          ],
+          "min_lambda": 4.037758068862825,
+          "mean_station_min_lambda": 5.147157942983573,
+          "budget_id": "historical_screening_zero_bias_v1",
+          "path": "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/output/mount_coarse_batch_v1/r0_p90_y90/seed_42/attempt_001/result/r0_p90_y90/path_00"
+        },
+        "independent_audit": "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/output/mount_coarse_batch_v1/r0_p90_y90/seed_42/attempt_001/audit/independent_audit.json",
+        "runtime_s": 110.15095591545105
+      }
+    },
+    {
+      "candidate": "r0_p120_y45",
+      "finished_seed_jobs": 2,
+      "required_seed_jobs": 2,
+      "eligible_complete_comparison": true,
+      "successful_seed_jobs": 2,
+      "best": {
+        "candidate": "r0_p120_y45",
+        "rng_seed": 7,
+        "status": "audited_path_found",
+        "attempt": 1,
+        "best": {
+          "status": "sampled_path_pass",
+          "candidate": "r0_p120_y45",
+          "reserve_deg": 3.0,
+          "worst_track_margin_deg": 4.540265738276156,
+          "max_ee_error_mm": 3.436070957094557,
+          "max_ee_error_deg": 1.0749600231866971,
+          "max_velocity_utilization": 0.038939572268197574,
+          "station_capability": [
+            {
+              "flexion_deg": 0.0,
+              "min_lambda": 9.026198170628998
+            },
+            {
+              "flexion_deg": 15.0,
+              "min_lambda": 4.915082997183765
+            },
+            {
+              "flexion_deg": 30.0,
+              "min_lambda": 4.277394682417104
+            },
+            {
+              "flexion_deg": 45.0,
+              "min_lambda": 4.280578383754126
+            },
+            {
+              "flexion_deg": 60.0,
+              "min_lambda": 5.156051149329612
+            }
+          ],
+          "min_lambda": 4.277394682417104,
+          "mean_station_min_lambda": 5.531061076662722,
+          "budget_id": "historical_screening_zero_bias_v1",
+          "path": "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/output/mount_coarse_batch_v1/r0_p120_y45/seed_7/attempt_001/result/r0_p120_y45/path_00"
+        },
+        "independent_audit": "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/output/mount_coarse_batch_v1/r0_p120_y45/seed_7/attempt_001/audit/independent_audit.json",
+        "runtime_s": 124.37722110748291
+      }
+    },
+    {
+      "candidate": "r0_p120_y90",
+      "finished_seed_jobs": 2,
+      "required_seed_jobs": 2,
+      "eligible_complete_comparison": true,
+      "successful_seed_jobs": 2,
+      "best": {
+        "candidate": "r0_p120_y90",
+        "rng_seed": 7,
+        "status": "audited_path_found",
+        "attempt": 1,
+        "best": {
+          "status": "sampled_path_pass",
+          "candidate": "r0_p120_y90",
+          "reserve_deg": 3.0,
+          "worst_track_margin_deg": 0.05684572793137633,
+          "max_ee_error_mm": 3.2151203893812608,
+          "max_ee_error_deg": 0.43220434832382787,
+          "max_velocity_utilization": 0.03904132491531382,
+          "station_capability": [
+            {
+              "flexion_deg": 0.0,
+              "min_lambda": 6.150608591998169
+            },
+            {
+              "flexion_deg": 15.0,
+              "min_lambda": 4.97845501202306
+            },
+            {
+              "flexion_deg": 30.0,
+              "min_lambda": 4.630812080396527
+            },
+            {
+              "flexion_deg": 45.0,
+              "min_lambda": 4.618825807907055
+            },
+            {
+              "flexion_deg": 60.0,
+              "min_lambda": 5.504605841702209
+            }
+          ],
+          "min_lambda": 4.618825807907055,
+          "mean_station_min_lambda": 5.176661466805404,
+          "budget_id": "historical_screening_zero_bias_v1",
+          "path": "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/output/mount_coarse_batch_v1/r0_p120_y90/seed_7/attempt_001/result/r0_p120_y90/path_01"
+        },
+        "independent_audit": "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/output/mount_coarse_batch_v1/r0_p120_y90/seed_7/attempt_001/audit/independent_audit.json",
+        "runtime_s": 92.75333881378174
+      }
+    },
+    {
+      "candidate": "r30_p60_y0",
+      "finished_seed_jobs": 2,
+      "required_seed_jobs": 2,
+      "eligible_complete_comparison": true,
+      "successful_seed_jobs": 2,
+      "best": {
+        "candidate": "r30_p60_y0",
+        "rng_seed": 7,
+        "status": "audited_path_found",
+        "attempt": 1,
+        "best": {
+          "status": "sampled_path_pass",
+          "candidate": "r30_p60_y0",
+          "reserve_deg": 3.0,
+          "worst_track_margin_deg": 2.5444437451708134e-14,
+          "max_ee_error_mm": 3.4291891587956727,
+          "max_ee_error_deg": 1.2354947829048397,
+          "max_velocity_utilization": 0.05532196949117966,
+          "station_capability": [
+            {
+              "flexion_deg": 0.0,
+              "min_lambda": 14.239561521448046
+            },
+            {
+              "flexion_deg": 15.0,
+              "min_lambda": 5.959378463761284
+            },
+            {
+              "flexion_deg": 30.0,
+              "min_lambda": 4.1741622367720055
+            },
+            {
+              "flexion_deg": 45.0,
+              "min_lambda": 4.190485484214897
+            },
+            {
+              "flexion_deg": 60.0,
+              "min_lambda": 6.652872832047696
+            }
+          ],
+          "min_lambda": 4.1741622367720055,
+          "mean_station_min_lambda": 7.043292107648786,
+          "budget_id": "historical_screening_zero_bias_v1",
+          "path": "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/output/mount_coarse_batch_v1/r30_p60_y0/seed_7/attempt_001/result/r30_p60_y0/path_00"
+        },
+        "independent_audit": "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/output/mount_coarse_batch_v1/r30_p60_y0/seed_7/attempt_001/audit/independent_audit.json",
+        "runtime_s": 129.28962349891663
+      }
+    },
+    {
+      "candidate": "r30_p60_y45",
+      "finished_seed_jobs": 2,
+      "required_seed_jobs": 2,
+      "eligible_complete_comparison": true,
+      "successful_seed_jobs": 2,
+      "best": {
+        "candidate": "r30_p60_y45",
+        "rng_seed": 42,
+        "status": "audited_path_found",
+        "attempt": 1,
+        "best": {
+          "status": "sampled_path_pass",
+          "candidate": "r30_p60_y45",
+          "reserve_deg": 3.0,
+          "worst_track_margin_deg": 0.006973100161890302,
+          "max_ee_error_mm": 6.5737192074697655,
+          "max_ee_error_deg": 1.086674044159417,
+          "max_velocity_utilization": 0.0649966307076538,
+          "station_capability": [
+            {
+              "flexion_deg": 0.0,
+              "min_lambda": 11.31370849898475
+            },
+            {
+              "flexion_deg": 15.0,
+              "min_lambda": 6.8345869820071785
+            },
+            {
+              "flexion_deg": 30.0,
+              "min_lambda": 4.3975847608841425
+            },
+            {
+              "flexion_deg": 45.0,
+              "min_lambda": 4.417094773494035
+            },
+            {
+              "flexion_deg": 60.0,
+              "min_lambda": 7.4636351318451855
+            }
+          ],
+          "min_lambda": 4.3975847608841425,
+          "mean_station_min_lambda": 6.885322029443058,
+          "budget_id": "historical_screening_zero_bias_v1",
+          "path": "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/output/mount_coarse_batch_v1/r30_p60_y45/seed_42/attempt_001/result/r30_p60_y45/path_02"
+        },
+        "independent_audit": "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/output/mount_coarse_batch_v1/r30_p60_y45/seed_42/attempt_001/audit/independent_audit.json",
+        "runtime_s": 180.58552837371826
+      }
+    },
+    {
+      "candidate": "r30_p60_y90",
+      "finished_seed_jobs": 2,
+      "required_seed_jobs": 2,
+      "eligible_complete_comparison": true,
+      "successful_seed_jobs": 0,
+      "best": null
+    },
+    {
+      "candidate": "r30_p90_y0",
+      "finished_seed_jobs": 2,
+      "required_seed_jobs": 2,
+      "eligible_complete_comparison": true,
+      "successful_seed_jobs": 2,
+      "best": {
+        "candidate": "r30_p90_y0",
+        "rng_seed": 7,
+        "status": "audited_path_found",
+        "attempt": 1,
+        "best": {
+          "status": "sampled_path_pass",
+          "candidate": "r30_p90_y0",
+          "reserve_deg": 3.0,
+          "worst_track_margin_deg": 0.00014307914195133922,
+          "max_ee_error_mm": 5.4014438812395955,
+          "max_ee_error_deg": 1.435094064664825,
+          "max_velocity_utilization": 0.09571582749623775,
+          "station_capability": [
+            {
+              "flexion_deg": 0.0,
+              "min_lambda": 5.627832242053144
+            },
+            {
+              "flexion_deg": 15.0,
+              "min_lambda": 4.44031781933625
+            },
+            {
+              "flexion_deg": 30.0,
+              "min_lambda": 4.070504166819657
+            },
+            {
+              "flexion_deg": 45.0,
+              "min_lambda": 4.056643030658861
+            },
+            {
+              "flexion_deg": 60.0,
+              "min_lambda": 5.597767699271527
+            }
+          ],
+          "min_lambda": 4.056643030658861,
+          "mean_station_min_lambda": 4.758612991627888,
+          "budget_id": "historical_screening_zero_bias_v1",
+          "path": "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/output/mount_coarse_batch_v1/r30_p90_y0/seed_7/attempt_001/result/r30_p90_y0/path_01"
+        },
+        "independent_audit": "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/output/mount_coarse_batch_v1/r30_p90_y0/seed_7/attempt_001/audit/independent_audit.json",
+        "runtime_s": 153.68798923492432
+      }
+    },
+    {
+      "candidate": "r30_p90_y45",
+      "finished_seed_jobs": 2,
+      "required_seed_jobs": 2,
+      "eligible_complete_comparison": true,
+      "successful_seed_jobs": 2,
+      "best": {
+        "candidate": "r30_p90_y45",
+        "rng_seed": 42,
+        "status": "audited_path_found",
+        "attempt": 1,
+        "best": {
+          "status": "sampled_path_pass",
+          "candidate": "r30_p90_y45",
+          "reserve_deg": 3.0,
+          "worst_track_margin_deg": 9.749290678824318,
+          "max_ee_error_mm": 3.79395591285688,
+          "max_ee_error_deg": 1.6914522618656855,
+          "max_velocity_utilization": 0.05657663356695453,
+          "station_capability": [
+            {
+              "flexion_deg": 0.0,
+              "min_lambda": 11.139350082559341
+            },
+            {
+              "flexion_deg": 15.0,
+              "min_lambda": 5.553379186512518
+            },
+            {
+              "flexion_deg": 30.0,
+              "min_lambda": 4.0833954390811655
+            },
+            {
+              "flexion_deg": 45.0,
+              "min_lambda": 4.13707937519953
+            },
+            {
+              "flexion_deg": 60.0,
+              "min_lambda": 5.87100296564129
+            }
+          ],
+          "min_lambda": 4.0833954390811655,
+          "mean_station_min_lambda": 6.156841409798768,
+          "budget_id": "historical_screening_zero_bias_v1",
+          "path": "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/output/mount_coarse_batch_v1/r30_p90_y45/seed_42/attempt_001/result/r30_p90_y45/path_01"
+        },
+        "independent_audit": "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/output/mount_coarse_batch_v1/r30_p90_y45/seed_42/attempt_001/audit/independent_audit.json",
+        "runtime_s": 205.24024605751038
+      }
+    },
+    {
+      "candidate": "r30_p90_y90",
+      "finished_seed_jobs": 2,
+      "required_seed_jobs": 2,
+      "eligible_complete_comparison": true,
+      "successful_seed_jobs": 1,
+      "best": {
+        "candidate": "r30_p90_y90",
+        "rng_seed": 7,
+        "status": "audited_path_found",
+        "attempt": 1,
+        "best": {
+          "status": "sampled_path_pass",
+          "candidate": "r30_p90_y90",
+          "reserve_deg": 3.0,
+          "worst_track_margin_deg": 7.19767754992612,
+          "max_ee_error_mm": 3.9853753005803023,
+          "max_ee_error_deg": 1.8289425046704018,
+          "max_velocity_utilization": 0.08730947794545159,
+          "station_capability": [
+            {
+              "flexion_deg": 0.0,
+              "min_lambda": 11.074151079515772
+            },
+            {
+              "flexion_deg": 15.0,
+              "min_lambda": 6.393962573385453
+            },
+            {
+              "flexion_deg": 30.0,
+              "min_lambda": 4.206745331749725
+            },
+            {
+              "flexion_deg": 45.0,
+              "min_lambda": 4.052384125960022
+            },
+            {
+              "flexion_deg": 60.0,
+              "min_lambda": 5.9446869709792916
+            }
+          ],
+          "min_lambda": 4.052384125960022,
+          "mean_station_min_lambda": 6.334386016318052,
+          "budget_id": "historical_screening_zero_bias_v1",
+          "path": "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/output/mount_coarse_batch_v1/r30_p90_y90/seed_7/attempt_001/result/r30_p90_y90/path_00"
+        },
+        "independent_audit": "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/output/mount_coarse_batch_v1/r30_p90_y90/seed_7/attempt_001/audit/independent_audit.json",
+        "runtime_s": 172.28726363182068
+      }
+    },
+    {
+      "candidate": "r30_p120_y0",
+      "finished_seed_jobs": 2,
+      "required_seed_jobs": 2,
+      "eligible_complete_comparison": true,
+      "successful_seed_jobs": 2,
+      "best": {
+        "candidate": "r30_p120_y0",
+        "rng_seed": 42,
+        "status": "audited_path_found",
+        "attempt": 1,
+        "best": {
+          "status": "sampled_path_pass",
+          "candidate": "r30_p120_y0",
+          "reserve_deg": 3.0,
+          "worst_track_margin_deg": 5.047565723920053e-08,
+          "max_ee_error_mm": 3.4508121462089405,
+          "max_ee_error_deg": 0.7283937120125952,
+          "max_velocity_utilization": 0.047694998817546436,
+          "station_capability": [
+            {
+              "flexion_deg": 0.0,
+              "min_lambda": 4.212294179442718
+            },
+            {
+              "flexion_deg": 15.0,
+              "min_lambda": 4.000090880639737
+            },
+            {
+              "flexion_deg": 30.0,
+              "min_lambda": 4.061377677229452
+            },
+            {
+              "flexion_deg": 45.0,
+              "min_lambda": 4.720503278174826
+            },
+            {
+              "flexion_deg": 60.0,
+              "min_lambda": 7.098865831589239
+            }
+          ],
+          "min_lambda": 4.000090880639737,
+          "mean_station_min_lambda": 4.818626369415194,
+          "budget_id": "historical_screening_zero_bias_v1",
+          "path": "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/output/mount_coarse_batch_v1/r30_p120_y0/seed_42/attempt_001/result/r30_p120_y0/path_01"
+        },
+        "independent_audit": "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/output/mount_coarse_batch_v1/r30_p120_y0/seed_42/attempt_001/audit/independent_audit.json",
+        "runtime_s": 124.95592856407166
+      }
+    },
+    {
+      "candidate": "r30_p120_y45",
+      "finished_seed_jobs": 2,
+      "required_seed_jobs": 2,
+      "eligible_complete_comparison": true,
+      "successful_seed_jobs": 2,
+      "best": {
+        "candidate": "r30_p120_y45",
+        "rng_seed": 7,
+        "status": "audited_path_found",
+        "attempt": 1,
+        "best": {
+          "status": "sampled_path_pass",
+          "candidate": "r30_p120_y45",
+          "reserve_deg": 3.0,
+          "worst_track_margin_deg": 1.2628513178362888,
+          "max_ee_error_mm": 3.412045090781841,
+          "max_ee_error_deg": 1.043993951418118,
+          "max_velocity_utilization": 0.03823096360127789,
+          "station_capability": [
+            {
+              "flexion_deg": 0.0,
+              "min_lambda": 11.31370849898476
+            },
+            {
+              "flexion_deg": 15.0,
+              "min_lambda": 5.017391982269819
+            },
+            {
+              "flexion_deg": 30.0,
+              "min_lambda": 4.277184866328548
+            },
+            {
+              "flexion_deg": 45.0,
+              "min_lambda": 4.2835591414912635
+            },
+            {
+              "flexion_deg": 60.0,
+              "min_lambda": 5.2016022884963276
+            }
+          ],
+          "min_lambda": 4.277184866328548,
+          "mean_station_min_lambda": 6.018689355514144,
+          "budget_id": "historical_screening_zero_bias_v1",
+          "path": "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/output/mount_coarse_batch_v1/r30_p120_y45/seed_7/attempt_001/result/r30_p120_y45/path_02"
+        },
+        "independent_audit": "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/output/mount_coarse_batch_v1/r30_p120_y45/seed_7/attempt_001/audit/independent_audit.json",
+        "runtime_s": 219.67685770988464
+      }
+    },
+    {
+      "candidate": "r30_p120_y90",
+      "finished_seed_jobs": 2,
+      "required_seed_jobs": 2,
+      "eligible_complete_comparison": true,
+      "successful_seed_jobs": 2,
+      "best": {
+        "candidate": "r30_p120_y90",
+        "rng_seed": 7,
+        "status": "audited_path_found",
+        "attempt": 1,
+        "best": {
+          "status": "sampled_path_pass",
+          "candidate": "r30_p120_y90",
+          "reserve_deg": 3.0,
+          "worst_track_margin_deg": 2.984052379911465e-08,
+          "max_ee_error_mm": 3.3017708632030414,
+          "max_ee_error_deg": 0.43608877825150105,
+          "max_velocity_utilization": 0.04725471793742236,
+          "station_capability": [
+            {
+              "flexion_deg": 0.0,
+              "min_lambda": 5.987126751170027
+            },
+            {
+              "flexion_deg": 15.0,
+              "min_lambda": 4.830781694056848
+            },
+            {
+              "flexion_deg": 30.0,
+              "min_lambda": 4.64272208686482
+            },
+            {
+              "flexion_deg": 45.0,
+              "min_lambda": 4.618854745172913
+            },
+            {
+              "flexion_deg": 60.0,
+              "min_lambda": 6.604417644886892
+            }
+          ],
+          "min_lambda": 4.618854745172913,
+          "mean_station_min_lambda": 5.336780584430301,
+          "budget_id": "historical_screening_zero_bias_v1",
+          "path": "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/output/mount_coarse_batch_v1/r30_p120_y90/seed_7/attempt_001/result/r30_p120_y90/path_02"
+        },
+        "independent_audit": "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/output/mount_coarse_batch_v1/r30_p120_y90/seed_7/attempt_001/audit/independent_audit.json",
+        "runtime_s": 103.04069304466248
+      }
+    },
+    {
+      "candidate": "pitch_45_yaw_45",
+      "finished_seed_jobs": 2,
+      "required_seed_jobs": 2,
+      "eligible_complete_comparison": true,
+      "successful_seed_jobs": 0,
+      "best": null
+    },
+    {
+      "candidate": "reference",
+      "finished_seed_jobs": 2,
+      "required_seed_jobs": 2,
+      "eligible_complete_comparison": true,
+      "successful_seed_jobs": 0,
+      "best": null
+    },
+    {
+      "candidate": "yaw_90",
+      "finished_seed_jobs": 2,
+      "required_seed_jobs": 2,
+      "eligible_complete_comparison": true,
+      "successful_seed_jobs": 0,
+      "best": null
+    }
+  ],
+  "jobs": [
+    {
+      "candidate": "pitch_90",
+      "rng_seed": 42,
+      "status": "audited_path_found",
+      "attempt": 1,
+      "best": {
+        "status": "sampled_path_pass",
+        "candidate": "pitch_90",
+        "reserve_deg": 3.0,
+        "worst_track_margin_deg": 5.108792364190121,
+        "max_ee_error_mm": 3.490750885471018,
+        "max_ee_error_deg": 0.46970172433416135,
+        "max_velocity_utilization": 0.05041353536467396,
+        "station_capability": [
+          {
+            "flexion_deg": 0.0,
+            "min_lambda": 6.167063963025664
+          },
+          {
+            "flexion_deg": 15.0,
+            "min_lambda": 4.787494676598181
+          },
+          {
+            "flexion_deg": 30.0,
+            "min_lambda": 4.041219840805933
+          },
+          {
+            "flexion_deg": 45.0,
+            "min_lambda": 4.192344824343351
+          },
+          {
+            "flexion_deg": 60.0,
+            "min_lambda": 6.395516200546407
+          }
+        ],
+        "min_lambda": 4.041219840805933,
+        "mean_station_min_lambda": 5.116727901063907,
+        "budget_id": "historical_screening_zero_bias_v1",
+        "path": "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/output/mount_coarse_batch_v1/pitch_90/seed_42/attempt_001/result/pitch_90/path_01"
+      },
+      "independent_audit": "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/output/mount_coarse_batch_v1/pitch_90/seed_42/attempt_001/audit/independent_audit.json",
+      "runtime_s": 133.77457785606384
+    },
+    {
+      "candidate": "pitch_90",
+      "rng_seed": 7,
+      "status": "audited_path_found",
+      "attempt": 1,
+      "best": {
+        "status": "sampled_path_pass",
+        "candidate": "pitch_90",
+        "reserve_deg": 3.0,
+        "worst_track_margin_deg": 5.0713605915636535,
+        "max_ee_error_mm": 3.521529537773566,
+        "max_ee_error_deg": 0.4407808525730767,
+        "max_velocity_utilization": 0.05054857243635944,
+        "station_capability": [
+          {
+            "flexion_deg": 0.0,
+            "min_lambda": 7.834351439265912
+          },
+          {
+            "flexion_deg": 15.0,
+            "min_lambda": 4.989682867242219
+          },
+          {
+            "flexion_deg": 30.0,
+            "min_lambda": 4.049085693350297
+          },
+          {
+            "flexion_deg": 45.0,
+            "min_lambda": 4.188971258579464
+          },
+          {
+            "flexion_deg": 60.0,
+            "min_lambda": 6.397071372865083
+          }
+        ],
+        "min_lambda": 4.049085693350297,
+        "mean_station_min_lambda": 5.491832526260595,
+        "budget_id": "historical_screening_zero_bias_v1",
+        "path": "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/output/mount_coarse_batch_v1/pitch_90/seed_7/attempt_001/result/pitch_90/path_01"
+      },
+      "independent_audit": "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/output/mount_coarse_batch_v1/pitch_90/seed_7/attempt_001/audit/independent_audit.json",
+      "runtime_s": 108.79480862617493
+    },
+    {
+      "candidate": "pitch_90_yaw_45",
+      "rng_seed": 42,
+      "status": "audited_path_found",
+      "attempt": 1,
+      "best": {
+        "status": "sampled_path_pass",
+        "candidate": "pitch_90_yaw_45",
+        "reserve_deg": 3.0,
+        "worst_track_margin_deg": 9.858631070390233,
+        "max_ee_error_mm": 3.3578032795225754,
+        "max_ee_error_deg": 0.3868216075616653,
+        "max_velocity_utilization": 0.0538899734679919,
+        "station_capability": [
+          {
+            "flexion_deg": 0.0,
+            "min_lambda": 7.842780568805631
+          },
+          {
+            "flexion_deg": 15.0,
+            "min_lambda": 4.400628696071112
+          },
+          {
+            "flexion_deg": 30.0,
+            "min_lambda": 4.049052496679886
+          },
+          {
+            "flexion_deg": 45.0,
+            "min_lambda": 4.8660072006755515
+          },
+          {
+            "flexion_deg": 60.0,
+            "min_lambda": 8.159473524826895
+          }
+        ],
+        "min_lambda": 4.049052496679886,
+        "mean_station_min_lambda": 5.863588497411816,
+        "budget_id": "historical_screening_zero_bias_v1",
+        "path": "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/output/mount_coarse_batch_v1/pitch_90_yaw_45/seed_42/attempt_001/result/pitch_90_yaw_45/path_00"
+      },
+      "independent_audit": "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/output/mount_coarse_batch_v1/pitch_90_yaw_45/seed_42/attempt_001/audit/independent_audit.json",
+      "runtime_s": 105.97488594055176
+    },
+    {
+      "candidate": "pitch_90_yaw_45",
+      "rng_seed": 7,
+      "status": "audited_path_found",
+      "attempt": 1,
+      "best": {
+        "status": "sampled_path_pass",
+        "candidate": "pitch_90_yaw_45",
+        "reserve_deg": 3.0,
+        "worst_track_margin_deg": 6.928664671097991,
+        "max_ee_error_mm": 3.8094687277079426,
+        "max_ee_error_deg": 1.8261812145527494,
+        "max_velocity_utilization": 0.08475198112417295,
+        "station_capability": [
+          {
+            "flexion_deg": 0.0,
+            "min_lambda": 11.081255089408161
+          },
+          {
+            "flexion_deg": 15.0,
+            "min_lambda": 6.56262080901362
+          },
+          {
+            "flexion_deg": 30.0,
+            "min_lambda": 4.219292149976969
+          },
+          {
+            "flexion_deg": 45.0,
+            "min_lambda": 4.053799008208586
+          },
+          {
+            "flexion_deg": 60.0,
+            "min_lambda": 5.943731054868107
+          }
+        ],
+        "min_lambda": 4.053799008208586,
+        "mean_station_min_lambda": 6.372139622295089,
+        "budget_id": "historical_screening_zero_bias_v1",
+        "path": "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/output/mount_coarse_batch_v1/pitch_90_yaw_45/seed_7/attempt_001/result/pitch_90_yaw_45/path_01"
+      },
+      "independent_audit": "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/output/mount_coarse_batch_v1/pitch_90_yaw_45/seed_7/attempt_001/audit/independent_audit.json",
+      "runtime_s": 115.94589042663574
+    },
+    {
+      "candidate": "r0_p60_y0",
+      "rng_seed": 42,
+      "status": "audited_path_found",
+      "attempt": 1,
+      "best": {
+        "status": "sampled_path_pass",
+        "candidate": "r0_p60_y0",
+        "reserve_deg": 3.0,
+        "worst_track_margin_deg": 2.5444437451708134e-14,
+        "max_ee_error_mm": 3.4034977804649595,
+        "max_ee_error_deg": 0.8533087574819063,
+        "max_velocity_utilization": 0.05370264903036737,
+        "station_capability": [
+          {
+            "flexion_deg": 0.0,
+            "min_lambda": 11.643052183589736
+          },
+          {
+            "flexion_deg": 15.0,
+            "min_lambda": 6.454799785363091
+          },
+          {
+            "flexion_deg": 30.0,
+            "min_lambda": 4.193603049630931
+          },
+          {
+            "flexion_deg": 45.0,
+            "min_lambda": 4.180237544803588
+          },
+          {
+            "flexion_deg": 60.0,
+            "min_lambda": 6.547695802996128
+          }
+        ],
+        "min_lambda": 4.180237544803588,
+        "mean_station_min_lambda": 6.603877673276695,
+        "budget_id": "historical_screening_zero_bias_v1",
+        "path": "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/output/mount_coarse_batch_v1/r0_p60_y0/seed_42/attempt_001/result/r0_p60_y0/path_03"
+      },
+      "independent_audit": "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/output/mount_coarse_batch_v1/r0_p60_y0/seed_42/attempt_001/audit/independent_audit.json",
+      "runtime_s": 115.69321703910828
+    },
+    {
+      "candidate": "r0_p60_y0",
+      "rng_seed": 7,
+      "status": "audited_path_found",
+      "attempt": 1,
+      "best": {
+        "status": "sampled_path_pass",
+        "candidate": "r0_p60_y0",
+        "reserve_deg": 3.0,
+        "worst_track_margin_deg": 2.5444437451708134e-14,
+        "max_ee_error_mm": 3.4086356835977365,
+        "max_ee_error_deg": 0.834175981896713,
+        "max_velocity_utilization": 0.05533869359761065,
+        "station_capability": [
+          {
+            "flexion_deg": 0.0,
+            "min_lambda": 13.551523417782136
+          },
+          {
+            "flexion_deg": 15.0,
+            "min_lambda": 6.047975931114684
+          },
+          {
+            "flexion_deg": 30.0,
+            "min_lambda": 4.240946251881941
+          },
+          {
+            "flexion_deg": 45.0,
+            "min_lambda": 4.170086083369208
+          },
+          {
+            "flexion_deg": 60.0,
+            "min_lambda": 6.5432106756633335
+          }
+        ],
+        "min_lambda": 4.170086083369208,
+        "mean_station_min_lambda": 6.91074847196226,
+        "budget_id": "historical_screening_zero_bias_v1",
+        "path": "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/output/mount_coarse_batch_v1/r0_p60_y0/seed_7/attempt_001/result/r0_p60_y0/path_00"
+      },
+      "independent_audit": "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/output/mount_coarse_batch_v1/r0_p60_y0/seed_7/attempt_001/audit/independent_audit.json",
+      "runtime_s": 72.40089082717896
+    },
+    {
+      "candidate": "r0_p120_y0",
+      "rng_seed": 42,
+      "status": "audited_path_found",
+      "attempt": 1,
+      "best": {
+        "status": "sampled_path_pass",
+        "candidate": "r0_p120_y0",
+        "reserve_deg": 3.0,
+        "worst_track_margin_deg": 7.1355689381989595,
+        "max_ee_error_mm": 3.2359161713878715,
+        "max_ee_error_deg": 0.8265476677386265,
+        "max_velocity_utilization": 0.04767810003684109,
+        "station_capability": [
+          {
+            "flexion_deg": 0.0,
+            "min_lambda": 4.886170587289422
+          },
+          {
+            "flexion_deg": 15.0,
+            "min_lambda": 4.047743670619332
+          },
+          {
+            "flexion_deg": 30.0,
+            "min_lambda": 4.073692217421683
+          },
+          {
+            "flexion_deg": 45.0,
+            "min_lambda": 4.9774035856992755
+          },
+          {
+            "flexion_deg": 60.0,
+            "min_lambda": 7.817730387078612
+          }
+        ],
+        "min_lambda": 4.047743670619332,
+        "mean_station_min_lambda": 5.160548089621665,
+        "budget_id": "historical_screening_zero_bias_v1",
+        "path": "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/output/mount_coarse_batch_v1/r0_p120_y0/seed_42/attempt_001/result/r0_p120_y0/path_01"
+      },
+      "independent_audit": "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/output/mount_coarse_batch_v1/r0_p120_y0/seed_42/attempt_001/audit/independent_audit.json",
+      "runtime_s": 109.69039130210876
+    },
+    {
+      "candidate": "r0_p120_y0",
+      "rng_seed": 7,
+      "status": "audited_path_found",
+      "attempt": 1,
+      "best": {
+        "status": "sampled_path_pass",
+        "candidate": "r0_p120_y0",
+        "reserve_deg": 3.0,
+        "worst_track_margin_deg": 0.06359310966283331,
+        "max_ee_error_mm": 3.6045566415762513,
+        "max_ee_error_deg": 0.7210971114168458,
+        "max_velocity_utilization": 0.05793485509897453,
+        "station_capability": [
+          {
+            "flexion_deg": 0.0,
+            "min_lambda": 9.788902942603277
+          },
+          {
+            "flexion_deg": 15.0,
+            "min_lambda": 4.917662225087412
+          },
+          {
+            "flexion_deg": 30.0,
+            "min_lambda": 4.000000279467558
+          },
+          {
+            "flexion_deg": 45.0,
+            "min_lambda": 4.303117411928054
+          },
+          {
+            "flexion_deg": 60.0,
+            "min_lambda": 5.915608846894531
+          }
+        ],
+        "min_lambda": 4.000000279467558,
+        "mean_station_min_lambda": 5.785058341196167,
+        "budget_id": "historical_screening_zero_bias_v1",
+        "path": "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/output/mount_coarse_batch_v1/r0_p120_y0/seed_7/attempt_001/result/r0_p120_y0/path_01"
+      },
+      "independent_audit": "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/output/mount_coarse_batch_v1/r0_p120_y0/seed_7/attempt_001/audit/independent_audit.json",
+      "runtime_s": 109.20691895484924
+    },
+    {
+      "candidate": "r-30_p60_y0",
+      "rng_seed": 42,
+      "status": "audited_path_found",
+      "attempt": 1,
+      "best": {
+        "status": "sampled_path_pass",
+        "candidate": "r-30_p60_y0",
+        "reserve_deg": 3.0,
+        "worst_track_margin_deg": 2.5444437451708134e-14,
+        "max_ee_error_mm": 3.6197197588282766,
+        "max_ee_error_deg": 1.2160134896635906,
+        "max_velocity_utilization": 0.05400866340387178,
+        "station_capability": [
+          {
+            "flexion_deg": 0.0,
+            "min_lambda": 11.417987661607233
+          },
+          {
+            "flexion_deg": 15.0,
+            "min_lambda": 7.557350254799916
+          },
+          {
+            "flexion_deg": 30.0,
+            "min_lambda": 4.4380791609645796
+          },
+          {
+            "flexion_deg": 45.0,
+            "min_lambda": 4.051865632660078
+          },
+          {
+            "flexion_deg": 60.0,
+            "min_lambda": 5.8004621347894005
+          }
+        ],
+        "min_lambda": 4.051865632660078,
+        "mean_station_min_lambda": 6.653148968964241,
+        "budget_id": "historical_screening_zero_bias_v1",
+        "path": "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/output/mount_coarse_batch_v1/r-30_p60_y0/seed_42/attempt_001/result/r-30_p60_y0/path_00"
+      },
+      "independent_audit": "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/output/mount_coarse_batch_v1/r-30_p60_y0/seed_42/attempt_001/audit/independent_audit.json",
+      "runtime_s": 80.38248538970947
+    },
+    {
+      "candidate": "r-30_p60_y0",
+      "rng_seed": 7,
+      "status": "audited_path_found",
+      "attempt": 1,
+      "best": {
+        "status": "sampled_path_pass",
+        "candidate": "r-30_p60_y0",
+        "reserve_deg": 3.0,
+        "worst_track_margin_deg": 2.5444437451708134e-14,
+        "max_ee_error_mm": 3.6833529037765222,
+        "max_ee_error_deg": 1.3554354325681166,
+        "max_velocity_utilization": 0.05401159664364403,
+        "station_capability": [
+          {
+            "flexion_deg": 0.0,
+            "min_lambda": 12.308760971320035
+          },
+          {
+            "flexion_deg": 15.0,
+            "min_lambda": 6.79141066729499
+          },
+          {
+            "flexion_deg": 30.0,
+            "min_lambda": 4.3989179244199175
+          },
+          {
+            "flexion_deg": 45.0,
+            "min_lambda": 4.052136356992019
+          },
+          {
+            "flexion_deg": 60.0,
+            "min_lambda": 5.807276685069453
+          }
+        ],
+        "min_lambda": 4.052136356992019,
+        "mean_station_min_lambda": 6.671700521019282,
+        "budget_id": "historical_screening_zero_bias_v1",
+        "path": "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/output/mount_coarse_batch_v1/r-30_p60_y0/seed_7/attempt_001/result/r-30_p60_y0/path_00"
+      },
+      "independent_audit": "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/output/mount_coarse_batch_v1/r-30_p60_y0/seed_7/attempt_001/audit/independent_audit.json",
+      "runtime_s": 88.45267605781555
+    },
+    {
+      "candidate": "r-30_p60_y45",
+      "rng_seed": 42,
+      "status": "audited_path_found",
+      "attempt": 1,
+      "best": {
+        "status": "sampled_path_pass",
+        "candidate": "r-30_p60_y45",
+        "reserve_deg": 3.0,
+        "worst_track_margin_deg": 0.12711333848190756,
+        "max_ee_error_mm": 6.684157803553513,
+        "max_ee_error_deg": 1.8465281253056358,
+        "max_velocity_utilization": 0.07505762618524872,
+        "station_capability": [
+          {
+            "flexion_deg": 0.0,
+            "min_lambda": 11.313708498984754
+          },
+          {
+            "flexion_deg": 15.0,
+            "min_lambda": 7.195291033973877
+          },
+          {
+            "flexion_deg": 30.0,
+            "min_lambda": 4.392225524288099
+          },
+          {
+            "flexion_deg": 45.0,
+            "min_lambda": 4.458366821482929
+          },
+          {
+            "flexion_deg": 60.0,
+            "min_lambda": 7.621001302425512
+          }
+        ],
+        "min_lambda": 4.392225524288099,
+        "mean_station_min_lambda": 6.996118636231034,
+        "budget_id": "historical_screening_zero_bias_v1",
+        "path": "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/output/mount_coarse_batch_v1/r-30_p60_y45/seed_42/attempt_001/result/r-30_p60_y45/path_00"
+      },
+      "independent_audit": "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/output/mount_coarse_batch_v1/r-30_p60_y45/seed_42/attempt_001/audit/independent_audit.json",
+      "runtime_s": 95.6638731956482
+    },
+    {
+      "candidate": "r-30_p60_y45",
+      "rng_seed": 7,
+      "status": "audited_path_found",
+      "attempt": 1,
+      "best": {
+        "status": "sampled_path_pass",
+        "candidate": "r-30_p60_y45",
+        "reserve_deg": 3.0,
+        "worst_track_margin_deg": 0.12711333848190756,
+        "max_ee_error_mm": 6.684157803553513,
+        "max_ee_error_deg": 1.8465281253056358,
+        "max_velocity_utilization": 0.07505762618524872,
+        "station_capability": [
+          {
+            "flexion_deg": 0.0,
+            "min_lambda": 11.313708498984754
+          },
+          {
+            "flexion_deg": 15.0,
+            "min_lambda": 7.195291033973877
+          },
+          {
+            "flexion_deg": 30.0,
+            "min_lambda": 4.392225524288099
+          },
+          {
+            "flexion_deg": 45.0,
+            "min_lambda": 4.458366821482929
+          },
+          {
+            "flexion_deg": 60.0,
+            "min_lambda": 7.621001302425512
+          }
+        ],
+        "min_lambda": 4.392225524288099,
+        "mean_station_min_lambda": 6.996118636231034,
+        "budget_id": "historical_screening_zero_bias_v1",
+        "path": "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/output/mount_coarse_batch_v1/r-30_p60_y45/seed_7/attempt_001/result/r-30_p60_y45/path_00"
+      },
+      "independent_audit": "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/output/mount_coarse_batch_v1/r-30_p60_y45/seed_7/attempt_001/audit/independent_audit.json",
+      "runtime_s": 128.15589332580566
+    },
+    {
+      "candidate": "r-30_p60_y90",
+      "rng_seed": 42,
+      "status": "no_path_found_with_budget",
+      "attempt": 1,
+      "failed_at_time_s": 224.0,
+      "runtime_s": 77.81801247596741
+    },
+    {
+      "candidate": "r-30_p60_y90",
+      "rng_seed": 7,
+      "status": "no_path_found_with_budget",
+      "attempt": 1,
+      "failed_at_time_s": 224.0,
+      "runtime_s": 90.63635611534119
+    },
+    {
+      "candidate": "r-30_p90_y0",
+      "rng_seed": 42,
+      "status": "audited_path_found",
+      "attempt": 1,
+      "best": {
+        "status": "sampled_path_pass",
+        "candidate": "r-30_p90_y0",
+        "reserve_deg": 3.0,
+        "worst_track_margin_deg": 9.85870323807875,
+        "max_ee_error_mm": 3.3529586974619265,
+        "max_ee_error_deg": 0.3859775224493371,
+        "max_velocity_utilization": 0.05055885671038172,
+        "station_capability": [
+          {
+            "flexion_deg": 0.0,
+            "min_lambda": 7.671372601144188
+          },
+          {
+            "flexion_deg": 15.0,
+            "min_lambda": 4.2540186235315955
+          },
+          {
+            "flexion_deg": 30.0,
+            "min_lambda": 4.045129365643501
+          },
+          {
+            "flexion_deg": 45.0,
+            "min_lambda": 5.027014170432163
+          },
+          {
+            "flexion_deg": 60.0,
+            "min_lambda": 8.130428072925195
+          }
+        ],
+        "min_lambda": 4.045129365643501,
+        "mean_station_min_lambda": 5.825592566735328,
+        "budget_id": "historical_screening_zero_bias_v1",
+        "path": "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/output/mount_coarse_batch_v1/r-30_p90_y0/seed_42/attempt_001/result/r-30_p90_y0/path_00"
+      },
+      "independent_audit": "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/output/mount_coarse_batch_v1/r-30_p90_y0/seed_42/attempt_001/audit/independent_audit.json",
+      "runtime_s": 111.90778756141663
+    },
+    {
+      "candidate": "r-30_p90_y0",
+      "rng_seed": 7,
+      "status": "audited_path_found",
+      "attempt": 1,
+      "best": {
+        "status": "sampled_path_pass",
+        "candidate": "r-30_p90_y0",
+        "reserve_deg": 3.0,
+        "worst_track_margin_deg": 7.041052156426123,
+        "max_ee_error_mm": 4.2187265832376255,
+        "max_ee_error_deg": 1.8187416137871733,
+        "max_velocity_utilization": 0.09068686469807143,
+        "station_capability": [
+          {
+            "flexion_deg": 0.0,
+            "min_lambda": 8.231363900820273
+          },
+          {
+            "flexion_deg": 15.0,
+            "min_lambda": 5.239529098885801
+          },
+          {
+            "flexion_deg": 30.0,
+            "min_lambda": 4.124565163656563
+          },
+          {
+            "flexion_deg": 45.0,
+            "min_lambda": 4.054146203506998
+          },
+          {
+            "flexion_deg": 60.0,
+            "min_lambda": 5.9017536071117735
+          }
+        ],
+        "min_lambda": 4.054146203506998,
+        "mean_station_min_lambda": 5.510271594796282,
+        "budget_id": "historical_screening_zero_bias_v1",
+        "path": "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/output/mount_coarse_batch_v1/r-30_p90_y0/seed_7/attempt_001/result/r-30_p90_y0/path_00"
+      },
+      "independent_audit": "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/output/mount_coarse_batch_v1/r-30_p90_y0/seed_7/attempt_001/audit/independent_audit.json",
+      "runtime_s": 132.72665858268738
+    },
+    {
+      "candidate": "r-30_p90_y45",
+      "rng_seed": 42,
+      "status": "audited_path_found",
+      "attempt": 1,
+      "best": {
+        "status": "sampled_path_pass",
+        "candidate": "r-30_p90_y45",
+        "reserve_deg": 3.0,
+        "worst_track_margin_deg": 9.85865204215292,
+        "max_ee_error_mm": 3.4101831580185644,
+        "max_ee_error_deg": 0.4579960187952174,
+        "max_velocity_utilization": 0.0505476460567251,
+        "station_capability": [
+          {
+            "flexion_deg": 0.0,
+            "min_lambda": 5.016285701522693
+          },
+          {
+            "flexion_deg": 15.0,
+            "min_lambda": 4.066074784786398
+          },
+          {
+            "flexion_deg": 30.0,
+            "min_lambda": 4.036025214185831
+          },
+          {
+            "flexion_deg": 45.0,
+            "min_lambda": 4.737801944817057
+          },
+          {
+            "flexion_deg": 60.0,
+            "min_lambda": 7.902521156177962
+          }
+        ],
+        "min_lambda": 4.036025214185831,
+        "mean_station_min_lambda": 5.1517417602979885,
+        "budget_id": "historical_screening_zero_bias_v1",
+        "path": "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/output/mount_coarse_batch_v1/r-30_p90_y45/seed_42/attempt_001/result/r-30_p90_y45/path_00"
+      },
+      "independent_audit": "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/output/mount_coarse_batch_v1/r-30_p90_y45/seed_42/attempt_001/audit/independent_audit.json",
+      "runtime_s": 106.93109130859375
+    },
+    {
+      "candidate": "r-30_p90_y45",
+      "rng_seed": 7,
+      "status": "audited_path_found",
+      "attempt": 1,
+      "best": {
+        "status": "sampled_path_pass",
+        "candidate": "r-30_p90_y45",
+        "reserve_deg": 3.0,
+        "worst_track_margin_deg": 3.743346955628895,
+        "max_ee_error_mm": 3.3442991936999107,
+        "max_ee_error_deg": 0.37393184032067484,
+        "max_velocity_utilization": 0.05026437481012451,
+        "station_capability": [
+          {
+            "flexion_deg": 0.0,
+            "min_lambda": 5.954907462435161
+          },
+          {
+            "flexion_deg": 15.0,
+            "min_lambda": 4.465732921334861
+          },
+          {
+            "flexion_deg": 30.0,
+            "min_lambda": 4.0000005705890915
+          },
+          {
+            "flexion_deg": 45.0,
+            "min_lambda": 4.481467445705858
+          },
+          {
+            "flexion_deg": 60.0,
+            "min_lambda": 7.637005199535878
+          }
+        ],
+        "min_lambda": 4.0000005705890915,
+        "mean_station_min_lambda": 5.3078227199201695,
+        "budget_id": "historical_screening_zero_bias_v1",
+        "path": "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/output/mount_coarse_batch_v1/r-30_p90_y45/seed_7/attempt_001/result/r-30_p90_y45/path_00"
+      },
+      "independent_audit": "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/output/mount_coarse_batch_v1/r-30_p90_y45/seed_7/attempt_001/audit/independent_audit.json",
+      "runtime_s": 107.88352870941162
+    },
+    {
+      "candidate": "r-30_p90_y90",
+      "rng_seed": 42,
+      "status": "audited_path_found",
+      "attempt": 1,
+      "best": {
+        "status": "sampled_path_pass",
+        "candidate": "r-30_p90_y90",
+        "reserve_deg": 3.0,
+        "worst_track_margin_deg": 0.2558327881864019,
+        "max_ee_error_mm": 3.972471410416718,
+        "max_ee_error_deg": 1.9995296099243438,
+        "max_velocity_utilization": 0.0809494382913463,
+        "station_capability": [
+          {
+            "flexion_deg": 0.0,
+            "min_lambda": 11.554221606812511
+          },
+          {
+            "flexion_deg": 15.0,
+            "min_lambda": 7.158398467510768
+          },
+          {
+            "flexion_deg": 30.0,
+            "min_lambda": 4.265530842797898
+          },
+          {
+            "flexion_deg": 45.0,
+            "min_lambda": 4.078086862322763
+          },
+          {
+            "flexion_deg": 60.0,
+            "min_lambda": 5.601735172493689
+          }
+        ],
+        "min_lambda": 4.078086862322763,
+        "mean_station_min_lambda": 6.531594590387526,
+        "budget_id": "historical_screening_zero_bias_v1",
+        "path": "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/output/mount_coarse_batch_v1/r-30_p90_y90/seed_42/attempt_001/result/r-30_p90_y90/path_01"
+      },
+      "independent_audit": "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/output/mount_coarse_batch_v1/r-30_p90_y90/seed_42/attempt_001/audit/independent_audit.json",
+      "runtime_s": 96.41475200653076
+    },
+    {
+      "candidate": "r-30_p90_y90",
+      "rng_seed": 7,
+      "status": "audited_path_found",
+      "attempt": 1,
+      "best": {
+        "status": "sampled_path_pass",
+        "candidate": "r-30_p90_y90",
+        "reserve_deg": 3.0,
+        "worst_track_margin_deg": 6.4968067786001615,
+        "max_ee_error_mm": 4.389996931269438,
+        "max_ee_error_deg": 1.004122793586708,
+        "max_velocity_utilization": 0.09322601895792407,
+        "station_capability": [
+          {
+            "flexion_deg": 0.0,
+            "min_lambda": 11.630957596658426
+          },
+          {
+            "flexion_deg": 15.0,
+            "min_lambda": 5.799660904199721
+          },
+          {
+            "flexion_deg": 30.0,
+            "min_lambda": 4.182599420352532
+          },
+          {
+            "flexion_deg": 45.0,
+            "min_lambda": 4.050725104008068
+          },
+          {
+            "flexion_deg": 60.0,
+            "min_lambda": 5.6025663111871005
+          }
+        ],
+        "min_lambda": 4.050725104008068,
+        "mean_station_min_lambda": 6.253301867281168,
+        "budget_id": "historical_screening_zero_bias_v1",
+        "path": "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/output/mount_coarse_batch_v1/r-30_p90_y90/seed_7/attempt_001/result/r-30_p90_y90/path_01"
+      },
+      "independent_audit": "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/output/mount_coarse_batch_v1/r-30_p90_y90/seed_7/attempt_001/audit/independent_audit.json",
+      "runtime_s": 209.13567733764648
+    },
+    {
+      "candidate": "r-30_p120_y0",
+      "rng_seed": 42,
+      "status": "audited_path_found",
+      "attempt": 1,
+      "best": {
+        "status": "sampled_path_pass",
+        "candidate": "r-30_p120_y0",
+        "reserve_deg": 3.0,
+        "worst_track_margin_deg": 0.0006133686566239336,
+        "max_ee_error_mm": 3.4903491581149724,
+        "max_ee_error_deg": 0.9397459694757437,
+        "max_velocity_utilization": 0.04757052676005942,
+        "station_capability": [
+          {
+            "flexion_deg": 0.0,
+            "min_lambda": 4.213046069291713
+          },
+          {
+            "flexion_deg": 15.0,
+            "min_lambda": 4.00047029015147
+          },
+          {
+            "flexion_deg": 30.0,
+            "min_lambda": 4.04582109610511
+          },
+          {
+            "flexion_deg": 45.0,
+            "min_lambda": 4.738408990236354
+          },
+          {
+            "flexion_deg": 60.0,
+            "min_lambda": 7.1265274575123545
+          }
+        ],
+        "min_lambda": 4.00047029015147,
+        "mean_station_min_lambda": 4.8248547806594,
+        "budget_id": "historical_screening_zero_bias_v1",
+        "path": "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/output/mount_coarse_batch_v1/r-30_p120_y0/seed_42/attempt_001/result/r-30_p120_y0/path_00"
+      },
+      "independent_audit": "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/output/mount_coarse_batch_v1/r-30_p120_y0/seed_42/attempt_001/audit/independent_audit.json",
+      "runtime_s": 129.55509233474731
+    },
+    {
+      "candidate": "r-30_p120_y0",
+      "rng_seed": 7,
+      "status": "audited_path_found",
+      "attempt": 1,
+      "best": {
+        "status": "sampled_path_pass",
+        "candidate": "r-30_p120_y0",
+        "reserve_deg": 3.0,
+        "worst_track_margin_deg": 6.959212855341279,
+        "max_ee_error_mm": 3.373833588924097,
+        "max_ee_error_deg": 0.4831657861204593,
+        "max_velocity_utilization": 0.047744387229034686,
+        "station_capability": [
+          {
+            "flexion_deg": 0.0,
+            "min_lambda": 5.2606724626836385
+          },
+          {
+            "flexion_deg": 15.0,
+            "min_lambda": 4.097142810809956
+          },
+          {
+            "flexion_deg": 30.0,
+            "min_lambda": 4.033124644596379
+          },
+          {
+            "flexion_deg": 45.0,
+            "min_lambda": 4.758600411025685
+          },
+          {
+            "flexion_deg": 60.0,
+            "min_lambda": 7.147549078671445
+          }
+        ],
+        "min_lambda": 4.033124644596379,
+        "mean_station_min_lambda": 5.059417881557421,
+        "budget_id": "historical_screening_zero_bias_v1",
+        "path": "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/output/mount_coarse_batch_v1/r-30_p120_y0/seed_7/attempt_001/result/r-30_p120_y0/path_00"
+      },
+      "independent_audit": "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/output/mount_coarse_batch_v1/r-30_p120_y0/seed_7/attempt_001/audit/independent_audit.json",
+      "runtime_s": 135.74284672737122
+    },
+    {
+      "candidate": "r-30_p120_y45",
+      "rng_seed": 42,
+      "status": "audited_path_found",
+      "attempt": 1,
+      "best": {
+        "status": "sampled_path_pass",
+        "candidate": "r-30_p120_y45",
+        "reserve_deg": 3.0,
+        "worst_track_margin_deg": 3.672677574315978,
+        "max_ee_error_mm": 3.42071666564001,
+        "max_ee_error_deg": 1.069805640409999,
+        "max_velocity_utilization": 0.03893957232907627,
+        "station_capability": [
+          {
+            "flexion_deg": 0.0,
+            "min_lambda": 9.95140346601963
+          },
+          {
+            "flexion_deg": 15.0,
+            "min_lambda": 4.971583336622821
+          },
+          {
+            "flexion_deg": 30.0,
+            "min_lambda": 4.279228079748774
+          },
+          {
+            "flexion_deg": 45.0,
+            "min_lambda": 4.279225574645883
+          },
+          {
+            "flexion_deg": 60.0,
+            "min_lambda": 5.166981600783013
+          }
+        ],
+        "min_lambda": 4.279225574645883,
+        "mean_station_min_lambda": 5.729684411564024,
+        "budget_id": "historical_screening_zero_bias_v1",
+        "path": "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/output/mount_coarse_batch_v1/r-30_p120_y45/seed_42/attempt_001/result/r-30_p120_y45/path_01"
+      },
+      "independent_audit": "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/output/mount_coarse_batch_v1/r-30_p120_y45/seed_42/attempt_001/audit/independent_audit.json",
+      "runtime_s": 105.79541778564453
+    },
+    {
+      "candidate": "r-30_p120_y45",
+      "rng_seed": 7,
+      "status": "audited_path_found",
+      "attempt": 1,
+      "best": {
+        "status": "sampled_path_pass",
+        "candidate": "r-30_p120_y45",
+        "reserve_deg": 3.0,
+        "worst_track_margin_deg": 0.0390094114385358,
+        "max_ee_error_mm": 3.3935484174545274,
+        "max_ee_error_deg": 1.0215277732490333,
+        "max_velocity_utilization": 0.0389395722151628,
+        "station_capability": [
+          {
+            "flexion_deg": 0.0,
+            "min_lambda": 11.31370849898476
+          },
+          {
+            "flexion_deg": 15.0,
+            "min_lambda": 5.0581588797475305
+          },
+          {
+            "flexion_deg": 30.0,
+            "min_lambda": 4.280386175745818
+          },
+          {
+            "flexion_deg": 45.0,
+            "min_lambda": 4.279524654000179
+          },
+          {
+            "flexion_deg": 60.0,
+            "min_lambda": 5.18675605088925
+          }
+        ],
+        "min_lambda": 4.279524654000179,
+        "mean_station_min_lambda": 6.0237068518735075,
+        "budget_id": "historical_screening_zero_bias_v1",
+        "path": "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/output/mount_coarse_batch_v1/r-30_p120_y45/seed_7/attempt_001/result/r-30_p120_y45/path_02"
+      },
+      "independent_audit": "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/output/mount_coarse_batch_v1/r-30_p120_y45/seed_7/attempt_001/audit/independent_audit.json",
+      "runtime_s": 101.63660264015198
+    },
+    {
+      "candidate": "r-30_p120_y90",
+      "rng_seed": 42,
+      "status": "audited_path_found",
+      "attempt": 1,
+      "best": {
+        "status": "sampled_path_pass",
+        "candidate": "r-30_p120_y90",
+        "reserve_deg": 3.0,
+        "worst_track_margin_deg": 0.7909264613226369,
+        "max_ee_error_mm": 3.2514078711428223,
+        "max_ee_error_deg": 0.4012485802399308,
+        "max_velocity_utilization": 0.03937264858040446,
+        "station_capability": [
+          {
+            "flexion_deg": 0.0,
+            "min_lambda": 6.159750676586372
+          },
+          {
+            "flexion_deg": 15.0,
+            "min_lambda": 4.929530905215867
+          },
+          {
+            "flexion_deg": 30.0,
+            "min_lambda": 4.6199636569414135
+          },
+          {
+            "flexion_deg": 45.0,
+            "min_lambda": 4.618830551660146
+          },
+          {
+            "flexion_deg": 60.0,
+            "min_lambda": 5.36649382144494
+          }
+        ],
+        "min_lambda": 4.618830551660146,
+        "mean_station_min_lambda": 5.138913922369748,
+        "budget_id": "historical_screening_zero_bias_v1",
+        "path": "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/output/mount_coarse_batch_v1/r-30_p120_y90/seed_42/attempt_001/result/r-30_p120_y90/path_01"
+      },
+      "independent_audit": "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/output/mount_coarse_batch_v1/r-30_p120_y90/seed_42/attempt_001/audit/independent_audit.json",
+      "runtime_s": 100.04439783096313
+    },
+    {
+      "candidate": "r-30_p120_y90",
+      "rng_seed": 7,
+      "status": "audited_path_found",
+      "attempt": 1,
+      "best": {
+        "status": "sampled_path_pass",
+        "candidate": "r-30_p120_y90",
+        "reserve_deg": 3.0,
+        "worst_track_margin_deg": 0.14408379939214436,
+        "max_ee_error_mm": 3.2219261500847454,
+        "max_ee_error_deg": 0.38266874589086824,
+        "max_velocity_utilization": 0.039041324882384223,
+        "station_capability": [
+          {
+            "flexion_deg": 0.0,
+            "min_lambda": 6.1896559042729535
+          },
+          {
+            "flexion_deg": 15.0,
+            "min_lambda": 4.999741788884313
+          },
+          {
+            "flexion_deg": 30.0,
+            "min_lambda": 4.633819429535611
+          },
+          {
+            "flexion_deg": 45.0,
+            "min_lambda": 4.618823365055084
+          },
+          {
+            "flexion_deg": 60.0,
+            "min_lambda": 5.419921250624901
+          }
+        ],
+        "min_lambda": 4.618823365055084,
+        "mean_station_min_lambda": 5.172392347674572,
+        "budget_id": "historical_screening_zero_bias_v1",
+        "path": "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/output/mount_coarse_batch_v1/r-30_p120_y90/seed_7/attempt_001/result/r-30_p120_y90/path_03"
+      },
+      "independent_audit": "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/output/mount_coarse_batch_v1/r-30_p120_y90/seed_7/attempt_001/audit/independent_audit.json",
+      "runtime_s": 112.91961431503296
+    },
+    {
+      "candidate": "r0_p60_y45",
+      "rng_seed": 42,
+      "status": "audited_path_found",
+      "attempt": 1,
+      "best": {
+        "status": "sampled_path_pass",
+        "candidate": "r0_p60_y45",
+        "reserve_deg": 3.0,
+        "worst_track_margin_deg": 0.13164423642422077,
+        "max_ee_error_mm": 3.3862309967512734,
+        "max_ee_error_deg": 0.48659259118121984,
+        "max_velocity_utilization": 0.06390041111550591,
+        "station_capability": [
+          {
+            "flexion_deg": 0.0,
+            "min_lambda": 7.09163070416858
+          },
+          {
+            "flexion_deg": 15.0,
+            "min_lambda": 4.3843472739990155
+          },
+          {
+            "flexion_deg": 30.0,
+            "min_lambda": 4.362680366332481
+          },
+          {
+            "flexion_deg": 45.0,
+            "min_lambda": 5.397667478592882
+          },
+          {
+            "flexion_deg": 60.0,
+            "min_lambda": 9.588620505105139
+          }
+        ],
+        "min_lambda": 4.362680366332481,
+        "mean_station_min_lambda": 6.164989265639619,
+        "budget_id": "historical_screening_zero_bias_v1",
+        "path": "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/output/mount_coarse_batch_v1/r0_p60_y45/seed_42/attempt_001/result/r0_p60_y45/path_00"
+      },
+      "independent_audit": "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/output/mount_coarse_batch_v1/r0_p60_y45/seed_42/attempt_001/audit/independent_audit.json",
+      "runtime_s": 89.21980047225952
+    },
+    {
+      "candidate": "r0_p60_y45",
+      "rng_seed": 7,
+      "status": "audited_path_found",
+      "attempt": 1,
+      "best": {
+        "status": "sampled_path_pass",
+        "candidate": "r0_p60_y45",
+        "reserve_deg": 3.0,
+        "worst_track_margin_deg": 0.0016107770586721707,
+        "max_ee_error_mm": 9.590544334182228,
+        "max_ee_error_deg": 1.1014943444773195,
+        "max_velocity_utilization": 0.11840014840688787,
+        "station_capability": [
+          {
+            "flexion_deg": 0.0,
+            "min_lambda": 11.056436076967135
+          },
+          {
+            "flexion_deg": 15.0,
+            "min_lambda": 7.191297562354182
+          },
+          {
+            "flexion_deg": 30.0,
+            "min_lambda": 4.376381566473305
+          },
+          {
+            "flexion_deg": 45.0,
+            "min_lambda": 4.453386903432748
+          },
+          {
+            "flexion_deg": 60.0,
+            "min_lambda": 7.54012531253827
+          }
+        ],
+        "min_lambda": 4.376381566473305,
+        "mean_station_min_lambda": 6.923525484353128,
+        "budget_id": "historical_screening_zero_bias_v1",
+        "path": "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/output/mount_coarse_batch_v1/r0_p60_y45/seed_7/attempt_001/result/r0_p60_y45/path_01"
+      },
+      "independent_audit": "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/output/mount_coarse_batch_v1/r0_p60_y45/seed_7/attempt_001/audit/independent_audit.json",
+      "runtime_s": 105.83058190345764
+    },
+    {
+      "candidate": "r0_p60_y90",
+      "rng_seed": 42,
+      "status": "no_path_found_with_budget",
+      "attempt": 1,
+      "failed_at_time_s": 224.0,
+      "runtime_s": 88.97142267227173
+    },
+    {
+      "candidate": "r0_p60_y90",
+      "rng_seed": 7,
+      "status": "no_path_found_with_budget",
+      "attempt": 1,
+      "failed_at_time_s": 224.0,
+      "runtime_s": 120.0025405883789
+    },
+    {
+      "candidate": "r0_p90_y90",
+      "rng_seed": 42,
+      "status": "audited_path_found",
+      "attempt": 1,
+      "best": {
+        "status": "sampled_path_pass",
+        "candidate": "r0_p90_y90",
+        "reserve_deg": 3.0,
+        "worst_track_margin_deg": 8.555571503012937,
+        "max_ee_error_mm": 3.3735652349104712,
+        "max_ee_error_deg": 0.3874521881557812,
+        "max_velocity_utilization": 0.0505557326352144,
+        "station_capability": [
+          {
+            "flexion_deg": 0.0,
+            "min_lambda": 4.8282020967948505
+          },
+          {
+            "flexion_deg": 15.0,
+            "min_lambda": 4.037758068862825
+          },
+          {
+            "flexion_deg": 30.0,
+            "min_lambda": 4.077432368762985
+          },
+          {
+            "flexion_deg": 45.0,
+            "min_lambda": 4.83151158022439
+          },
+          {
+            "flexion_deg": 60.0,
+            "min_lambda": 7.960885600272816
+          }
+        ],
+        "min_lambda": 4.037758068862825,
+        "mean_station_min_lambda": 5.147157942983573,
+        "budget_id": "historical_screening_zero_bias_v1",
+        "path": "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/output/mount_coarse_batch_v1/r0_p90_y90/seed_42/attempt_001/result/r0_p90_y90/path_00"
+      },
+      "independent_audit": "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/output/mount_coarse_batch_v1/r0_p90_y90/seed_42/attempt_001/audit/independent_audit.json",
+      "runtime_s": 110.15095591545105
+    },
+    {
+      "candidate": "r0_p90_y90",
+      "rng_seed": 7,
+      "status": "audited_path_found",
+      "attempt": 1,
+      "best": {
+        "status": "sampled_path_pass",
+        "candidate": "r0_p90_y90",
+        "reserve_deg": 3.0,
+        "worst_track_margin_deg": 1.919943120953987e-05,
+        "max_ee_error_mm": 3.6391451270510258,
+        "max_ee_error_deg": 0.3905119583276016,
+        "max_velocity_utilization": 0.05055734317030643,
+        "station_capability": [
+          {
+            "flexion_deg": 0.0,
+            "min_lambda": 5.724163127461193
+          },
+          {
+            "flexion_deg": 15.0,
+            "min_lambda": 4.438247916764095
+          },
+          {
+            "flexion_deg": 30.0,
+            "min_lambda": 4.00000000396671
+          },
+          {
+            "flexion_deg": 45.0,
+            "min_lambda": 4.475635732128441
+          },
+          {
+            "flexion_deg": 60.0,
+            "min_lambda": 8.82936573406901
+          }
+        ],
+        "min_lambda": 4.00000000396671,
+        "mean_station_min_lambda": 5.493482502877889,
+        "budget_id": "historical_screening_zero_bias_v1",
+        "path": "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/output/mount_coarse_batch_v1/r0_p90_y90/seed_7/attempt_001/result/r0_p90_y90/path_00"
+      },
+      "independent_audit": "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/output/mount_coarse_batch_v1/r0_p90_y90/seed_7/attempt_001/audit/independent_audit.json",
+      "runtime_s": 95.91655135154724
+    },
+    {
+      "candidate": "r0_p120_y45",
+      "rng_seed": 42,
+      "status": "audited_path_found",
+      "attempt": 1,
+      "best": {
+        "status": "sampled_path_pass",
+        "candidate": "r0_p120_y45",
+        "reserve_deg": 3.0,
+        "worst_track_margin_deg": 0.1481322205927985,
+        "max_ee_error_mm": 3.2516713864683817,
+        "max_ee_error_deg": 0.37177236900433985,
+        "max_velocity_utilization": 0.048861667394428134,
+        "station_capability": [
+          {
+            "flexion_deg": 0.0,
+            "min_lambda": 4.848618409951418
+          },
+          {
+            "flexion_deg": 15.0,
+            "min_lambda": 4.321356631240357
+          },
+          {
+            "flexion_deg": 30.0,
+            "min_lambda": 4.276204992286409
+          },
+          {
+            "flexion_deg": 45.0,
+            "min_lambda": 4.589819668162967
+          },
+          {
+            "flexion_deg": 60.0,
+            "min_lambda": 5.990587169745077
+          }
+        ],
+        "min_lambda": 4.276204992286409,
+        "mean_station_min_lambda": 4.805317374277246,
+        "budget_id": "historical_screening_zero_bias_v1",
+        "path": "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/output/mount_coarse_batch_v1/r0_p120_y45/seed_42/attempt_001/result/r0_p120_y45/path_00"
+      },
+      "independent_audit": "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/output/mount_coarse_batch_v1/r0_p120_y45/seed_42/attempt_001/audit/independent_audit.json",
+      "runtime_s": 107.84043264389038
+    },
+    {
+      "candidate": "r0_p120_y45",
+      "rng_seed": 7,
+      "status": "audited_path_found",
+      "attempt": 1,
+      "best": {
+        "status": "sampled_path_pass",
+        "candidate": "r0_p120_y45",
+        "reserve_deg": 3.0,
+        "worst_track_margin_deg": 4.540265738276156,
+        "max_ee_error_mm": 3.436070957094557,
+        "max_ee_error_deg": 1.0749600231866971,
+        "max_velocity_utilization": 0.038939572268197574,
+        "station_capability": [
+          {
+            "flexion_deg": 0.0,
+            "min_lambda": 9.026198170628998
+          },
+          {
+            "flexion_deg": 15.0,
+            "min_lambda": 4.915082997183765
+          },
+          {
+            "flexion_deg": 30.0,
+            "min_lambda": 4.277394682417104
+          },
+          {
+            "flexion_deg": 45.0,
+            "min_lambda": 4.280578383754126
+          },
+          {
+            "flexion_deg": 60.0,
+            "min_lambda": 5.156051149329612
+          }
+        ],
+        "min_lambda": 4.277394682417104,
+        "mean_station_min_lambda": 5.531061076662722,
+        "budget_id": "historical_screening_zero_bias_v1",
+        "path": "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/output/mount_coarse_batch_v1/r0_p120_y45/seed_7/attempt_001/result/r0_p120_y45/path_00"
+      },
+      "independent_audit": "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/output/mount_coarse_batch_v1/r0_p120_y45/seed_7/attempt_001/audit/independent_audit.json",
+      "runtime_s": 124.37722110748291
+    },
+    {
+      "candidate": "r0_p120_y90",
+      "rng_seed": 42,
+      "status": "audited_path_found",
+      "attempt": 1,
+      "best": {
+        "status": "sampled_path_pass",
+        "candidate": "r0_p120_y90",
+        "reserve_deg": 3.0,
+        "worst_track_margin_deg": 10.373130032646984,
+        "max_ee_error_mm": 3.271655308807971,
+        "max_ee_error_deg": 0.3775036446893572,
+        "max_velocity_utilization": 0.03904132489085247,
+        "station_capability": [
+          {
+            "flexion_deg": 0.0,
+            "min_lambda": 8.0
+          },
+          {
+            "flexion_deg": 15.0,
+            "min_lambda": 5.23017814368112
+          },
+          {
+            "flexion_deg": 30.0,
+            "min_lambda": 4.6228615413580725
+          },
+          {
+            "flexion_deg": 45.0,
+            "min_lambda": 4.618822105134698
+          },
+          {
+            "flexion_deg": 60.0,
+            "min_lambda": 5.2839498880910885
+          }
+        ],
+        "min_lambda": 4.618822105134698,
+        "mean_station_min_lambda": 5.551162335652995,
+        "budget_id": "historical_screening_zero_bias_v1",
+        "path": "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/output/mount_coarse_batch_v1/r0_p120_y90/seed_42/attempt_001/result/r0_p120_y90/path_00"
+      },
+      "independent_audit": "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/output/mount_coarse_batch_v1/r0_p120_y90/seed_42/attempt_001/audit/independent_audit.json",
+      "runtime_s": 96.36518216133118
+    },
+    {
+      "candidate": "r0_p120_y90",
+      "rng_seed": 7,
+      "status": "audited_path_found",
+      "attempt": 1,
+      "best": {
+        "status": "sampled_path_pass",
+        "candidate": "r0_p120_y90",
+        "reserve_deg": 3.0,
+        "worst_track_margin_deg": 0.05684572793137633,
+        "max_ee_error_mm": 3.2151203893812608,
+        "max_ee_error_deg": 0.43220434832382787,
+        "max_velocity_utilization": 0.03904132491531382,
+        "station_capability": [
+          {
+            "flexion_deg": 0.0,
+            "min_lambda": 6.150608591998169
+          },
+          {
+            "flexion_deg": 15.0,
+            "min_lambda": 4.97845501202306
+          },
+          {
+            "flexion_deg": 30.0,
+            "min_lambda": 4.630812080396527
+          },
+          {
+            "flexion_deg": 45.0,
+            "min_lambda": 4.618825807907055
+          },
+          {
+            "flexion_deg": 60.0,
+            "min_lambda": 5.504605841702209
+          }
+        ],
+        "min_lambda": 4.618825807907055,
+        "mean_station_min_lambda": 5.176661466805404,
+        "budget_id": "historical_screening_zero_bias_v1",
+        "path": "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/output/mount_coarse_batch_v1/r0_p120_y90/seed_7/attempt_001/result/r0_p120_y90/path_01"
+      },
+      "independent_audit": "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/output/mount_coarse_batch_v1/r0_p120_y90/seed_7/attempt_001/audit/independent_audit.json",
+      "runtime_s": 92.75333881378174
+    },
+    {
+      "candidate": "r30_p60_y0",
+      "rng_seed": 42,
+      "status": "audited_path_found",
+      "attempt": 1,
+      "best": {
+        "status": "sampled_path_pass",
+        "candidate": "r30_p60_y0",
+        "reserve_deg": 3.0,
+        "worst_track_margin_deg": 2.5444437451708134e-14,
+        "max_ee_error_mm": 3.890259377041516,
+        "max_ee_error_deg": 1.1581383328395356,
+        "max_velocity_utilization": 0.054013745442561684,
+        "station_capability": [
+          {
+            "flexion_deg": 0.0,
+            "min_lambda": 11.735891259971906
+          },
+          {
+            "flexion_deg": 15.0,
+            "min_lambda": 6.3137863355736314
+          },
+          {
+            "flexion_deg": 30.0,
+            "min_lambda": 4.133208046692627
+          },
+          {
+            "flexion_deg": 45.0,
+            "min_lambda": 4.141124266737666
+          },
+          {
+            "flexion_deg": 60.0,
+            "min_lambda": 5.864311166596777
+          }
+        ],
+        "min_lambda": 4.133208046692627,
+        "mean_station_min_lambda": 6.437664215114522,
+        "budget_id": "historical_screening_zero_bias_v1",
+        "path": "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/output/mount_coarse_batch_v1/r30_p60_y0/seed_42/attempt_001/result/r30_p60_y0/path_00"
+      },
+      "independent_audit": "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/output/mount_coarse_batch_v1/r30_p60_y0/seed_42/attempt_001/audit/independent_audit.json",
+      "runtime_s": 58.58396077156067
+    },
+    {
+      "candidate": "r30_p60_y0",
+      "rng_seed": 7,
+      "status": "audited_path_found",
+      "attempt": 1,
+      "best": {
+        "status": "sampled_path_pass",
+        "candidate": "r30_p60_y0",
+        "reserve_deg": 3.0,
+        "worst_track_margin_deg": 2.5444437451708134e-14,
+        "max_ee_error_mm": 3.4291891587956727,
+        "max_ee_error_deg": 1.2354947829048397,
+        "max_velocity_utilization": 0.05532196949117966,
+        "station_capability": [
+          {
+            "flexion_deg": 0.0,
+            "min_lambda": 14.239561521448046
+          },
+          {
+            "flexion_deg": 15.0,
+            "min_lambda": 5.959378463761284
+          },
+          {
+            "flexion_deg": 30.0,
+            "min_lambda": 4.1741622367720055
+          },
+          {
+            "flexion_deg": 45.0,
+            "min_lambda": 4.190485484214897
+          },
+          {
+            "flexion_deg": 60.0,
+            "min_lambda": 6.652872832047696
+          }
+        ],
+        "min_lambda": 4.1741622367720055,
+        "mean_station_min_lambda": 7.043292107648786,
+        "budget_id": "historical_screening_zero_bias_v1",
+        "path": "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/output/mount_coarse_batch_v1/r30_p60_y0/seed_7/attempt_001/result/r30_p60_y0/path_00"
+      },
+      "independent_audit": "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/output/mount_coarse_batch_v1/r30_p60_y0/seed_7/attempt_001/audit/independent_audit.json",
+      "runtime_s": 129.28962349891663
+    },
+    {
+      "candidate": "r30_p60_y45",
+      "rng_seed": 42,
+      "status": "audited_path_found",
+      "attempt": 1,
+      "best": {
+        "status": "sampled_path_pass",
+        "candidate": "r30_p60_y45",
+        "reserve_deg": 3.0,
+        "worst_track_margin_deg": 0.006973100161890302,
+        "max_ee_error_mm": 6.5737192074697655,
+        "max_ee_error_deg": 1.086674044159417,
+        "max_velocity_utilization": 0.0649966307076538,
+        "station_capability": [
+          {
+            "flexion_deg": 0.0,
+            "min_lambda": 11.31370849898475
+          },
+          {
+            "flexion_deg": 15.0,
+            "min_lambda": 6.8345869820071785
+          },
+          {
+            "flexion_deg": 30.0,
+            "min_lambda": 4.3975847608841425
+          },
+          {
+            "flexion_deg": 45.0,
+            "min_lambda": 4.417094773494035
+          },
+          {
+            "flexion_deg": 60.0,
+            "min_lambda": 7.4636351318451855
+          }
+        ],
+        "min_lambda": 4.3975847608841425,
+        "mean_station_min_lambda": 6.885322029443058,
+        "budget_id": "historical_screening_zero_bias_v1",
+        "path": "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/output/mount_coarse_batch_v1/r30_p60_y45/seed_42/attempt_001/result/r30_p60_y45/path_02"
+      },
+      "independent_audit": "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/output/mount_coarse_batch_v1/r30_p60_y45/seed_42/attempt_001/audit/independent_audit.json",
+      "runtime_s": 180.58552837371826
+    },
+    {
+      "candidate": "r30_p60_y45",
+      "rng_seed": 7,
+      "status": "audited_path_found",
+      "attempt": 1,
+      "best": {
+        "status": "sampled_path_pass",
+        "candidate": "r30_p60_y45",
+        "reserve_deg": 3.0,
+        "worst_track_margin_deg": 0.006973100161890302,
+        "max_ee_error_mm": 6.5737192074697655,
+        "max_ee_error_deg": 1.086674044159417,
+        "max_velocity_utilization": 0.0649966307076538,
+        "station_capability": [
+          {
+            "flexion_deg": 0.0,
+            "min_lambda": 11.31370849898475
+          },
+          {
+            "flexion_deg": 15.0,
+            "min_lambda": 6.8345869820071785
+          },
+          {
+            "flexion_deg": 30.0,
+            "min_lambda": 4.3975847608841425
+          },
+          {
+            "flexion_deg": 45.0,
+            "min_lambda": 4.417094773494035
+          },
+          {
+            "flexion_deg": 60.0,
+            "min_lambda": 7.4636351318451855
+          }
+        ],
+        "min_lambda": 4.3975847608841425,
+        "mean_station_min_lambda": 6.885322029443058,
+        "budget_id": "historical_screening_zero_bias_v1",
+        "path": "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/output/mount_coarse_batch_v1/r30_p60_y45/seed_7/attempt_001/result/r30_p60_y45/path_01"
+      },
+      "independent_audit": "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/output/mount_coarse_batch_v1/r30_p60_y45/seed_7/attempt_001/audit/independent_audit.json",
+      "runtime_s": 168.02247166633606
+    },
+    {
+      "candidate": "r30_p60_y90",
+      "rng_seed": 42,
+      "status": "no_path_found_with_budget",
+      "attempt": 1,
+      "failed_at_time_s": 224.0,
+      "runtime_s": 110.66181015968323
+    },
+    {
+      "candidate": "r30_p60_y90",
+      "rng_seed": 7,
+      "status": "no_path_found_with_budget",
+      "attempt": 1,
+      "failed_at_time_s": 224.0,
+      "runtime_s": 116.45702195167542
+    },
+    {
+      "candidate": "r30_p90_y0",
+      "rng_seed": 42,
+      "status": "audited_path_found",
+      "attempt": 1,
+      "best": {
+        "status": "sampled_path_pass",
+        "candidate": "r30_p90_y0",
+        "reserve_deg": 3.0,
+        "worst_track_margin_deg": 9.190860500709665,
+        "max_ee_error_mm": 3.346376021975008,
+        "max_ee_error_deg": 0.38918160183397443,
+        "max_velocity_utilization": 0.05056123316287041,
+        "station_capability": [
+          {
+            "flexion_deg": 0.0,
+            "min_lambda": 5.096734226732182
+          },
+          {
+            "flexion_deg": 15.0,
+            "min_lambda": 4.121509921220777
+          },
+          {
+            "flexion_deg": 30.0,
+            "min_lambda": 4.052734928107622
+          },
+          {
+            "flexion_deg": 45.0,
+            "min_lambda": 4.908711804226017
+          },
+          {
+            "flexion_deg": 60.0,
+            "min_lambda": 8.315553967022716
+          }
+        ],
+        "min_lambda": 4.052734928107622,
+        "mean_station_min_lambda": 5.299048969461863,
+        "budget_id": "historical_screening_zero_bias_v1",
+        "path": "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/output/mount_coarse_batch_v1/r30_p90_y0/seed_42/attempt_001/result/r30_p90_y0/path_00"
+      },
+      "independent_audit": "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/output/mount_coarse_batch_v1/r30_p90_y0/seed_42/attempt_001/audit/independent_audit.json",
+      "runtime_s": 126.68589115142822
+    },
+    {
+      "candidate": "r30_p90_y0",
+      "rng_seed": 7,
+      "status": "audited_path_found",
+      "attempt": 1,
+      "best": {
+        "status": "sampled_path_pass",
+        "candidate": "r30_p90_y0",
+        "reserve_deg": 3.0,
+        "worst_track_margin_deg": 0.00014307914195133922,
+        "max_ee_error_mm": 5.4014438812395955,
+        "max_ee_error_deg": 1.435094064664825,
+        "max_velocity_utilization": 0.09571582749623775,
+        "station_capability": [
+          {
+            "flexion_deg": 0.0,
+            "min_lambda": 5.627832242053144
+          },
+          {
+            "flexion_deg": 15.0,
+            "min_lambda": 4.44031781933625
+          },
+          {
+            "flexion_deg": 30.0,
+            "min_lambda": 4.070504166819657
+          },
+          {
+            "flexion_deg": 45.0,
+            "min_lambda": 4.056643030658861
+          },
+          {
+            "flexion_deg": 60.0,
+            "min_lambda": 5.597767699271527
+          }
+        ],
+        "min_lambda": 4.056643030658861,
+        "mean_station_min_lambda": 4.758612991627888,
+        "budget_id": "historical_screening_zero_bias_v1",
+        "path": "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/output/mount_coarse_batch_v1/r30_p90_y0/seed_7/attempt_001/result/r30_p90_y0/path_01"
+      },
+      "independent_audit": "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/output/mount_coarse_batch_v1/r30_p90_y0/seed_7/attempt_001/audit/independent_audit.json",
+      "runtime_s": 153.68798923492432
+    },
+    {
+      "candidate": "r30_p90_y45",
+      "rng_seed": 42,
+      "status": "audited_path_found",
+      "attempt": 1,
+      "best": {
+        "status": "sampled_path_pass",
+        "candidate": "r30_p90_y45",
+        "reserve_deg": 3.0,
+        "worst_track_margin_deg": 9.749290678824318,
+        "max_ee_error_mm": 3.79395591285688,
+        "max_ee_error_deg": 1.6914522618656855,
+        "max_velocity_utilization": 0.05657663356695453,
+        "station_capability": [
+          {
+            "flexion_deg": 0.0,
+            "min_lambda": 11.139350082559341
+          },
+          {
+            "flexion_deg": 15.0,
+            "min_lambda": 5.553379186512518
+          },
+          {
+            "flexion_deg": 30.0,
+            "min_lambda": 4.0833954390811655
+          },
+          {
+            "flexion_deg": 45.0,
+            "min_lambda": 4.13707937519953
+          },
+          {
+            "flexion_deg": 60.0,
+            "min_lambda": 5.87100296564129
+          }
+        ],
+        "min_lambda": 4.0833954390811655,
+        "mean_station_min_lambda": 6.156841409798768,
+        "budget_id": "historical_screening_zero_bias_v1",
+        "path": "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/output/mount_coarse_batch_v1/r30_p90_y45/seed_42/attempt_001/result/r30_p90_y45/path_01"
+      },
+      "independent_audit": "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/output/mount_coarse_batch_v1/r30_p90_y45/seed_42/attempt_001/audit/independent_audit.json",
+      "runtime_s": 205.24024605751038
+    },
+    {
+      "candidate": "r30_p90_y45",
+      "rng_seed": 7,
+      "status": "audited_path_found",
+      "attempt": 1,
+      "best": {
+        "status": "sampled_path_pass",
+        "candidate": "r30_p90_y45",
+        "reserve_deg": 3.0,
+        "worst_track_margin_deg": 4.385514333777234,
+        "max_ee_error_mm": 3.4961820727449284,
+        "max_ee_error_deg": 0.8134427914535554,
+        "max_velocity_utilization": 0.04998206900438719,
+        "station_capability": [
+          {
+            "flexion_deg": 0.0,
+            "min_lambda": 7.783648960292753
+          },
+          {
+            "flexion_deg": 15.0,
+            "min_lambda": 5.003412606064348
+          },
+          {
+            "flexion_deg": 30.0,
+            "min_lambda": 4.0528383689053635
+          },
+          {
+            "flexion_deg": 45.0,
+            "min_lambda": 4.180143346831878
+          },
+          {
+            "flexion_deg": 60.0,
+            "min_lambda": 6.291096585722552
+          }
+        ],
+        "min_lambda": 4.0528383689053635,
+        "mean_station_min_lambda": 5.462227973563379,
+        "budget_id": "historical_screening_zero_bias_v1",
+        "path": "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/output/mount_coarse_batch_v1/r30_p90_y45/seed_7/attempt_001/result/r30_p90_y45/path_01"
+      },
+      "independent_audit": "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/output/mount_coarse_batch_v1/r30_p90_y45/seed_7/attempt_001/audit/independent_audit.json",
+      "runtime_s": 195.659264087677
+    },
+    {
+      "candidate": "r30_p90_y90",
+      "rng_seed": 42,
+      "status": "no_path_found_with_budget",
+      "attempt": 1,
+      "failed_at_time_s": 258.0,
+      "runtime_s": 162.7132351398468
+    },
+    {
+      "candidate": "r30_p90_y90",
+      "rng_seed": 7,
+      "status": "audited_path_found",
+      "attempt": 1,
+      "best": {
+        "status": "sampled_path_pass",
+        "candidate": "r30_p90_y90",
+        "reserve_deg": 3.0,
+        "worst_track_margin_deg": 7.19767754992612,
+        "max_ee_error_mm": 3.9853753005803023,
+        "max_ee_error_deg": 1.8289425046704018,
+        "max_velocity_utilization": 0.08730947794545159,
+        "station_capability": [
+          {
+            "flexion_deg": 0.0,
+            "min_lambda": 11.074151079515772
+          },
+          {
+            "flexion_deg": 15.0,
+            "min_lambda": 6.393962573385453
+          },
+          {
+            "flexion_deg": 30.0,
+            "min_lambda": 4.206745331749725
+          },
+          {
+            "flexion_deg": 45.0,
+            "min_lambda": 4.052384125960022
+          },
+          {
+            "flexion_deg": 60.0,
+            "min_lambda": 5.9446869709792916
+          }
+        ],
+        "min_lambda": 4.052384125960022,
+        "mean_station_min_lambda": 6.334386016318052,
+        "budget_id": "historical_screening_zero_bias_v1",
+        "path": "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/output/mount_coarse_batch_v1/r30_p90_y90/seed_7/attempt_001/result/r30_p90_y90/path_00"
+      },
+      "independent_audit": "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/output/mount_coarse_batch_v1/r30_p90_y90/seed_7/attempt_001/audit/independent_audit.json",
+      "runtime_s": 172.28726363182068
+    },
+    {
+      "candidate": "r30_p120_y0",
+      "rng_seed": 42,
+      "status": "audited_path_found",
+      "attempt": 1,
+      "best": {
+        "status": "sampled_path_pass",
+        "candidate": "r30_p120_y0",
+        "reserve_deg": 3.0,
+        "worst_track_margin_deg": 5.047565723920053e-08,
+        "max_ee_error_mm": 3.4508121462089405,
+        "max_ee_error_deg": 0.7283937120125952,
+        "max_velocity_utilization": 0.047694998817546436,
+        "station_capability": [
+          {
+            "flexion_deg": 0.0,
+            "min_lambda": 4.212294179442718
+          },
+          {
+            "flexion_deg": 15.0,
+            "min_lambda": 4.000090880639737
+          },
+          {
+            "flexion_deg": 30.0,
+            "min_lambda": 4.061377677229452
+          },
+          {
+            "flexion_deg": 45.0,
+            "min_lambda": 4.720503278174826
+          },
+          {
+            "flexion_deg": 60.0,
+            "min_lambda": 7.098865831589239
+          }
+        ],
+        "min_lambda": 4.000090880639737,
+        "mean_station_min_lambda": 4.818626369415194,
+        "budget_id": "historical_screening_zero_bias_v1",
+        "path": "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/output/mount_coarse_batch_v1/r30_p120_y0/seed_42/attempt_001/result/r30_p120_y0/path_01"
+      },
+      "independent_audit": "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/output/mount_coarse_batch_v1/r30_p120_y0/seed_42/attempt_001/audit/independent_audit.json",
+      "runtime_s": 124.95592856407166
+    },
+    {
+      "candidate": "r30_p120_y0",
+      "rng_seed": 7,
+      "status": "audited_path_found",
+      "attempt": 1,
+      "best": {
+        "status": "sampled_path_pass",
+        "candidate": "r30_p120_y0",
+        "reserve_deg": 3.0,
+        "worst_track_margin_deg": 3.991461849593018,
+        "max_ee_error_mm": 3.602315249785522,
+        "max_ee_error_deg": 0.7500157267291193,
+        "max_velocity_utilization": 0.04770929041443387,
+        "station_capability": [
+          {
+            "flexion_deg": 0.0,
+            "min_lambda": 8.146869903468618
+          },
+          {
+            "flexion_deg": 15.0,
+            "min_lambda": 4.867129230489468
+          },
+          {
+            "flexion_deg": 30.0,
+            "min_lambda": 4.0000000604399375
+          },
+          {
+            "flexion_deg": 45.0,
+            "min_lambda": 4.315892012101929
+          },
+          {
+            "flexion_deg": 60.0,
+            "min_lambda": 6.206144730366077
+          }
+        ],
+        "min_lambda": 4.0000000604399375,
+        "mean_station_min_lambda": 5.507207187373206,
+        "budget_id": "historical_screening_zero_bias_v1",
+        "path": "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/output/mount_coarse_batch_v1/r30_p120_y0/seed_7/attempt_001/result/r30_p120_y0/path_00"
+      },
+      "independent_audit": "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/output/mount_coarse_batch_v1/r30_p120_y0/seed_7/attempt_001/audit/independent_audit.json",
+      "runtime_s": 51.922319173812866
+    },
+    {
+      "candidate": "r30_p120_y45",
+      "rng_seed": 42,
+      "status": "audited_path_found",
+      "attempt": 2,
+      "best": {
+        "status": "sampled_path_pass",
+        "candidate": "r30_p120_y45",
+        "reserve_deg": 3.0,
+        "worst_track_margin_deg": 4.460914434990447,
+        "max_ee_error_mm": 3.2084874071238834,
+        "max_ee_error_deg": 0.4453050898154987,
+        "max_velocity_utilization": 0.03864126131142379,
+        "station_capability": [
+          {
+            "flexion_deg": 0.0,
+            "min_lambda": 5.028762656741838
+          },
+          {
+            "flexion_deg": 15.0,
+            "min_lambda": 4.3025656665180065
+          },
+          {
+            "flexion_deg": 30.0,
+            "min_lambda": 4.276199004677127
+          },
+          {
+            "flexion_deg": 45.0,
+            "min_lambda": 4.5159395852385735
+          },
+          {
+            "flexion_deg": 60.0,
+            "min_lambda": 6.070941035178573
+          }
+        ],
+        "min_lambda": 4.276199004677127,
+        "mean_station_min_lambda": 4.838881589670824,
+        "budget_id": "historical_screening_zero_bias_v1",
+        "path": "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/output/mount_coarse_batch_v1/r30_p120_y45/seed_42/attempt_002/result/r30_p120_y45/path_02"
+      },
+      "independent_audit": "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/output/mount_coarse_batch_v1/r30_p120_y45/seed_42/attempt_002/audit/independent_audit.json",
+      "runtime_s": 157.70798134803772
+    },
+    {
+      "candidate": "r30_p120_y45",
+      "rng_seed": 7,
+      "status": "audited_path_found",
+      "attempt": 1,
+      "best": {
+        "status": "sampled_path_pass",
+        "candidate": "r30_p120_y45",
+        "reserve_deg": 3.0,
+        "worst_track_margin_deg": 1.2628513178362888,
+        "max_ee_error_mm": 3.412045090781841,
+        "max_ee_error_deg": 1.043993951418118,
+        "max_velocity_utilization": 0.03823096360127789,
+        "station_capability": [
+          {
+            "flexion_deg": 0.0,
+            "min_lambda": 11.31370849898476
+          },
+          {
+            "flexion_deg": 15.0,
+            "min_lambda": 5.017391982269819
+          },
+          {
+            "flexion_deg": 30.0,
+            "min_lambda": 4.277184866328548
+          },
+          {
+            "flexion_deg": 45.0,
+            "min_lambda": 4.2835591414912635
+          },
+          {
+            "flexion_deg": 60.0,
+            "min_lambda": 5.2016022884963276
+          }
+        ],
+        "min_lambda": 4.277184866328548,
+        "mean_station_min_lambda": 6.018689355514144,
+        "budget_id": "historical_screening_zero_bias_v1",
+        "path": "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/output/mount_coarse_batch_v1/r30_p120_y45/seed_7/attempt_001/result/r30_p120_y45/path_02"
+      },
+      "independent_audit": "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/output/mount_coarse_batch_v1/r30_p120_y45/seed_7/attempt_001/audit/independent_audit.json",
+      "runtime_s": 219.67685770988464
+    },
+    {
+      "candidate": "r30_p120_y90",
+      "rng_seed": 42,
+      "status": "audited_path_found",
+      "attempt": 1,
+      "best": {
+        "status": "sampled_path_pass",
+        "candidate": "r30_p120_y90",
+        "reserve_deg": 3.0,
+        "worst_track_margin_deg": 10.37883185322888,
+        "max_ee_error_mm": 3.4705762718835675,
+        "max_ee_error_deg": 0.42848450259636733,
+        "max_velocity_utilization": 0.047265976154616425,
+        "station_capability": [
+          {
+            "flexion_deg": 0.0,
+            "min_lambda": 8.000000000000002
+          },
+          {
+            "flexion_deg": 15.0,
+            "min_lambda": 6.142214842152511
+          },
+          {
+            "flexion_deg": 30.0,
+            "min_lambda": 4.8335314612950535
+          },
+          {
+            "flexion_deg": 45.0,
+            "min_lambda": 4.618810694920504
+          },
+          {
+            "flexion_deg": 60.0,
+            "min_lambda": 5.017711754666791
+          }
+        ],
+        "min_lambda": 4.618810694920504,
+        "mean_station_min_lambda": 5.722453750606972,
+        "budget_id": "historical_screening_zero_bias_v1",
+        "path": "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/output/mount_coarse_batch_v1/r30_p120_y90/seed_42/attempt_001/result/r30_p120_y90/path_00"
+      },
+      "independent_audit": "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/output/mount_coarse_batch_v1/r30_p120_y90/seed_42/attempt_001/audit/independent_audit.json",
+      "runtime_s": 172.13872814178467
+    },
+    {
+      "candidate": "r30_p120_y90",
+      "rng_seed": 7,
+      "status": "audited_path_found",
+      "attempt": 1,
+      "best": {
+        "status": "sampled_path_pass",
+        "candidate": "r30_p120_y90",
+        "reserve_deg": 3.0,
+        "worst_track_margin_deg": 2.984052379911465e-08,
+        "max_ee_error_mm": 3.3017708632030414,
+        "max_ee_error_deg": 0.43608877825150105,
+        "max_velocity_utilization": 0.04725471793742236,
+        "station_capability": [
+          {
+            "flexion_deg": 0.0,
+            "min_lambda": 5.987126751170027
+          },
+          {
+            "flexion_deg": 15.0,
+            "min_lambda": 4.830781694056848
+          },
+          {
+            "flexion_deg": 30.0,
+            "min_lambda": 4.64272208686482
+          },
+          {
+            "flexion_deg": 45.0,
+            "min_lambda": 4.618854745172913
+          },
+          {
+            "flexion_deg": 60.0,
+            "min_lambda": 6.604417644886892
+          }
+        ],
+        "min_lambda": 4.618854745172913,
+        "mean_station_min_lambda": 5.336780584430301,
+        "budget_id": "historical_screening_zero_bias_v1",
+        "path": "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/output/mount_coarse_batch_v1/r30_p120_y90/seed_7/attempt_001/result/r30_p120_y90/path_02"
+      },
+      "independent_audit": "/home/lapoveca/ros2_ws/src/lbr_impedance_control/scripts/knee_attachment_eval_clean/output/mount_coarse_batch_v1/r30_p120_y90/seed_7/attempt_001/audit/independent_audit.json",
+      "runtime_s": 103.04069304466248
+    },
+    {
+      "candidate": "pitch_45_yaw_45",
+      "rng_seed": 42,
+      "status": "no_path_found_with_budget",
+      "attempt": 1,
+      "failed_at_time_s": 230.0,
+      "runtime_s": 65.67748045921326
+    },
+    {
+      "candidate": "pitch_45_yaw_45",
+      "rng_seed": 7,
+      "status": "no_path_found_with_budget",
+      "attempt": 1,
+      "failed_at_time_s": 230.0,
+      "runtime_s": 70.19358420372009
+    },
+    {
+      "candidate": "reference",
+      "rng_seed": 42,
+      "status": "no_path_found_with_budget",
+      "attempt": 1,
+      "failed_at_time_s": 46.0,
+      "runtime_s": 18.05897617340088
+    },
+    {
+      "candidate": "reference",
+      "rng_seed": 7,
+      "status": "no_path_found_with_budget",
+      "attempt": 1,
+      "failed_at_time_s": 46.0,
+      "runtime_s": 17.960270404815674
+    },
+    {
+      "candidate": "yaw_90",
+      "rng_seed": 42,
+      "status": "no_path_found_with_budget",
+      "attempt": 1,
+      "failed_at_time_s": 165.0,
+      "runtime_s": 67.8823823928833
+    },
+    {
+      "candidate": "yaw_90",
+      "rng_seed": 7,
+      "status": "no_path_found_with_budget",
+      "attempt": 1,
+      "failed_at_time_s": 172.0,
+      "runtime_s": 95.8606264591217
+    }
+  ]
+}

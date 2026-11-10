@@ -1,0 +1,20 @@
+{
+  "status": "envelope_build_PASS",
+  "task_id": "ie_table_v1",
+  "samples": 521,
+  "phases": 24,
+  "station_groups": 5,
+  "active_samples": 405,
+  "both_alternative_cases_samples": 5,
+  "axis": "x",
+  "moment_Nm": 5.0,
+  "axis_checked_postures": 521,
+  "max_axis_deviation_deg": 4.353408482428142e-06,
+  "max_axis_norm_error": 6.867839630331218e-12,
+  "max_pose_reproduction_error": 0.0,
+  "max_unit_generalized_moment_projection_error": 6.864953050467193e-12,
+  "max_tibia_origin_derivative_norm_m_per_rad": 1.0571460182970347e-08,
+  "legacy_load_regression": null,
+  "robot_path_feasibility_checked": false,
+  "existing_pilot_directly_compatible": false
+}

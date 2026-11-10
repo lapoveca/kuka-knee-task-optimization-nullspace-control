@@ -1,0 +1,7 @@
+std_msgs/Float64MultiArray joint_positions_goal
+std_msgs/Float64MultiArray joint_velocities_goal
+---
+bool success
+---
+float32 time_progress
+float32 distance_progress

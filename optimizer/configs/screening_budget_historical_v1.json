@@ -1,0 +1,13 @@
+{
+  "id": "historical_screening_zero_bias_v1",
+  "limits_Nm": [
+    200,
+    200,
+    176,
+    176,
+    110,
+    40,
+    40
+  ],
+  "note": "Explicit provisional screening assumption, not verified hardware capacity. Zero bias; no gravity/inertia/friction."
+}

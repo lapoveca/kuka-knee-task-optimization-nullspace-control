@@ -1,0 +1,16 @@
+fri_client_sdk:
+  major_version: 2
+  minor_version: 7
+client_command_mode: torque
+port_id: 30207
+remote_host: INADDR_ANY
+rt_prio: 80
+joint_position_tau: 0.04
+command_guard:
+  variant: default
+state_guard:
+  external_torque_safety_check: true
+  external_torque_limit: 10.0
+external_torque_tau: 0.01
+measured_torque_tau: 0.01
+open_loop: false
