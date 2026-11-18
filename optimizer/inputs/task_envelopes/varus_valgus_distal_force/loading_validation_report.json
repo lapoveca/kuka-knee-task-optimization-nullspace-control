@@ -1,6 +1,6 @@
 {
   "status": "distal_force_envelope_PASS",
-  "task_id": "vv_supervisor_scaled_distal_force_v1",
+  "task_id": "varus_valgus_distal_force",
   "saved_postures_checked": 521,
   "application_point_T_m": [
     0.35,

@@ -6,7 +6,7 @@
   "comfort_extra_room_deg": 10.0,
   "utility_saturation": 1000.0,
   "lambda_ref": {
-    "vv_supervisor_scaled_distal_force_v1": 14.330259667040709,
-    "ie_table_v1": 9.151272684457684
+    "varus_valgus_distal_force": 14.330259667040709,
+    "internal_external_rotation": 9.151272684457684
   }
 }

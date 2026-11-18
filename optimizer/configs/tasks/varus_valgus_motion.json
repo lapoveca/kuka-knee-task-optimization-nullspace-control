@@ -23,7 +23,7 @@
     }
   ],
   "note": "Motion/compiler input, not a force-controller prescription. Runtime5deg robot reserve belongs in evaluation config.",
-  "task_id": "vv_supervisor_scaled_v1",
+  "task_id": "varus_valgus_motion",
   "active_coordinate_index": 1,
   "source_table_positive_deg": [
     2.5,

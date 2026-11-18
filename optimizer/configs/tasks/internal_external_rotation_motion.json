@@ -23,7 +23,7 @@
     }
   ],
   "note": "Motion/compiler input, not a force-controller prescription. Runtime5deg robot reserve belongs in evaluation config.",
-  "task_id": "ie_table_v1",
+  "task_id": "internal_external_rotation_motion",
   "active_coordinate_index": 2,
   "source_table_positive_deg": [
     10,

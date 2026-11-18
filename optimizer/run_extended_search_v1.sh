@@ -14,7 +14,7 @@ python3 - <<'PY'
 from pathlib import Path
 import hashlib,json
 files=list(Path('.').glob('*.py'))+list(Path('models').glob('*.urdf'))+list(Path('configs').glob('*.json'))
-for task in ('vv_supervisor_scaled_distal_force_v1','ie_table_v1'):
+for task in ('varus_valgus_distal_force','internal_external_rotation'):
     files+=list((Path('inputs/task_envelopes')/task).glob('task*'))
 print(hashlib.sha256(json.dumps({str(p):hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted(set(files)) if p.is_file()},sort_keys=True).encode()).hexdigest())
 PY
@@ -46,7 +46,7 @@ for name in ('numpy','scipy','pinocchio','robot_model','attachment','task_envelo
 from task_envelope import TaskEnvelope
 from robot_model import RobotModel
 r=RobotModel()
-for name in ('vv_supervisor_scaled_distal_force_v1','ie_table_v1'):
+for name in ('varus_valgus_distal_force','internal_external_rotation'):
     t=TaskEnvelope('inputs/task_envelopes/'+name)
     assert len(t.time_s)>1
 print('Model and both task envelopes loaded')
@@ -125,9 +125,9 @@ PY
 failed=0
 for task in VV IE; do
     if [[ "$task" == VV ]]; then
-        env_path=inputs/task_envelopes/vv_supervisor_scaled_distal_force_v1; seed=6101
+        env_path=inputs/task_envelopes/varus_valgus_distal_force; seed=6101
     else
-        env_path=inputs/task_envelopes/ie_table_v1; seed=6102
+        env_path=inputs/task_envelopes/internal_external_rotation; seed=6102
     fi
     [[ "$(fingerprint)" == "$(cat "$RUN/source_fingerprint.txt")" ]] || { echo 'Source/config drift: stopping'; exit 1; }
     if run_task "$task" "$env_path" "$seed" > "$RUN/${task}_pipeline.log" 2>&1; then

@@ -1,0 +1,11 @@
+{
+  "schema": "placement_domain",
+  "shape": "cross",
+  "frame": "lbr_link_0",
+  "placement_point": "femur_reference_origin",
+  "base_plate_side_m": 0.30,
+  "arm_extension_m": 0.60,
+  "enabled_arms": ["+X", "-X", "+Y", "-Y"],
+  "z_min_exclusive_m": 0.0,
+  "z_max_m": 1.40
+}
