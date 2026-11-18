@@ -1,0 +1,38 @@
+{
+  "schema": "envelope_path_report_v1",
+  "status": "sampled_path_pass",
+  "candidate": "pitch_90",
+  "task_id": "ie_table_v1",
+  "reserve_deg": 5.0,
+  "minimum_hard_margin_deg": 16.359777686579,
+  "worst_track_margin_deg": 11.359777686579001,
+  "max_ee_error_mm": 1.8242719669769183,
+  "max_ee_error_deg": 1.9053856977019408,
+  "max_velocity_utilization": 0.05171537840455049,
+  "group_capability": [
+    {
+      "group_id": "flexion_0",
+      "min_lambda": 8.091327315027034
+    },
+    {
+      "group_id": "flexion_15",
+      "min_lambda": 9.90809146918922
+    },
+    {
+      "group_id": "flexion_30",
+      "min_lambda": 18.615310803999176
+    },
+    {
+      "group_id": "flexion_45",
+      "min_lambda": 22.68506051806233
+    },
+    {
+      "group_id": "flexion_60",
+      "min_lambda": 9.585491601387018
+    }
+  ],
+  "min_lambda": 8.091327315027034,
+  "mean_group_min_lambda": 13.777056341532955,
+  "budget_id": "historical_screening_zero_bias_v1",
+  "scope": "Sampled linear-joint kinematics and zero-bias task torque only; collision and dynamics excluded"
+}

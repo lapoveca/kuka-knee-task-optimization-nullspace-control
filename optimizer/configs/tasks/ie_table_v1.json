@@ -19,7 +19,7 @@
   "excluded_stations": [
     {
       "flexion_deg": 90,
-      "reason": "Outside model flexion range; exclusion confirmed by user"
+      "reason": "Outside model flexion range"
     }
   ],
   "note": "Motion/compiler input, not a force-controller prescription. Runtime5deg robot reserve belongs in evaluation config.",
@@ -47,7 +47,7 @@
     60
   ],
   "angle_multiplier": 1,
-  "angle_multiplier_provenance": "TABLE II as provided; no supervisor instruction to double IE",
+  "angle_multiplier_provenance": "TABLE II as provided by Stijn; no instruction to double IE",
   "required_peak_moment_Nm": 5,
   "anatomical_labels": {
     "positive": "internal",

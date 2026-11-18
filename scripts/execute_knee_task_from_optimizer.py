@@ -34,9 +34,11 @@ import argparse
 import csv
 import json
 import os
+from platform import node
 import sys
 import time
 import numpy as np
+
 from copy import deepcopy
 from scipy.spatial.transform import Rotation as R, Slerp
 
@@ -59,7 +61,16 @@ from visualization_msgs.msg import Marker, MarkerArray
 from task_envelope import TaskEnvelope
 from pathlib import Path
 from view_homing_target import load_robot_module
+REPOSITORY_ROOT = Path(__file__).resolve().parents[1]
+if str(REPOSITORY_ROOT) not in sys.path:
+    sys.path.insert(0, str(REPOSITORY_ROOT))
 
+from integration.initialization import (
+    bounded_call,
+    initialize,
+    joint_sample,
+)
+from integration.run_recording import create_run, finalize_run
 # ---------------------------------------------------------------- config
 JIC = "joint_impedance_controller"
 CIC = "cartesian_impedance_controller"
@@ -78,15 +89,18 @@ CIC_TAU_TOPIC = f"{NS}/commanded_torque"
 JIC_STIFFNESS = 300.0
 JIC_VELOCITY = 0.05
 
-CIC_KT = 500.0
-CIC_KR = 50.0
+CIC_KT = 3000.0
+CIC_KR = 150.0
 CIC_ZETA = 1.0
 
 RATE_HZ = 50.0
 HOLD_S = 2.0
+TIME_SCALE = 2.0  # (2x slower)
 
 ABORT_ERR_M = 0.08
 ABORT_AFTER_S = 2.0
+
+GATE_ERR_M = 0.03   # m — only advance reference when robot is this close
 
 LOG_CSV = "knee_task_optimizer_log.csv"
 
@@ -334,67 +348,21 @@ class TaskExecutor(Node):
         self.twist_pub.publish(msg)
 
     # ---------------------------------------------------- Stage 1: JIC homing
-    def home_to_q0(self, q0):
-        self.get_logger().info("Stage 1: JIC homing to optimizer's q[0]")
-        if not self.switch(JIC, CIC):
-            raise RuntimeError("Could not activate JIC.")
-        time.sleep(0.3)
+    def make_parameter(self, name, value):
+        return param(name, value)
 
-        p = param("stiffness", JIC_STIFFNESS)
-        req = SetParameters.Request()
-        req.parameters = [p]
-        self.call(self.jic_params, req)
+    def initialize_to_q0(self, q0, directory, policy):
+        self.get_logger().info("Stage 1: JIC initialization to optimizer q[0]")
 
-        self.jic_action.wait_for_server()
-        goal = JointTrajectoryExecution.Goal()
-        goal.joint_positions_goal = Float64MultiArray(data=q0.tolist())
-        goal.joint_velocities_goal = Float64MultiArray(data=[JIC_VELOCITY] * 7)
-
-        for attempt in (1, 2, 3):  # 3 attempts now
-            fut = self.jic_action.send_goal_async(goal)
-            rclpy.spin_until_future_complete(self, fut)
-            handle = fut.result()
-            if handle is None or not handle.accepted:
-                self.get_logger().error("JIC goal rejected.")
-                continue
-            res_fut = handle.get_result_async()
-            rclpy.spin_until_future_complete(self, res_fut)
-            if bool(res_fut.result().result.success):
-                self.get_logger().info(f"JIC homing (try {attempt}): SUCCESS")
-                # Settle check: wait for joint velocity to be near zero
-                self.get_logger().info("Settling (waiting for velocity to decay)...")
-                time.sleep(2.0)  # let transients decay
-                # Read joint state and log
-                t0 = time.monotonic()
-                while self.js is None and time.monotonic() - t0 < 5.0:
-                    rclpy.spin_once(self, timeout_sec=0.05)
-                if self.js is not None:
-                    vel = np.array(self.js.velocity)
-                    pos = np.array(self.js.position)
-                    max_vel = np.max(np.abs(vel))
-                    pos_err = np.max(np.abs(pos - q0))
-                    self.get_logger().info(
-                        f"Post-JIC state: max |vel| = {max_vel:.4f} rad/s, "
-                        f"max |pos - q0| = {pos_err:.4f} rad "
-                        f"({np.degrees(pos_err):.2f} deg)")
-                    if max_vel > 0.01:
-                        self.get_logger().warning(
-                            f"Joint velocity still {max_vel:.4f} rad/s — "
-                            f"waiting 2 more seconds...")
-                        time.sleep(2.0)
-                        # Re-read
-                        t0 = time.monotonic()
-                        while self.js is None and time.monotonic() - t0 < 5.0:
-                            rclpy.spin_once(self, timeout_sec=0.05)
-                        if self.js is not None:
-                            vel = np.array(self.js.velocity)
-                            max_vel = np.max(np.abs(vel))
-                            self.get_logger().info(
-                                f"Re-check: max |vel| = {max_vel:.4f} rad/s")
-                return True
-            self.get_logger().warning(f"JIC homing (try {attempt}): FAILED")
-            time.sleep(1.0)
-        return False
+        return initialize(
+            node=self,
+            q_start=q0,
+            directory=directory,
+            action_type=JointTrajectoryExecution,
+            stiffness=JIC_STIFFNESS,
+            velocity=JIC_VELOCITY,
+            policy=policy,
+        )
 
     def prepare_homing_visualization(self, q_start):
         """Compute the target skeleton before issuing any motion."""
@@ -500,7 +468,7 @@ class TaskExecutor(Node):
 
     # ---------------------------------------------------- Stage 2: CIC execution
     def execute_task(self, ns_cfg_name, t_dense, pos_dense, quat_dense,
-                     angles_dense, report, X_BF, A):
+                     angles_dense, report, X_BF, A, q_ref, q_ref_time):
         self.get_logger().info("Stage 2: CIC execution of task-envelope reference")
         if not self.switch(CIC, JIC):
             raise RuntimeError("Could not activate CIC.")
@@ -546,6 +514,12 @@ class TaskExecutor(Node):
         self._ref_pos_dense = pos_dense
         self._actual_points = []
 
+        # Interpolate optimizer joint reference onto the dense execution grid
+        q_ref_dense = np.column_stack([
+            np.interp(t_dense, q_ref_time, q_ref[:, j])
+            for j in range(7)
+        ])
+
         # Scheduled streaming loop
         n = len(t_dense)
         total = n + int(HOLD_S * RATE_HZ)
@@ -554,21 +528,28 @@ class TaskExecutor(Node):
         bad = 0
         errs = []
         status = "Done."
-        log_csv = LOG_CSV
+        log_csv = self._run_dir / "knee_task_optimizer_log.csv"
 
         with open(log_csv, "w", newline="") as f:
             w = csv.writer(f)
             w.writerow(["t", "flexion_deg", "e_pos_m", "e_rot_rad",
-                        "ref_x", "ref_y", "ref_z", "ee_x", "ee_y", "ee_z",
-                        *[f"tau{i}" for i in range(1, 8)]])
-            for k in range(1, total + 1):
-                idx = min(k - 1, n - 1)
+                    "ref_x", "ref_y", "ref_z", "ee_x", "ee_y", "ee_z",
+                    *[f"q{i}" for i in range(1, 8)],
+                    *[f"dq{i}" for i in range(1, 8)],
+                    *[f"qref{i}" for i in range(1, 8)],
+                    *[f"tau{i}" for i in range(1, 8)]])
+
+            ref_idx = 0
+            hold_ticks = 0
+            total_hold_ticks = int(HOLD_S * RATE_HZ)
+            tick = 0
+
+            while True:
+                idx = ref_idx
                 pos = pos_dense[idx]
                 rot = R.from_quat(quat_dense[idx])
-                fl = angles_dense[idx, 0]
 
-                # Zero twist during hold, computed during motion
-                if k <= n and idx > 0:
+                if idx > 0:
                     h = 1
                     i_minus = max(0, idx - h)
                     i_plus = min(n - 1, idx + h)
@@ -604,31 +585,61 @@ class TaskExecutor(Node):
                     self._actual_points.append(ee_p)
 
                     # Republish visualization every 10 cycles (0.2 s at 50 Hz)
-                    if k % 10 == 0:
+                    if tick % 10 == 0:
                         self.publish_visualization(ee_p, ee_r)
 
-
-                    # Error check
                     e_pos = np.linalg.norm(ee_p - pos)
                     e_rot = (ee_r * rot.inv()).magnitude()
+
+                    if tick % 50 == 0:
+                        e_vec = ee_p - pos
+                        self.get_logger().info(
+                            f"t={t_dense[idx]:.1f}s ref_idx={ref_idx} "
+                            f"err_xyz=({e_vec[0]*1000:.1f}, {e_vec[1]*1000:.1f}, {e_vec[2]*1000:.1f}) mm")
+
                     errs.append(e_pos)
                     if e_pos > ABORT_ERR_M:
                         bad += 1
                         if bad * period > ABORT_AFTER_S:
                             status = (f"Aborted: position error exceeded "
-                                      f"{ABORT_ERR_M*1000:.0f} mm for "
-                                      f"{ABORT_AFTER_S:.0f} s.")
+                                    f"{ABORT_ERR_M*1000:.0f} mm for "
+                                    f"{ABORT_AFTER_S:.0f} s.")
                             break
                     else:
                         bad = 0
-                    w.writerow([t_dense[idx], np.degrees(fl), e_pos, e_rot,
+                    w.writerow([t_dense[idx], np.degrees(angles_dense[idx, 0]), e_pos, e_rot,
                                 *pos, *ee_p, *self.tau])
+
+                    # --- Error-gated reference advancement ---
+                    # Only advance to the next reference sample once the robot is
+                    # within GATE_ERR_M of the current reference. This prevents the
+                    # reference from running away when the CIC has a steady-state lag.
+                    if e_pos < GATE_ERR_M and ref_idx < n - 1:
+                        ref_idx += 1
+                    elif ref_idx == n - 1:
+                        hold_ticks += 1
+                        if hold_ticks >= total_hold_ticks:
+                            break
+
+                tick += 1
 
                 # Scheduled tick
                 next_tick += period
                 sleep = next_tick - time.monotonic()
                 if sleep > 0:
                     time.sleep(sleep)
+
+
+        # Zero twist on exit (normal completion or abort)
+        self.publish_twist(np.zeros(3), np.zeros(3))
+
+        finalize_run(self._run_dir,
+            "completed" if status == "Done." else "aborted",
+            {
+                "max_position_error_m": float(max(errs)) if errs else None,
+                "mean_position_error_m": float(np.mean(errs)) if errs else None,
+                "final_position_error_m": float(errs[-1]) if errs else None,
+            })
 
         # Summary vs optimizer prediction
         opt_err = report["max_ee_error_mm"] / 1000.0
@@ -930,7 +941,12 @@ def main():
     ap.add_argument("--precompute-only", action="store_true")
     ap.add_argument("--skip-homing", action="store_true",
                     help="Skip JIC homing (assume robot already at q[0])")
+    ap.add_argument("--initialize-only", action="store_true")
     args = ap.parse_args()
+
+    if args.initialize_only and args.precompute_only:
+        ap.error("Choose --initialize-only or --precompute-only")
+
 
     rclpy.init()
     node = TaskExecutor()
@@ -967,6 +983,8 @@ def main():
                      ee_quat_base=quat_dense)
             node.get_logger().info(f"EE cache saved: {cache}")
 
+        t_dense = t_dense * TIME_SCALE
+
         if args.precompute_only:
             node.get_logger().info("Precompute-only: exiting.")
             return
@@ -979,18 +997,41 @@ def main():
         report = json.load(open(report_path))
 
         # Stage 1: JIC homing (optional)
+        root = Path(__file__).resolve().parents[1]
+        run_dir = create_run(root, args, env, q[0])
+        node.get_logger().info(f"Run record: {run_dir}")
+        node._run_dir = run_dir
+
         node.prepare_homing_visualization(q[0])
         node.show_homing_visualization()
-        if not args.skip_homing:
-            if not node.home_to_q0(q[0]):
-                node.get_logger().error("JIC homing failed. Aborting.")
-                return
-        else:
-            node.get_logger().info("Skipping JIC homing (--skip-homing).")
+
+        policy = {
+            "position_tolerance_rad": 0.06,
+            "velocity_tolerance_rad_s": 0.05,
+            "settle_duration_sim_s": 0.5,
+            "maximum_sample_gap_sim_s": 0.25,
+            "settling_timeout_wall_s": 10.0,
+            "action_timeout_margin": 2.5,
+            "action_timeout_floor_s": 5.0,
+        }
+
+        initialized = node.initialize_to_q0(q[0], run_dir, policy)
+
+        if not initialized:
+            finalize_run(run_dir, "initialization_failed", {})
+            return
+
+        finalize_run(run_dir, "initialization_passed", {})
+
+        if args.initialize_only:
+            node.get_logger().info(
+                "Initialization-only complete; CIC was not activated"
+            )
+            return
 
         # Stage 2: CIC execution
         node.execute_task(args.ns_config, t_dense, pos_dense, quat_dense,
-                          angles_dense, report, X_BF, A)
+                          angles_dense, report, X_BF, A, q_ref=q, q_ref_time=z["time_s"])
     finally:
         if rclpy.ok():
             node.hide_homing_visualization()

@@ -83,6 +83,8 @@ controller_interface::CallbackReturn Ctrl::on_init() {
 
     get_node()->declare_parameter("measured_velocity_filter_tau", 0.02);
 
+    get_node()->declare_parameter("joint_damping_feedforward", 10.0);
+
     // ---- Modular null-space controller (all off by default) ----
     // ns_enabled = false  -> tau_ns == 0 exactly (baseline CIC).
     // Each objective is switched on by giving it a weight > 0.
@@ -595,6 +597,7 @@ Ctrl::update(const rclcpp::Time &time, const rclcpp::Duration &period) {
 
   cart_vel_filtered_ += alpha * (cart_vel - cart_vel_filtered_);
 
+  // Commented out on nov 13
   // Desired-minus-measured Cartesian velocity.
   const Eigen::Matrix<double, 6, 1> cart_vel_error = cart_vel_ref_ - cart_vel_filtered_;
 
@@ -602,12 +605,22 @@ Ctrl::update(const rclcpp::Time &time, const rclcpp::Duration &period) {
   // objective needs F to evaluate tau_c(q) = J(q)^T F at perturbed q.
   const Eigen::Matrix<double, 6, 1> F_task = -K_ * ee_pose_error + D_ * cart_vel_error;
 
+
   // Cartesian impedance torque (unchanged result).
   const Eigen::VectorXd tau_task = J.transpose() * F_task;
+
 
   // --- Moore-Penrose pseudo-inverse of the Jacobian transpose ---
   Eigen::MatrixXd J_T_pinv;
   pseudo_inverse(J.transpose(), &J_T_pinv);
+
+  // --- Joint-space damping feedforward ---
+  // Cancels the Gazebo joint damping (10 N·m·s/rad per joint) so the
+  // PD term only handles inertia + residual error.
+  const double d_joint = get_node()->get_parameter("joint_damping_feedforward").as_double();
+  const Eigen::VectorXd q_dot_ref = J_T_pinv.transpose() * cart_vel_ref_;
+  const Eigen::VectorXd tau_damping_ff = d_joint * q_dot;
+
 
   // --- Nullspace projector (torque space): N = I - J^T (J^T)^+ ---
   const Eigen::MatrixXd null_proj =
@@ -848,7 +861,8 @@ Ctrl::update(const rclcpp::Time &time, const rclcpp::Duration &period) {
   // When ns_enabled_ is false, tau_ns is exactly zero, so this is
   // identical to the original CIC:
   //     tau = tau_task + tau_ext.
-  Eigen::VectorXd tau = tau_task + tau_ns + tau_ext;
+  // Eigen::VectorXd tau = tau_task + tau_ns + tau_ext;
+  Eigen::VectorXd tau = tau_task + tau_damping_ff + tau_ns + tau_ext;
   
   for (int i = 0; i < N_JOINTS; ++i)
     tau(i) = std::clamp(tau(i), -effort_limits_[i], effort_limits_[i]);

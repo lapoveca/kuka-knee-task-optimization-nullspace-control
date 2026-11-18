@@ -47,11 +47,11 @@
     60
   ],
   "angle_multiplier": 2,
-  "angle_multiplier_provenance": "User confirms supervisor requested doubling TABLE I angular targets only",
+  "angle_multiplier_provenance": "Stijn requested doubling TABLE I angular targets only",
   "required_peak_moment_Nm": 10,
   "anatomical_labels": {
     "positive": "varus",
     "negative": "valgus",
-    "status": "Existing interface convention; physical sign mapping not independently revalidated here"
+    "status": "Existing interface convention"
   }
 }
