@@ -33,7 +33,7 @@ def main():
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument("--manifest", required=True)
     p.add_argument("--batch-dir", required=True)
-    p.add_argument("--budget", default="configs/screening_budget_historical_v1.json")
+    p.add_argument("--budget", default="configs/screening_budget_historical.json")
     p.add_argument("--rng-seed", type=int, default=42)
     p.add_argument("--reserve-deg", type=float, default=5.0)
     p.add_argument("--stride-s", type=float, default=2.0)

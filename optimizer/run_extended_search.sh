@@ -23,7 +23,7 @@ PY
 runner() {
     local manifest="$1" batch="$2" limit="$3"
     python3 -u run_joint_design_eval.py --manifest "$manifest" --batch-dir "$batch" \
-      --budget configs/screening_budget_historical_v1.json --rng-seed 42 \
+      --budget configs/screening_budget_historical.json --rng-seed 42 \
       --reserve-deg 5 --stride-s 2 --edge-dt 0.1 --audit-dt 0.01 \
       --seeds 12 --max-tracks 5 --max-nfev 200 --timeout-s 1200 --max-jobs "$limit"
 }
