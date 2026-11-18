@@ -2,7 +2,7 @@
 """Pointwise IK screening for robot-informed joint proposal pools.
 
 Uses the constructing robot configuration saved by
-generate_global_placements_v3.py as the first IK seed.
+generate_global_placements.py as the first IK seed.
 
 This is limited pointwise screening, not connected-path validation.
 A pass does not imply wrench-capability, collision-free motion, dynamic

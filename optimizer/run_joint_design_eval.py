@@ -67,8 +67,8 @@ def main():
         raise ValueError("Design IDs must be simple directory names")
 
     base = Path.cwd()
-    evaluator = base / "evaluate_task_mounts_v1.py"
-    auditor = base / "audit_task_mount_run_v1.py"
+    evaluator = base / "evaluate_task_mounts.py"
+    auditor = base / "audit_task_mount_run.py"
     budget = Path(a.budget).resolve()
     envelope = Path(manifest["task_envelope"]).resolve()
 

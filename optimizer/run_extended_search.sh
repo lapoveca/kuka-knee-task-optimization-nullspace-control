@@ -22,7 +22,7 @@ PY
 
 runner() {
     local manifest="$1" batch="$2" limit="$3"
-    python3 -u run_joint_design_eval_v2.py --manifest "$manifest" --batch-dir "$batch" \
+    python3 -u run_joint_design_eval.py --manifest "$manifest" --batch-dir "$batch" \
       --budget configs/screening_budget_historical_v1.json --rng-seed 42 \
       --reserve-deg 5 --stride-s 2 --edge-dt 0.1 --audit-dt 0.01 \
       --seeds 12 --max-tracks 5 --max-nfev 200 --timeout-s 1200 --max-jobs "$limit"
@@ -32,9 +32,9 @@ if [[ "$MODE" == --preflight ]]; then
     python3 - <<'PY'
 import ast, importlib
 from pathlib import Path
-names=['generate_global_placements_v3.py','screen_joint_proposals_v2.py',
-       'promote_screened_designs_v1.py','run_joint_design_eval_v2.py',
-       'evaluate_task_mounts_v1.py','audit_task_mount_run_v1.py']
+names=['generate_global_placements.py','screen_joint_proposals.py',
+       'promote_screened_designs.py','run_joint_design_eval.py',
+       'evaluate_task_mounts.py','audit_task_mount_run.py']
 for name in names:
     text=Path(name).read_text();compile(text,name,'exec');tree=ast.parse(text)
     for node in ast.walk(tree):
@@ -51,7 +51,7 @@ for name in ('varus_valgus_distal_force','internal_external_rotation'):
     assert len(t.time_s)>1
 print('Model and both task envelopes loaded')
 PY
-    for script in generate_global_placements_v3.py screen_joint_proposals_v2.py promote_screened_designs_v1.py run_joint_design_eval_v2.py; do
+    for script in generate_global_placements.py screen_joint_proposals.py promote_screened_designs.py run_joint_design_eval.py; do
         python3 "$script" --help > /dev/null
     done
     fingerprint > "$RUN/source_fingerprint.txt"
@@ -81,7 +81,7 @@ run_task() {
     mkdir -p "$dir"
     echo "=== $task started $(date -Is) ==="
     if [[ ! -f "$dir/proposals/proposals.json" ]]; then
-        python3 -u generate_global_placements_v3.py --task-envelope "$envelope" \
+        python3 -u generate_global_placements.py --task-envelope "$envelope" \
           --placement-count 40 --extra-attachments-per-placement 9 --rng-seed "$seed" \
           --max-attempts 10000 --output-dir "$dir/proposals" || return 1
     fi
@@ -94,7 +94,7 @@ counts=collections.Counter(tuple(round(v,9) for row in d['placement']['X_BF'] fo
 assert len(counts)==40 and len(ds)==400 and set(counts.values())=={10},dict(counts)
 print('Pool validated: 40 placements x 10 attachments = 400 pairs')
 PY
-    python3 -u screen_joint_proposals_v2.py --proposals "$dir/proposals/proposals.json" \
+    python3 -u screen_joint_proposals.py --proposals "$dir/proposals/proposals.json" \
       --output-dir "$dir/screen" --max-designs 0 --seeds-per-pose 4 \
       --max-nfev 120 --rng-seed 42 --design-seconds 120 || return 1
     python3 - "$dir/screen/summary.json" <<'PY' || return 1
@@ -106,7 +106,7 @@ assert c['error']==0,'Unexpected screening errors: inspect checkpoints'
 assert c['pointwise_screen_pass']>0,'No passes; do not run empty evaluation'
 PY
     if [[ ! -f "$dir/promotion.json" ]]; then
-        python3 -u promote_screened_designs_v1.py --proposals "$dir/proposals/proposals.json" \
+        python3 -u promote_screened_designs.py --proposals "$dir/proposals/proposals.json" \
           --screen-dir "$dir/screen" --task-envelope "$envelope" --promote-count 400 \
           --output "$dir/promotion.json" || return 1
     fi
