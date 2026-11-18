@@ -1,6 +1,6 @@
 {
   "schema": "kinematic_wrench_task_envelope_v1",
-  "task_id": "ie_table_v1",
+  "task_id": "varus_valgus_distal_force",
   "arrays_file": "task_arrays.npz",
   "reference_frame": "F: fixed femur_body femur_base",
   "task_frame": "T: tibia_body tibia",
@@ -336,21 +336,21 @@
       }
     ],
     "note": "Motion/compiler input, not a force-controller prescription. Runtime5deg robot reserve belongs in evaluation config.",
-    "task_id": "ie_table_v1",
-    "active_coordinate_index": 2,
+    "task_id": "varus_valgus_motion",
+    "active_coordinate_index": 1,
     "source_table_positive_deg": [
-      10,
-      17,
-      20,
-      21,
-      19
+      2.5,
+      5,
+      5,
+      6,
+      7
     ],
     "source_table_negative_deg": [
-      10,
-      17,
-      17,
-      17,
-      18
+      2.5,
+      5,
+      5,
+      6,
+      7
     ],
     "flexion_stations_deg": [
       0,
@@ -359,17 +359,45 @@
       45,
       60
     ],
-    "angle_multiplier": 1,
-    "angle_multiplier_provenance": "TABLE II as provided; no supervisor instruction to double IE",
-    "required_peak_moment_Nm": 5,
+    "angle_multiplier": 2,
+    "angle_multiplier_provenance": "TABLE I angular targets scaled by a factor of 2.",
+    "required_peak_moment_Nm": 10,
     "anatomical_labels": {
-      "positive": "internal",
-      "negative": "external",
+      "positive": "varus",
+      "negative": "valgus",
       "status": "Existing interface convention; physical sign mapping not independently revalidated here"
     }
   },
   "model_sha256": "1a51a844094c1574a484ee1827c8666e37f0af0695f38e4dbaf114442f5c2fdc",
-  "motion_source_sha256": "a6f3a21c00a7001f1821e47b5e12711da846206f79efc209a4d4a8718e99f7a5",
-  "task_arrays_sha256": "3d50ccab3298f71f42a420d757f36b1a265742d2be4ccebc250130e50849388c",
-  "scope": "Task geometry and nominal capacity requirements only. Robot reserve5deg, budget, attachment and placement supplied by separate evaluation config. No robot path feasibility, collision or dynamics claim."
+  "motion_source_sha256": "844fe0cbc31aa4400b384ab59cec7bc572a4c996081eef3a12ac044e60f23884",
+  "task_arrays_sha256": "daa2e155c68242272c9f287055a16cdae6bf82bc1a6cfda658ad3ad07e58700f",
+  "scope": "Task geometry and nominal capacity requirements only. Robot reserve5deg, budget, attachment and placement supplied by separate evaluation config. No robot path feasibility, collision or dynamics claim.",
+  "loading_model": {
+    "id": "single_distal_force_zero_distal_couple_v1",
+    "required_coordinate": "varus_valgus_rz",
+    "required_generalized_moment_Nm": 10.0,
+    "application_point_T_m": [
+      0.35,
+      -0.0,
+      0.0
+    ],
+    "direct_application_point_couple_Nm": [
+      0,
+      0,
+      0
+    ],
+    "positive_force_T_N": [
+      3.705213647852341e-37,
+      1.4659877916193074e-06,
+      -19.417475761968834
+    ],
+    "equivalent_positive_moment_about_T_Nm": [
+      0.0,
+      6.796116516689092,
+      5.130957270667576e-07
+    ],
+    "source_task_sha256": "7e4c837f1b19f1ebbe01ab88939a23a3252b31857867f9f10ceeca28f9284a44",
+    "geometry_status": "Model-based fixed offset from T origin; not independent physical measurement",
+    "other_knee_coordinate_reactions": "Not constrained to zero by this loading policy"
+  }
 }
