@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-"""Select a diverse subset of pointwise-screen-passing designs and create a
-promotion manifest for whole-task evaluation.
+"""Select a diverse subset of pointwise-screen-passing nine-mount designs.
 
 Selection is greedy max-min diversity in placement radius, placement
-orientation, and attachment orientation. It does not claim optimality.
+orientation, attachment family, and peripheral azimuth. It does not claim
+optimality.
 """
 import argparse
 import hashlib
@@ -25,6 +25,11 @@ def atomic_json(path, obj):
     temporary.replace(path)
 
 
+def rotation_distance(a, b):
+    relative = a.inv() * b
+    return relative.magnitude() / np.pi
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--proposals", required=True)
@@ -44,10 +49,10 @@ def main():
     pool = json.loads(proposal_path.read_text())
     summary = json.loads((screen_dir / "summary.json").read_text())
 
-    if pool.get("schema") != "joint_proposal_pool_v2":
-        raise ValueError("Expected joint_proposal_pool_v2")
-    if summary.get("schema") != "joint_pointwise_screen_summary_v2":
-        raise ValueError("Expected joint_pointwise_screen_summary_v2")
+    if pool.get("schema") != "joint_proposal_pool_v3":
+        raise ValueError("Expected joint_proposal_pool_v3")
+    if summary.get("schema") != "joint_pointwise_screen_summary_v3":
+        raise ValueError("Expected joint_pointwise_screen_summary_v3")
 
     proposal_by_id = {
         design["id"]: design for design in pool["designs"]
@@ -61,7 +66,9 @@ def main():
         if screen["status"] != "pointwise_screen_pass":
             continue
         if design_id not in proposal_by_id:
-            raise ValueError(f"Screened design missing from proposals: {design_id}")
+            raise ValueError(
+                f"Screened design missing from proposals: {design_id}"
+            )
         passing.append(proposal_by_id[design_id])
 
     if not passing:
@@ -76,41 +83,53 @@ def main():
     else:
         promote_count = args.promote_count
 
-    # Feature vector: placement radius, placement rotation, attachment rotation.
     features = []
     for design in passing:
         X_BF = np.asarray(design["placement"]["X_BF"], dtype=float)
         A = np.asarray(design["A"], dtype=float)
-
-        placement_rotation = Rotation.from_matrix(X_BF[:3, :3])
-        attachment_rotation = Rotation.from_matrix(A[:3, :3])
+        attachment = design["attachment"]
 
         features.append({
             "design": design,
             "radius": float(np.linalg.norm(X_BF[:3, 3])),
-            "placement_rotation": placement_rotation,
-            "attachment_rotation": attachment_rotation,
+            "placement_rotation": Rotation.from_matrix(X_BF[:3, :3]),
+            "attachment_rotation": Rotation.from_matrix(A[:3, :3]),
+            "attachment_type": attachment["attachment_type"],
+            "azimuth_deg": attachment["azimuth_deg"],
         })
 
-    def rotation_distance(a, b):
-        relative = a.inv() * b
-        return relative.magnitude() / np.pi
+    def attachment_distance(a, b):
+        if a["attachment_type"] != b["attachment_type"]:
+            return 1.0
+
+        if (
+            a["attachment_type"] == "PERIPHERAL_RING"
+            and b["attachment_type"] == "PERIPHERAL_RING"
+        ):
+            azimuth_a = float(a["azimuth_deg"])
+            azimuth_b = float(b["azimuth_deg"])
+            difference = abs(azimuth_a - azimuth_b) % 360.0
+            if difference > 180.0:
+                difference = 360.0 - difference
+            return difference / 180.0
+
+        return rotation_distance(
+            a["attachment_rotation"],
+            b["attachment_rotation"],
+        )
 
     def distance(a, b):
-        radius_distance = abs(a["radius"] - b["radius"]) / (
-            args.outer_radius if hasattr(args, "outer_radius") else 1.0
-        )
+        radius_distance = abs(a["radius"] - b["radius"])
         placement_distance = rotation_distance(
             a["placement_rotation"],
             b["placement_rotation"],
         )
-        attachment_distance = rotation_distance(
-            a["attachment_rotation"],
-            b["attachment_rotation"],
+        return (
+            radius_distance
+            + placement_distance
+            + attachment_distance(a, b)
         )
-        return radius_distance + placement_distance + attachment_distance
-        # Start from the design with median placement radius to avoid biasing
-    # toward only the closest or farthest candidates.
+
     radii = np.array([feature["radius"] for feature in features])
     median_radius = float(np.median(radii))
     first_index = int(np.argmin(np.abs(radii - median_radius)))
@@ -137,7 +156,9 @@ def main():
         selected_indices.append(best_index)
         remaining.remove(best_index)
 
-    selected_designs = [features[index]["design"] for index in selected_indices]
+    selected_designs = [
+        features[index]["design"] for index in selected_indices
+    ]
 
     manifest = {
         "schema": "joint_promotion_manifest_v1",
@@ -149,7 +170,10 @@ def main():
         "proposal_pool_sha256": sha(proposal_path),
         "screen_dir": str(screen_dir),
         "selection": {
-            "method": "greedy_max_min_radius_placement_attachment_diversity",
+            "method": (
+                "greedy_max_min_radius_placement_attachment_family_azimuth_"
+                "diversity"
+            ),
             "requested_count": args.promote_count,
             "selected_count": len(selected_designs),
             "available_passing_count": len(passing),
@@ -173,7 +197,9 @@ def main():
         "available_passing": len(passing),
         "promoted": len(selected_designs),
         "manifest": str(output),
-        "selected_ids": [design["id"] for design in selected_designs],
+        "selected_ids": [
+            design["id"] for design in selected_designs
+        ],
     }, indent=2))
 
 

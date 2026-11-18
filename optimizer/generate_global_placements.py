@@ -1,22 +1,21 @@
 #!/usr/bin/env python3
-"""Robot-informed placement and attachment proposal generator.
+"""Robot-informed placement and nine-attachment proposal generator.
 
-Constructs globally distributed relative placements from sampled reserved-range
-robot configurations:
+A placement is constructed using a fixed reference attachment parameterization:
 
-    X_BF = FK(q0) @ A @ inverse(X_FT(t0))
+    X_BF = FK(q0) @ A_reference @ inverse(X_FT(t0))
 
-The constructing robot configuration q0 is saved for each design and can be
-used as an IK seed by the matching screener.
+The reference attachment is used only to parameterize placement sampling. It
+is not a preferred or primary attachment candidate.
 
-Applies:
-- robot-base-centered placement shell,
-- attachment forbidden-direction cone,
-- necessary URDF outer-reach rejection,
-- rotation-geodesic attachment diversity.
+After a placement is accepted, all nine discrete attachment candidates are
+generated with equal importance:
 
-This is NOT an IK, connected-path, collision, clinical, hardware-mounting or
-global-optimality certificate.
+* one axial in-line attachment;
+* eight peripheral attachments at 45-degree azimuth increments.
+
+Each attachment must pass the necessary URDF-derived outer-reach bound. This
+is not an IK, connected-path, collision, hardware, or optimality certificate.
 """
 import argparse
 import hashlib
@@ -25,9 +24,8 @@ import xml.etree.ElementTree as ET
 from pathlib import Path
 
 import numpy as np
-from scipy.spatial.transform import Rotation
 
-from attachment import make_attachment_candidate
+from attachment import make_attachment_catalog, make_axial_inline_attachment
 from robot_model import RobotModel
 from task_envelope import TaskEnvelope, transform
 from placement_domain import PlacementDomain
@@ -37,36 +35,26 @@ def sha(path):
     return hashlib.sha256(Path(path).read_bytes()).hexdigest()
 
 
-def rotation_to_angles(R):
-    if isinstance(R, Rotation):
-        rotation = R
-    else:
-        rotation = Rotation.from_matrix(np.asarray(R, dtype=float))
-    angles = rotation.as_euler("xyz", degrees=True)
-    return {
-        "roll_deg": float(angles[0]),
-        "pitch_deg": float(angles[1]),
-        "yaw_deg": float(angles[2]),
-    }
-
-
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--task-envelope", required=True)
     parser.add_argument(
-        "--extra-attachments-per-placement", type=int, default=3
-    )
-    parser.add_argument("--placement-domain", default="configs/placement_domain.json", help="Placement-domain JSON configuration.")
-    parser.add_argument(
-        "--min-attachment-separation-deg", type=float, default=25.0
+        "--placement-domain",
+        default="configs/placement_domain.json",
+        help="Placement-domain JSON configuration.",
     )
     parser.add_argument("--rng-seed", type=int, default=5001)
     parser.add_argument("--placements-per-arm", type=int, default=10)
     parser.add_argument(
-        "--max-proposal-attempts", type=int, default=100000
+        "--allow-placement-count-override",
+        action="store_true",
+        help=(
+            "Allow a pilot placement count that differs from the placement "
+            "domain configuration. Use only for short validation runs."
+        ),
     )
     parser.add_argument(
-        "--max-attachment-attempts-per-placement", type=int, default=1000
+        "--max-proposal-attempts", type=int, default=100000
     )
     parser.add_argument("--output-dir", required=True)
     args = parser.parse_args()
@@ -75,16 +63,10 @@ def main():
     if out.exists():
         raise FileExistsError("Use a NEW output directory")
 
-    if args.extra_attachments_per_placement < 0:
-        raise ValueError("extra-attachments-per-placement must be nonnegative")
-    if args.min_attachment_separation_deg < 0.0:
-        raise ValueError("Invalid attachment separation")
     if args.placements_per_arm < 1:
         raise ValueError("placements-per-arm must be positive")
     if args.max_proposal_attempts < 1:
         raise ValueError("Invalid global proposal attempt budget")
-    if args.max_attachment_attempts_per_placement < 1:
-        raise ValueError("Invalid attachment attempt budget")
 
     task = TaskEnvelope(args.task_envelope)
     robot = RobotModel()
@@ -94,11 +76,16 @@ def main():
     if not required_arms:
         raise ValueError("No enabled arms configured in placement domain")
 
-    if args.placements_per_arm != placement_domain.placements_per_arm:
+    if (
+        args.placements_per_arm != placement_domain.placements_per_arm
+        and not args.allow_placement_count_override
+    ):
         raise ValueError(
             "placements-per-arm must match placement-domain "
-            f"placements_per_arm={placement_domain.placements_per_arm}"
+            f"placements_per_arm={placement_domain.placements_per_arm}; "
+            "use --allow-placement-count-override for an explicit pilot run"
         )
+
     rng = np.random.default_rng(args.rng_seed)
 
     # Necessary outer-reach bound from fixed URDF origin offsets.
@@ -118,7 +105,9 @@ def main():
         seen_links.add(link)
 
         joint = children[link]
-        if joint.attrib["type"] not in ("fixed", "revolute", "continuous"):
+        if joint.attrib["type"] not in (
+            "fixed", "revolute", "continuous"
+        ):
             raise ValueError("Unsupported joint type in reach-bound trace")
         if joint.find("mimic") is not None:
             raise ValueError("Mimic joints unsupported")
@@ -150,52 +139,52 @@ def main():
     initial_time_s = float(task.time_s[0])
     initial_X_FT = task.pose_at(initial_time_s)
 
-    def attachment_offsets(A):
-        X_TE = np.linalg.inv(A)
-        return task.X_FT[:, :3, 3] + np.einsum(
+    catalog = make_attachment_catalog()
+    if len(catalog) != 9:
+        raise RuntimeError("Attachment catalog must contain exactly nine mounts")
+
+    reference_entry = catalog[0]
+    if reference_entry["attachment_id"] != "axial_inline":
+        raise RuntimeError(
+            "The first catalog entry must be axial_inline and is used only "
+            "to parameterize placement construction"
+        )
+
+    reference_A = np.asarray(reference_entry["A"], dtype=float)
+    reference_X_TE = np.asarray(reference_entry["X_TE"], dtype=float)
+
+    def attachment_target_origins(X_BF, X_TE):
+        """EE origins for every task time, expressed in the robot base frame."""
+        X_FT_translations = task.X_FT[:, :3, 3]
+        X_FT_rotations = task.X_FT[:, :3, :3]
+
+        attachment_translations_t = X_FT_translations + np.einsum(
             "nij,j->ni",
-            task.X_FT[:, :3, :3],
+            X_FT_rotations,
             X_TE[:3, 3],
         )
 
-    def outer_reach_valid(X_BF, A):
-        target_origins = X_BF[:3, 3] + attachment_offsets(A) @ X_BF[:3, :3].T
+        return (
+            X_BF[:3, 3]
+            + np.einsum(
+                "ij,nj->ni",
+                X_BF[:3, :3],
+                attachment_translations_t,
+            )
+        )
+
+    def outer_reach_valid(X_BF, X_TE):
+        target_origins = attachment_target_origins(X_BF, X_TE)
         distances = np.linalg.norm(target_origins, axis=1)
         return bool(np.all(distances <= reach_radii_m + 1e-10))
 
     def placement_valid(X_BF):
         return placement_domain.contains(X_BF[:3, 3])
 
-    def sample_attachment():
-        while True:
-            angles = rotation_to_angles(Rotation.random(random_state=rng))
-            try:
-                A = make_attachment_candidate(
-                    roll_angle_rad=np.deg2rad(angles["roll_deg"]),
-                    pitch_angle_rad=np.deg2rad(angles["pitch_deg"]),
-                    yaw_angle_rad=np.deg2rad(angles["yaw_deg"]),
-                    tibia_offset_m=0.35,
-                )
-                return angles, A
-            except ValueError:
-                continue
-
-    def attachment_separated(candidate_A, accepted_attachments):
-        R_new = Rotation.from_matrix(candidate_A[:3, :3])
-        for _, A_old in accepted_attachments:
-            R_old = Rotation.from_matrix(A_old[:3, :3])
-            relative = R_new.inv() * R_old
-            if relative.magnitude() < np.deg2rad(
-                args.min_attachment_separation_deg
-            ):
-                return False
-        return True
-
     designs = []
     rejection_counts = {
         "placement_domain_rejections": 0,
         "outer_bound_rejections": 0,
-        "attachment_separation_rejections": 0,
         "disabled_arm_rejections": 0,
         "arm_quota_rejections": 0,
         "placements_skipped": 0,
@@ -222,20 +211,14 @@ def main():
             reserved_upper - reserved_lower
         ) * rng.uniform(0.05, 0.95, 7)
 
-        angles, A = sample_attachment()
-
         X_BF = (
             robot.fk_ee(q0)
-            @ A
+            @ reference_A
             @ np.linalg.inv(initial_X_FT)
         )
 
         if not placement_valid(X_BF):
             rejection_counts["placement_domain_rejections"] += 1
-            continue
-
-        if not outer_reach_valid(X_BF, A):
-            rejection_counts["outer_bound_rejections"] += 1
             continue
 
         arm = placement_domain.arm_of(X_BF[:3, 3])
@@ -248,51 +231,48 @@ def main():
             rejection_counts["arm_quota_rejections"] += 1
             continue
 
-        placement = X_BF
-        constructing_q0 = q0
-        arm_counts[arm] += 1
-        placement_sequence = arm_counts[arm]
+        if not outer_reach_valid(X_BF, reference_X_TE):
+            rejection_counts["outer_bound_rejections"] += 1
+            continue
 
-        accepted_attachments = [(angles, A)]
-        target_attachment_count = 1 + args.extra_attachments_per_placement
-        attachment_attempts = 0
+        attachment_outer_reach = {}
+        all_attachments_outer_reach_valid = True
 
-        while len(accepted_attachments) < target_attachment_count:
-            if attachment_attempts >= args.max_attachment_attempts_per_placement:
-                break
+        for entry in catalog:
+            X_TE = np.asarray(entry["X_TE"], dtype=float)
+            valid = outer_reach_valid(X_BF, X_TE)
+            attachment_outer_reach[entry["attachment_id"]] = valid
 
-            attachment_attempts += 1
-            angles, A = sample_attachment()
+            if not valid:
+                all_attachments_outer_reach_valid = False
 
-            if not attachment_separated(A, accepted_attachments):
-                rejection_counts["attachment_separation_rejections"] += 1
-                continue
-
-            if not outer_reach_valid(placement, A):
-                rejection_counts["outer_bound_rejections"] += 1
-                continue
-
-            accepted_attachments.append((angles, A))
-
-        if len(accepted_attachments) < target_attachment_count:
-            arm_counts[arm] -= 1
+        if not all_attachments_outer_reach_valid:
+            rejection_counts["outer_bound_rejections"] += 1
             rejection_counts["placements_skipped"] += 1
             continue
 
-        for attachment_index, (angles, A) in enumerate(accepted_attachments):
-            design_id = (
-                f"placement_{arm}_{placement_sequence:03d}"
-                f"_attachment_{attachment_index:02d}"
+        arm_counts[arm] += 1
+        placement_sequence = arm_counts[arm]
+        placement = X_BF
+
+        for entry in catalog:
+            attachment_id = entry["attachment_id"]
+            A = np.asarray(entry["A"], dtype=float)
+            X_TE = np.asarray(entry["X_TE"], dtype=float)
+
+            target_origins = attachment_target_origins(X_BF, X_TE)
+            maximum_target_origin_radius_m = float(
+                np.linalg.norm(target_origins, axis=1).max()
             )
 
-            target_origins = (
-                placement[:3, 3]
-                + attachment_offsets(A) @ placement[:3, :3].T
+            design_id = (
+                f"placement_{arm}_{placement_sequence:03d}"
+                f"__{attachment_id}"
             )
 
             designs.append({
                 "id": design_id,
-                "proposal_kind": "robot_informed_placement_attachment",
+                "proposal_kind": "robot_informed_placement_nine_mount",
                 "placement": {
                     "frame": "X_BF",
                     "X_BF": placement.tolist(),
@@ -300,14 +280,18 @@ def main():
                     "arm": arm,
                 },
                 "attachment": {
-                    "id": f"attachment_{attachment_index:02d}",
-                    **angles,
+                    "attachment_id": attachment_id,
+                    "attachment_type": entry["attachment_type"],
+                    "axial_offset_m": entry["axial_offset_m"],
+                    "radial_offset_m": entry["radial_offset_m"],
+                    "azimuth_deg": entry["azimuth_deg"],
                 },
                 "A": A.tolist(),
-                "constructing_q0_rad": constructing_q0.tolist(),
+                "X_TE": X_TE.tolist(),
+                "constructing_q0_rad": q0.tolist(),
                 "status": "structural_outer_reach_pass_NOT_IK",
-                "maximum_target_origin_radius_m": float(
-                    np.linalg.norm(target_origins, axis=1).max()
+                "maximum_target_origin_radius_m": (
+                    maximum_target_origin_radius_m
                 ),
             })
 
@@ -331,13 +315,13 @@ def main():
     if not designs:
         raise RuntimeError(
             "No designs generated despite satisfied arm quotas; "
-            "inspect attachment cone and outer-reach restrictions."
+            "inspect placement domain and outer-reach restrictions."
         )
 
     out.mkdir(parents=True)
 
     payload = {
-        "schema": "joint_proposal_pool_v2",
+        "schema": "joint_proposal_pool_v3",
         "task_envelope": str(Path(args.task_envelope).resolve()),
         "task_json_sha256": sha(
             Path(args.task_envelope) / "task.json"
@@ -347,14 +331,27 @@ def main():
         "placement_domain": placement_domain.metadata(),
         "placement_construction": {
             "formula": (
-                "X_BF = FK(q0) @ A @ inverse(X_FT(t0)); "
-                "initial EE pose exactly reachable by construction"
+                "X_BF = FK(q0) @ A_reference @ inverse(X_FT(t0)); "
+                "the reference attachment parameterizes placement sampling "
+                "only and is not a preferred candidate"
             ),
             "placement_point": "femur_reference_origin",
             "placement_point_definition": (
                 "Origin of the fixed femur reference frame F, expressed in "
                 "the robot base frame lbr_link_0."
             ),
+            "reference_attachment_id": (
+                reference_entry["attachment_id"]
+            ),
+        },
+        "attachment_catalog": {
+            "attachment_count": len(catalog),
+            "axial_inline_offset_m": 0.31,
+            "peripheral_axial_offset_m": 0.28,
+            "peripheral_radial_offset_m": 0.03,
+            "peripheral_mount_count": 8,
+            "peripheral_azimuth_step_deg": 45.0,
+            "equal_candidate_importance": True,
         },
         "outer_bound": {
             "reference": "lbr_link_0 origin",
@@ -365,8 +362,9 @@ def main():
         "rejection_counts": rejection_counts,
         "designs": designs,
         "note": (
-            "Robot-informed relative placements with multiple "
-            "attachments. No full-path, collision, dynamics or hardware claims."
+            "Robot-informed relative placements with nine equally important "
+            "discrete attachments. No full-path, collision, dynamics, "
+            "hardware, or global-optimality claims."
         ),
     }
 
@@ -379,6 +377,7 @@ def main():
         "status": "robot_informed_placement_proposal_generation_PASS",
         "placements": sum(arm_counts.values()),
         "designs": len(designs),
+        "attachments_per_placement": len(catalog),
         "rejections": rejection_counts,
         "end_effector_reach_bound_m": outer_bound_m,
         "proposals": str(proposal_path),

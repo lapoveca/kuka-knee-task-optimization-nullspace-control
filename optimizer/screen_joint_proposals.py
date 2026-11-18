@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
-"""Pointwise IK screening for robot-informed joint proposal pools.
+"""Pointwise IK screening for nine-attachment robot-informed proposal pools.
 
-Uses the constructing robot configuration saved by
-generate_global_placements.py as the first IK seed.
+Each attachment is screened independently. The screener first checks the
+initial task pose. If the initial pose has no IK solution within budget, the
+remaining task poses are not screened.
 
 This is limited pointwise screening, not connected-path validation.
 A pass does not imply wrench-capability, collision-free motion, dynamic
@@ -19,7 +20,7 @@ import numpy as np
 from scipy.optimize import least_squares
 from scipy.spatial.transform import Rotation
 
-from attachment import make_attachment_candidate
+from attachment import attachment_to_xte
 from robot_model import RobotModel
 from task_envelope import TaskEnvelope, transform
 
@@ -58,8 +59,8 @@ def main():
     proposal_path = Path(args.proposals).resolve()
     pool = json.loads(proposal_path.read_text())
 
-    if pool.get("schema") != "joint_proposal_pool_v2":
-        raise ValueError("Expected joint_proposal_pool_v2")
+    if pool.get("schema") != "joint_proposal_pool_v3":
+        raise ValueError("Expected joint_proposal_pool_v3")
 
     task = TaskEnvelope(pool["task_envelope"])
     robot = RobotModel()
@@ -88,7 +89,7 @@ def main():
     ]
 
     identity = {
-        "schema": "joint_pointwise_screen_v2",
+        "schema": "joint_pointwise_screen_v3",
         "proposal_hash": sha(proposal_path),
         "dependencies": {
             str(path): sha(path) for path in dependencies
@@ -109,7 +110,6 @@ def main():
     else:
         atomic_json(manifest_path, identity)
 
-    # Select boundary, phase-endpoint and transfer-midpoint poses.
     selected_times = sorted(set(
         [float(task.time_s[0])]
         + [
@@ -166,15 +166,16 @@ def main():
                 results.append(json.loads(checkpoint.read_text()))
 
         atomic_json(out / "summary.json", {
-            "schema": "joint_pointwise_screen_summary_v2",
+            "schema": "joint_pointwise_screen_summary_v3",
             "scheduled_designs": len(pool["designs"]),
             "recorded_designs": len(results),
             "screen_pose_count": len(selected_poses),
             "results": results,
             "note": (
-                "Pointwise multi-start screen only; passes require complete "
-                "connected path evaluation before ranking. Rejections are "
-                "budgeted search outcomes, not impossibility proofs."
+                "Pointwise multi-start screen only; initial-pose failures are "
+                "recorded separately. Passes require complete connected-path "
+                "evaluation before ranking. Rejections are budgeted search "
+                "outcomes, not impossibility proofs."
             ),
         })
 
@@ -211,26 +212,22 @@ def main():
             status = "pointwise_screen_pass"
             failure = None
             previous_solution = None
+            use_constructing_seed = False
 
             try:
                 X_BF = transform(design["placement"]["X_BF"])
-                attachment = design["attachment"]
-
-                A = make_attachment_candidate(
-                    roll_angle_rad=np.deg2rad(attachment["roll_deg"]),
-                    pitch_angle_rad=np.deg2rad(attachment["pitch_deg"]),
-                    yaw_angle_rad=np.deg2rad(attachment["yaw_deg"]),
-                    tibia_offset_m=0.35,
-                )
-
+                A = transform(design["A"])
+                X_TE = transform(design["X_TE"])
                 if not np.allclose(
-                    A, np.asarray(design["A"], dtype=float),
-                    atol=1e-9, rtol=0.0,
+                    A @ X_TE,
+                    np.eye(4),
+                    atol=1e-9,
+                    rtol=0.0,
                 ):
                     raise ValueError(
-                        "Proposal attachment reconstruction differs"
+                        "Proposal attachment transforms are inconsistent"
                     )
-                
+
                 constructing_seed = np.asarray(
                     design.get("constructing_q0_rad", []), dtype=float
                 )
@@ -238,9 +235,8 @@ def main():
                     constructing_seed.shape == (7,)
                     and np.all(np.isfinite(constructing_seed))
                 )
-                
 
-                for pose in selected_poses:
+                for pose_index, pose in enumerate(selected_poses):
                     elapsed = time.time() - started
                     if elapsed > args.design_seconds:
                         status = "screen_budget_exhausted"
@@ -250,7 +246,7 @@ def main():
                     target = (
                         X_BF
                         @ pose["X_FT"]
-                        @ np.linalg.inv(A)
+                        @ X_TE
                     )
 
                     def residual(q):
@@ -345,6 +341,8 @@ def main():
                     if solution is None:
                         if time.time() - started > args.design_seconds:
                             status = "screen_budget_exhausted"
+                        elif pose_index == 0:
+                            status = "initial_pose_no_solution"
                         else:
                             status = "pointwise_no_solution_with_budget"
 
@@ -370,9 +368,10 @@ def main():
                 }
 
             result = {
-                "schema": "joint_pointwise_screen_result_v2",
+                "schema": "joint_pointwise_screen_result_v3",
                 "design_id": design["id"],
                 "proposal_kind": design["proposal_kind"],
+                "attachment": design["attachment"],
                 "status": status,
                 "used_constructing_seed": use_constructing_seed,
                 "screened_poses": len(rows),

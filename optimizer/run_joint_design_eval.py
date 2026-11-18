@@ -254,9 +254,9 @@ def main():
 
         candidate = [{
             "id": design["id"],
-            "roll_deg": design["attachment"]["roll_deg"],
-            "pitch_deg": design["attachment"]["pitch_deg"],
-            "yaw_deg": design["attachment"]["yaw_deg"],
+            "attachment": design["attachment"],
+            "A": design["A"],
+            "X_TE": design["X_TE"],
         }]
         atomic(work / "placement.json", placement)
         atomic(work / "candidate.json", candidate)
