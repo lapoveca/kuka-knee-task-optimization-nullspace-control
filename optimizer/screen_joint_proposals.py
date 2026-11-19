@@ -10,6 +10,7 @@ A pass does not imply wrench-capability, collision-free motion, dynamic
 feasibility, or a globally optimal mounting.
 """
 import argparse
+import fcntl
 import hashlib
 import json
 import os
@@ -180,18 +181,14 @@ def main():
         })
 
     lock_path = out / ".screen.lock"
+    lock_fd = lock_path.open("a+")
     try:
-        lock_fd = os.open(
-            lock_path, os.O_CREAT | os.O_EXCL | os.O_WRONLY
-        )
-    except FileExistsError:
-        raise RuntimeError(
-            f"Screen lock exists: {lock_path}. "
-            "Do not run concurrent screeners in the same output directory."
-        )
-
-    os.write(lock_fd, str(os.getpid()).encode())
-    os.close(lock_fd)
+        fcntl.flock(lock_fd, fcntl.LOCK_EX | fcntl.LOCK_NB)
+    except BlockingIOError:
+        lock_fd.close()
+        raise RuntimeError("Another screener owns this output directory")
+    lock_fd.write(f"pid={os.getpid()}\n")
+    lock_fd.flush()
 
     completed_designs = 0
 
@@ -403,7 +400,8 @@ def main():
         )
 
     finally:
-        lock_path.unlink(missing_ok=True)
+        # Keep the inode stable; the OS releases flock on close or process exit.
+        lock_fd.close()
 
 
 if __name__ == "__main__":
