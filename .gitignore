@@ -56,3 +56,4 @@ credentials*
 # Editor-local configuration
 .vscode/
 .idea/
+.pytest_cache/

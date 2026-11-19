@@ -10,7 +10,7 @@ from scipy.optimize import least_squares
 from scipy.spatial.transform import Rotation
 from task_envelope import TaskEnvelope,transform
 from robot_model import RobotModel
-from attachment import make_attachment_candidate
+from attachment import attachment_to_xte
 from tibia_task_map import TibiaTaskMap
 from wrench_margin import checked_margin
 
@@ -44,8 +44,11 @@ def main():
  def grid(t0,t1,dt):return np.unique(np.r_[np.linspace(t0,t1,int(np.ceil((t1-t0)/dt))+1),task.time_s[(task.time_s>=t0)&(task.time_s<=t1)],boundaries[(boundaries>=t0)&(boundaries<=t1)]])
  for c in candidates:
   start=time.time();dest=out/c['id'];dest.mkdir();rng=np.random.default_rng(a.rng_seed);diagnostics=[]
-  try:A=make_attachment_candidate(roll_angle_rad=np.deg2rad(c['roll_deg']),pitch_angle_rad=np.deg2rad(c['pitch_deg']),yaw_angle_rad=np.deg2rad(c['yaw_deg']),tibia_offset_m=.35)
-  except ValueError as exc:
+  try:
+   A=transform(c['A']);X_TE=transform(c['X_TE'])
+   if A.shape!=(4,4) or X_TE.shape!=(4,4) or not np.allclose(A@X_TE,np.eye(4),atol=1e-9,rtol=0):raise ValueError('Invalid attachment transforms')
+   attachment_to_xte(A)
+  except (KeyError,ValueError) as exc:
    r=dict(candidate=c['id'],status='geometry_rejected',reason=str(exc),complete_paths=0,best=None);results.append(r);dump(dest/'candidate_report.json',r);continue
   targets={}
   def target(v):
@@ -102,7 +105,7 @@ def main():
      if not groups:raise ValueError('Active load has no objective group')
      qi=np.array([np.interp(v,plan,Q[:,j]) for j in range(7)]);vals=[]
      for case in cases:
-      ray=np.asarray(mapper.torque_for_wrench(qi,task.wrenches[case]),float);u=np.abs(ray)/limits
+      ray=np.asarray(mapper.torque_for_wrench(qi,task.wrench_about_tibia_origin_for_case(case,A)),float);u=np.abs(ray)/limits
       if ray.shape!=(7,) or not np.isfinite(u).all() or np.max(u)<=0:raise ValueError('Nonfinite or unbounded ray requires explicit handling; pilot refuses ranking')
       lam=1/float(np.max(u));vals.append(lam)
       if not rows:
@@ -116,7 +119,7 @@ def main():
     pd=dest/f'path_{n:02d}';pd.mkdir()
     np.savez_compressed(pd/'whole_trajectory_path.npz',time_s=plan,q=Q,A=A,X_BF=BF,X_BG=BF@np.linalg.inv(task.X_GF_reference),plan_times=plan)
     actual_margin=float(np.rad2deg(np.minimum(Q-lo,hi-Q).min()))
-    rep=dict(schema='envelope_path_report_v1',status='sampled_path_pass',candidate=c['id'],task_id=task.meta['task_id'],reserve_deg=a.reserve_deg,minimum_hard_margin_deg=actual_margin+a.reserve_deg,worst_track_margin_deg=actual_margin,max_ee_error_mm=1000*max(x['max_position_m'] for x in checks),max_ee_error_deg=float(np.rad2deg(max(x['max_orientation_rad'] for x in checks))),max_velocity_utilization=max(x['velocity_utilization'] for x in checks),group_capability=group_scores,min_lambda=min(x['min_lambda'] for x in group_scores),mean_group_min_lambda=float(np.mean([x['min_lambda'] for x in group_scores])),budget_id=budget['id'],scope=manifest['scope'])
+    rep=dict(schema='envelope_path_report_v1',status='sampled_path_pass',candidate=c['id'],task_id=task.meta['task_id'],attachment=c['attachment'],reserve_deg=a.reserve_deg,minimum_hard_margin_deg=actual_margin+a.reserve_deg,worst_track_margin_deg=actual_margin,max_ee_error_mm=1000*max(x['max_position_m'] for x in checks),max_ee_error_deg=float(np.rad2deg(max(x['max_orientation_rad'] for x in checks))),max_velocity_utilization=max(x['velocity_utilization'] for x in checks),group_capability=group_scores,min_lambda=min(x['min_lambda'] for x in group_scores),mean_group_min_lambda=float(np.mean([x['min_lambda'] for x in group_scores])),budget_id=budget['id'],scope=manifest['scope'])
     dump(pd/'report.json',rep);dump(pd/'capability.json',caps)
     with (pd/'capability_cases.csv').open('w',newline='') as f:w=csv.DictWriter(f,fieldnames=list(rows[0]));w.writeheader();w.writerows(rows)
     complete.append(dict(**rep,path=str(pd)))

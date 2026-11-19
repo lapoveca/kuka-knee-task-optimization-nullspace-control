@@ -1,0 +1,796 @@
+{
+  "schema": "kinematic_wrench_task_envelope_v1",
+  "task_id": "varus_valgus_distal_force",
+  "arrays_file": "task_arrays.npz",
+  "reference_frame": "F: fixed femur_body femur_base",
+  "task_frame": "T: tibia_body tibia",
+  "pose_semantics": "X_FT maps task frame T into anatomical reference F",
+  "placement_semantics": "X_BF constant per trial, supplied separately by evaluator",
+  "wrench_order": [
+    "Fx",
+    "Fy",
+    "Fz",
+    "Mx",
+    "My",
+    "Mz"
+  ],
+  "wrench_frame": "T",
+  "wrench_origin": "T origin",
+  "wrench_action": "robot_on_tibia",
+  "wrench_semantics": "alternative signed peak capacity, not simultaneous loads or commanded waveform",
+  "motion_interpolation": "linear translation and rotation SLERP between saved samples",
+  "wrench_interpolation": "constant per-case vectors in T",
+  "activation_rule": "union of phase active_case_indices on closed intervals; empty inside transfer; no summation of alternative cases",
+  "tolerance_rule": "minimum applicable phase tolerance at shared boundaries",
+  "phases": [
+    {
+      "id": "flex_0_positive_out",
+      "kind": "station",
+      "group_id": "flexion_0",
+      "start_time_s": 0.0,
+      "end_time_s": 10.0,
+      "active_case_indices": [
+        1
+      ],
+      "position_tolerance_m": 0.02,
+      "orientation_tolerance_rad": 0.03490658503988659
+    },
+    {
+      "id": "flex_0_positive_return",
+      "kind": "station",
+      "group_id": "flexion_0",
+      "start_time_s": 10.0,
+      "end_time_s": 20.0,
+      "active_case_indices": [
+        1
+      ],
+      "position_tolerance_m": 0.02,
+      "orientation_tolerance_rad": 0.03490658503988659
+    },
+    {
+      "id": "flex_0_negative_out",
+      "kind": "station",
+      "group_id": "flexion_0",
+      "start_time_s": 20.0,
+      "end_time_s": 30.0,
+      "active_case_indices": [
+        0
+      ],
+      "position_tolerance_m": 0.02,
+      "orientation_tolerance_rad": 0.03490658503988659
+    },
+    {
+      "id": "flex_0_negative_return",
+      "kind": "station",
+      "group_id": "flexion_0",
+      "start_time_s": 30.0,
+      "end_time_s": 40.0,
+      "active_case_indices": [
+        0
+      ],
+      "position_tolerance_m": 0.02,
+      "orientation_tolerance_rad": 0.03490658503988659
+    },
+    {
+      "id": "transfer_0_to_15",
+      "kind": "transfer",
+      "group_id": null,
+      "start_time_s": 40.0,
+      "end_time_s": 70.0,
+      "active_case_indices": [],
+      "position_tolerance_m": 0.03,
+      "orientation_tolerance_rad": 0.05235987755982989
+    },
+    {
+      "id": "flex_15_positive_out",
+      "kind": "station",
+      "group_id": "flexion_15",
+      "start_time_s": 70.0,
+      "end_time_s": 80.0,
+      "active_case_indices": [
+        1
+      ],
+      "position_tolerance_m": 0.02,
+      "orientation_tolerance_rad": 0.03490658503988659
+    },
+    {
+      "id": "flex_15_positive_return",
+      "kind": "station",
+      "group_id": "flexion_15",
+      "start_time_s": 80.0,
+      "end_time_s": 90.0,
+      "active_case_indices": [
+        1
+      ],
+      "position_tolerance_m": 0.02,
+      "orientation_tolerance_rad": 0.03490658503988659
+    },
+    {
+      "id": "flex_15_negative_out",
+      "kind": "station",
+      "group_id": "flexion_15",
+      "start_time_s": 90.0,
+      "end_time_s": 100.0,
+      "active_case_indices": [
+        0
+      ],
+      "position_tolerance_m": 0.02,
+      "orientation_tolerance_rad": 0.03490658503988659
+    },
+    {
+      "id": "flex_15_negative_return",
+      "kind": "station",
+      "group_id": "flexion_15",
+      "start_time_s": 100.0,
+      "end_time_s": 110.0,
+      "active_case_indices": [
+        0
+      ],
+      "position_tolerance_m": 0.02,
+      "orientation_tolerance_rad": 0.03490658503988659
+    },
+    {
+      "id": "transfer_15_to_30",
+      "kind": "transfer",
+      "group_id": null,
+      "start_time_s": 110.0,
+      "end_time_s": 140.0,
+      "active_case_indices": [],
+      "position_tolerance_m": 0.03,
+      "orientation_tolerance_rad": 0.05235987755982989
+    },
+    {
+      "id": "flex_30_positive_out",
+      "kind": "station",
+      "group_id": "flexion_30",
+      "start_time_s": 140.0,
+      "end_time_s": 150.0,
+      "active_case_indices": [
+        1
+      ],
+      "position_tolerance_m": 0.02,
+      "orientation_tolerance_rad": 0.03490658503988659
+    },
+    {
+      "id": "flex_30_positive_return",
+      "kind": "station",
+      "group_id": "flexion_30",
+      "start_time_s": 150.0,
+      "end_time_s": 160.0,
+      "active_case_indices": [
+        1
+      ],
+      "position_tolerance_m": 0.02,
+      "orientation_tolerance_rad": 0.03490658503988659
+    },
+    {
+      "id": "flex_30_negative_out",
+      "kind": "station",
+      "group_id": "flexion_30",
+      "start_time_s": 160.0,
+      "end_time_s": 170.0,
+      "active_case_indices": [
+        0
+      ],
+      "position_tolerance_m": 0.02,
+      "orientation_tolerance_rad": 0.03490658503988659
+    },
+    {
+      "id": "flex_30_negative_return",
+      "kind": "station",
+      "group_id": "flexion_30",
+      "start_time_s": 170.0,
+      "end_time_s": 180.0,
+      "active_case_indices": [
+        0
+      ],
+      "position_tolerance_m": 0.02,
+      "orientation_tolerance_rad": 0.03490658503988659
+    },
+    {
+      "id": "transfer_30_to_45",
+      "kind": "transfer",
+      "group_id": null,
+      "start_time_s": 180.0,
+      "end_time_s": 210.0,
+      "active_case_indices": [],
+      "position_tolerance_m": 0.03,
+      "orientation_tolerance_rad": 0.05235987755982989
+    },
+    {
+      "id": "flex_45_positive_out",
+      "kind": "station",
+      "group_id": "flexion_45",
+      "start_time_s": 210.0,
+      "end_time_s": 220.0,
+      "active_case_indices": [
+        1
+      ],
+      "position_tolerance_m": 0.02,
+      "orientation_tolerance_rad": 0.03490658503988659
+    },
+    {
+      "id": "flex_45_positive_return",
+      "kind": "station",
+      "group_id": "flexion_45",
+      "start_time_s": 220.0,
+      "end_time_s": 230.0,
+      "active_case_indices": [
+        1
+      ],
+      "position_tolerance_m": 0.02,
+      "orientation_tolerance_rad": 0.03490658503988659
+    },
+    {
+      "id": "flex_45_negative_out",
+      "kind": "station",
+      "group_id": "flexion_45",
+      "start_time_s": 230.0,
+      "end_time_s": 240.0,
+      "active_case_indices": [
+        0
+      ],
+      "position_tolerance_m": 0.02,
+      "orientation_tolerance_rad": 0.03490658503988659
+    },
+    {
+      "id": "flex_45_negative_return",
+      "kind": "station",
+      "group_id": "flexion_45",
+      "start_time_s": 240.0,
+      "end_time_s": 250.0,
+      "active_case_indices": [
+        0
+      ],
+      "position_tolerance_m": 0.02,
+      "orientation_tolerance_rad": 0.03490658503988659
+    },
+    {
+      "id": "transfer_45_to_60",
+      "kind": "transfer",
+      "group_id": null,
+      "start_time_s": 250.0,
+      "end_time_s": 280.0,
+      "active_case_indices": [],
+      "position_tolerance_m": 0.03,
+      "orientation_tolerance_rad": 0.05235987755982989
+    },
+    {
+      "id": "flex_60_positive_out",
+      "kind": "station",
+      "group_id": "flexion_60",
+      "start_time_s": 280.0,
+      "end_time_s": 290.0,
+      "active_case_indices": [
+        1
+      ],
+      "position_tolerance_m": 0.02,
+      "orientation_tolerance_rad": 0.03490658503988659
+    },
+    {
+      "id": "flex_60_positive_return",
+      "kind": "station",
+      "group_id": "flexion_60",
+      "start_time_s": 290.0,
+      "end_time_s": 300.0,
+      "active_case_indices": [
+        1
+      ],
+      "position_tolerance_m": 0.02,
+      "orientation_tolerance_rad": 0.03490658503988659
+    },
+    {
+      "id": "flex_60_negative_out",
+      "kind": "station",
+      "group_id": "flexion_60",
+      "start_time_s": 300.0,
+      "end_time_s": 310.0,
+      "active_case_indices": [
+        0
+      ],
+      "position_tolerance_m": 0.02,
+      "orientation_tolerance_rad": 0.03490658503988659
+    },
+    {
+      "id": "flex_60_negative_return",
+      "kind": "station",
+      "group_id": "flexion_60",
+      "start_time_s": 310.0,
+      "end_time_s": 320.0,
+      "active_case_indices": [
+        0
+      ],
+      "position_tolerance_m": 0.02,
+      "orientation_tolerance_rad": 0.03490658503988659
+    }
+  ],
+  "groups": [
+    "flexion_0",
+    "flexion_15",
+    "flexion_30",
+    "flexion_45",
+    "flexion_60"
+  ],
+  "source_spec": {
+    "schema": "knee_station_motion_spec_v1",
+    "model_sha256": "1a51a844094c1574a484ee1827c8666e37f0af0695f38e4dbaf114442f5c2fdc",
+    "coordinate_names": [
+      "flexion_extension_rz",
+      "varus_valgus_rz",
+      "internal_external_rotation_rz"
+    ],
+    "tibia_body": "tibia",
+    "femur_body": "femur_base",
+    "timing_defaults": {
+      "positive_out_s": 10,
+      "positive_return_s": 10,
+      "negative_out_s": 10,
+      "negative_return_s": 10,
+      "transfer_s": 30.0,
+      "max_sample_dt_s": 1.0
+    },
+    "excluded_stations": [
+      {
+        "flexion_deg": 90,
+        "reason": "Outside model flexion range; exclusion confirmed by user"
+      }
+    ],
+    "note": "Motion/compiler input, not a force-controller prescription. Runtime5deg robot reserve belongs in evaluation config.",
+    "task_id": "varus_valgus_motion",
+    "active_coordinate_index": 1,
+    "source_table_positive_deg": [
+      2.5,
+      5,
+      5,
+      6,
+      7
+    ],
+    "source_table_negative_deg": [
+      2.5,
+      5,
+      5,
+      6,
+      7
+    ],
+    "flexion_stations_deg": [
+      0,
+      15,
+      30,
+      45,
+      60
+    ],
+    "angle_multiplier": 2,
+    "angle_multiplier_provenance": "TABLE I angular targets scaled by a factor of 2.",
+    "required_peak_moment_Nm": 10,
+    "anatomical_labels": {
+      "positive": "varus",
+      "negative": "valgus",
+      "status": "Existing interface convention; physical sign mapping not independently revalidated here"
+    }
+  },
+  "model_sha256": "1a51a844094c1574a484ee1827c8666e37f0af0695f38e4dbaf114442f5c2fdc",
+  "motion_source_sha256": "844fe0cbc31aa4400b384ab59cec7bc572a4c996081eef3a12ac044e60f23884",
+  "task_arrays_sha256": "bf7a50a47a3546a6cfbdd7d3dd0ead151a560d58055f605913ac4f49699eee2c",
+  "scope": "Task geometry and nominal capacity requirements only. Robot reserve5deg, budget, attachment and placement supplied by separate evaluation config. No robot path feasibility, collision or dynamics claim.",
+  "loading_model": {
+    "schema": "vv_catalog_normalized_loading_v1",
+    "model_sha256": "1a51a844094c1574a484ee1827c8666e37f0af0695f38e4dbaf114442f5c2fdc",
+    "source_task_json_sha256": "2dfed60c5ed398d5503689ae4dadb8d70e37657be442285e5bc464aaa016dcf6",
+    "required_coordinate": "varus_valgus_rz",
+    "required_generalized_moment_Nm": 10.0,
+    "application_point": "selected_attachment_origin",
+    "force_frame": "T",
+    "case_signs": [
+      -1,
+      1
+    ],
+    "force_policy": "Minimum-norm force at the first task sample, held constant in T and verified over every saved task posture",
+    "samples_checked": 521,
+    "pose_regression_max_matrix_error": 0.0,
+    "attachments": {
+      "axial_inline": {
+        "attachment_type": "AXIAL_INLINE",
+        "X_TE": [
+          [
+            0.0,
+            0.0,
+            -1.0,
+            0.31
+          ],
+          [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            -1.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "positive_force_T_N": [
+          4.355524831201577e-37,
+          1.5894402314134695e-06,
+          -21.052631618695557
+        ],
+        "direct_couple_at_attachment_T_Nm": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "force_magnitude_N": 21.052631618695617,
+        "generalized_moment_min_Nm": 9.999999999986304,
+        "generalized_moment_max_Nm": 10.000000000032463,
+        "max_generalized_moment_error_Nm": 3.246292124003958e-11
+      },
+      "peripheral_00": {
+        "attachment_type": "PERIPHERAL_RING",
+        "X_TE": [
+          [
+            1.0,
+            0.0,
+            0.0,
+            0.28
+          ],
+          [
+            0.0,
+            -0.0,
+            -1.0,
+            0.03
+          ],
+          [
+            0.0,
+            1.0,
+            -0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "positive_force_T_N": [
+          -1.1437631589934263e-07,
+          1.6965942802574876e-06,
+          -22.471910157647702
+        ],
+        "direct_couple_at_attachment_T_Nm": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "force_magnitude_N": 22.471910157647766,
+        "generalized_moment_min_Nm": 9.99999999998636,
+        "generalized_moment_max_Nm": 10.000000000032651,
+        "max_generalized_moment_error_Nm": 3.2651215065016004e-11
+      },
+      "peripheral_01": {
+        "attachment_type": "PERIPHERAL_RING",
+        "X_TE": [
+          [
+            1.0,
+            0.0,
+            0.0,
+            0.28
+          ],
+          [
+            0.0,
+            -0.7071067811865475,
+            -0.7071067811865476,
+            0.021213203435596427
+          ],
+          [
+            0.0,
+            0.7071067811865476,
+            -0.7071067811865475,
+            0.021213203435596423
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "positive_force_T_N": [
+          1.068809770833383,
+          1.692747612847652e-06,
+          -22.420959871273364
+        ],
+        "direct_couple_at_attachment_T_Nm": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "force_magnitude_N": 22.446420558197744,
+        "generalized_moment_min_Nm": 9.999999999985523,
+        "generalized_moment_max_Nm": 10.000000000030573,
+        "max_generalized_moment_error_Nm": 3.057287756291771e-11
+      },
+      "peripheral_02": {
+        "attachment_type": "PERIPHERAL_RING",
+        "X_TE": [
+          [
+            1.0,
+            0.0,
+            0.0,
+            0.28
+          ],
+          [
+            0.0,
+            -1.0,
+            -6.123233995736766e-17,
+            1.8369701987210296e-18
+          ],
+          [
+            0.0,
+            6.123233995736766e-17,
+            -1.0,
+            0.03
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "positive_force_T_N": [
+          1.5081060761780751,
+          1.688918347828892e-06,
+          -22.370240084891474
+        ],
+        "direct_couple_at_attachment_T_Nm": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "force_magnitude_N": 22.42101749235956,
+        "generalized_moment_min_Nm": 9.999999999984325,
+        "generalized_moment_max_Nm": 10.000000000029726,
+        "max_generalized_moment_error_Nm": 2.972555535052379e-11
+      },
+      "peripheral_03": {
+        "attachment_type": "PERIPHERAL_RING",
+        "X_TE": [
+          [
+            1.0,
+            0.0,
+            0.0,
+            0.28
+          ],
+          [
+            0.0,
+            -0.7071067811865476,
+            0.7071067811865475,
+            -0.021213203435596423
+          ],
+          [
+            0.0,
+            -0.7071067811865475,
+            -0.7071067811865476,
+            0.021213203435596427
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "positive_force_T_N": [
+          1.0688099314873643,
+          1.6927476116886244e-06,
+          -22.42095985592169
+        ],
+        "direct_couple_at_attachment_T_Nm": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "force_magnitude_N": 22.446420550513192,
+        "generalized_moment_min_Nm": 9.999999999985382,
+        "generalized_moment_max_Nm": 10.000000000030537,
+        "max_generalized_moment_error_Nm": 3.0537350426129706e-11
+      },
+      "peripheral_04": {
+        "attachment_type": "PERIPHERAL_RING",
+        "X_TE": [
+          [
+            1.0,
+            0.0,
+            0.0,
+            0.28
+          ],
+          [
+            0.0,
+            -1.2246467991473532e-16,
+            1.0,
+            -0.03
+          ],
+          [
+            0.0,
+            -1.0,
+            -1.2246467991473532e-16,
+            3.673940397442059e-18
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "positive_force_T_N": [
+          1.1437631608487176e-07,
+          1.6965942802574876e-06,
+          -22.471910157647702
+        ],
+        "direct_couple_at_attachment_T_Nm": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "force_magnitude_N": 22.471910157647766,
+        "generalized_moment_min_Nm": 9.999999999986182,
+        "generalized_moment_max_Nm": 10.00000000003249,
+        "max_generalized_moment_error_Nm": 3.248956659263058e-11
+      },
+      "peripheral_05": {
+        "attachment_type": "PERIPHERAL_RING",
+        "X_TE": [
+          [
+            1.0,
+            0.0,
+            0.0,
+            0.28
+          ],
+          [
+            0.0,
+            0.7071067811865475,
+            0.7071067811865477,
+            -0.021213203435596434
+          ],
+          [
+            0.0,
+            -0.7071067811865477,
+            0.7071067811865475,
+            -0.021213203435596427
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "positive_force_T_N": [
+          -1.068809770833383,
+          1.692747612847652e-06,
+          -22.420959871273364
+        ],
+        "direct_couple_at_attachment_T_Nm": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "force_magnitude_N": 22.446420558197744,
+        "generalized_moment_min_Nm": 9.999999999985116,
+        "generalized_moment_max_Nm": 10.000000000034479,
+        "max_generalized_moment_error_Nm": 3.447908625275886e-11
+      },
+      "peripheral_06": {
+        "attachment_type": "PERIPHERAL_RING",
+        "X_TE": [
+          [
+            1.0,
+            0.0,
+            0.0,
+            0.28
+          ],
+          [
+            0.0,
+            1.0,
+            1.8369701987210297e-16,
+            -5.510910596163089e-18
+          ],
+          [
+            0.0,
+            -1.8369701987210297e-16,
+            1.0,
+            -0.03
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "positive_force_T_N": [
+          -1.5081060761780751,
+          1.688918347828892e-06,
+          -22.370240084891474
+        ],
+        "direct_couple_at_attachment_T_Nm": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "force_magnitude_N": 22.42101749235956,
+        "generalized_moment_min_Nm": 9.999999999984619,
+        "generalized_moment_max_Nm": 10.0000000000354,
+        "max_generalized_moment_error_Nm": 3.539923909556819e-11
+      },
+      "peripheral_07": {
+        "attachment_type": "PERIPHERAL_RING",
+        "X_TE": [
+          [
+            1.0,
+            0.0,
+            0.0,
+            0.28
+          ],
+          [
+            0.0,
+            0.7071067811865477,
+            -0.7071067811865474,
+            0.02121320343559642
+          ],
+          [
+            0.0,
+            0.7071067811865474,
+            0.7071067811865477,
+            -0.02121320343559643
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "positive_force_T_N": [
+          -1.0688099314873645,
+          1.6927476116886244e-06,
+          -22.42095985592169
+        ],
+        "direct_couple_at_attachment_T_Nm": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "force_magnitude_N": 22.446420550513192,
+        "generalized_moment_min_Nm": 9.99999999998535,
+        "generalized_moment_max_Nm": 10.000000000034673,
+        "max_generalized_moment_error_Nm": 3.467270914825349e-11
+      }
+    },
+    "id": "catalog_normalized_attachment_origin_distal_force_v1",
+    "source_loading_table_sha256": "d10df86222579c3ab9165d95f956eae72a3be285ec65f9ea951c01df7a703e77",
+    "provenance_note": "source_task_json_sha256 identifies the pre-integration diagnostic input, not the current JSON."
+  },
+  "timing_history": [
+    {
+      "operation": "double_transfer_durations_in_place",
+      "transfer_duration_before_s": 15.0,
+      "transfer_duration_after_s": 30.0,
+      "previous_task_json_sha256": "822da9dc2d29e4c83efd07389bdb1a7701a255bae98301547de2bd5cb284e27c",
+      "previous_task_arrays_sha256": "daa2e155c68242272c9f287055a16cdae6bf82bc1a6cfda658ad3ad07e58700f",
+      "pose_samples_unchanged": true,
+      "station_durations_unchanged": true,
+      "loading_unchanged": true
+    }
+  ],
+  "loading_revision_note": "Full-precision attachment catalog is authoritative; NPZ wrench_cases_T vectors are legacy, used only for case count in this loading branch."
+}

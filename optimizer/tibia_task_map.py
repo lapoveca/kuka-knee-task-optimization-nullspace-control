@@ -12,9 +12,11 @@ its representation; it never flips physical action/reaction automatically.
 """
 import numpy as np
 from workspace import checked_transform
-from attachment import attachment_to_xte
+from attachment import (
+    attachment_origin_wrench_about_tibia,
+    attachment_to_xte,
+)
 
-FIXED_MOUNT_LENGTH_M=0.35
 
 
 def _six(values,name):
@@ -32,16 +34,17 @@ def _cross_matrix(r):
 class TibiaTaskMap:
     """One immutable mounting, evaluated at arbitrary robot configurations.
 
-    This enforces the project's fixed mounting point, but is not a collision
-    or orientation-admissibility checker. Candidate generation owns that role.
-    T is the declared OpenSim tibia frame, not automatically a measured knee center.
+    The mounting point is defined by the supplied attachment transform and may
+    be any valid attachment origin. This class does not perform collision or
+    orientation-admissibility checks; candidate generation owns those roles.
+
+    T is the declared OpenSim tibia frame, not automatically a measured knee
+    center.
     """
     def __init__(self,robot,attachment):
         self.robot=robot
         a=checked_transform(attachment)
         xte=attachment_to_xte(a)
-        if not np.allclose(xte[:3,3],[FIXED_MOUNT_LENGTH_M,0.,0.],atol=1e-10,rtol=0):
-            raise ValueError("study mounting point must be tibia [0.35,0,0] m")
         self._attachment=a.copy()
         self._attachment.setflags(write=False)
 
@@ -81,6 +84,30 @@ class TibiaTaskMap:
         f=xbt[:3,:3]@wrench_tibia[:3]
         m=xbt[:3,:3]@wrench_tibia[3:]+np.cross(r,f)
         return np.r_[f,m]
+
+    def wrench_about_tibia_origin(
+        self,
+        wrench_at_attachment: np.ndarray,
+    ) -> np.ndarray:
+        """Convert a wrench at the attachment origin to a wrench about T origin.
+
+        Parameters
+        ----------
+        wrench_at_attachment:
+            Six-vector ``[Fx, Fy, Fz, Mx, My, Mz]`` expressed in the tibia
+            frame ``T``. The force and moment are defined at the attachment
+            origin.
+
+        Returns
+        -------
+        numpy.ndarray
+            Six-vector ``[Fx, Fy, Fz, Mx, My, Mz]`` expressed in ``T`` and
+            referred to the tibia-frame origin.
+        """
+        return attachment_origin_wrench_about_tibia(
+            self._attachment,
+            wrench_at_attachment,
+        )
 
     def torque_for_wrench(self,q,wrench_tibia):
         """Task-wrench joint torque only: excludes gravity/inertia/friction."""

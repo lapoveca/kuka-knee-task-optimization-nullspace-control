@@ -9,7 +9,7 @@ import numpy as np
 from scipy.spatial.transform import Rotation,Slerp
 from task_envelope import TaskEnvelope
 from robot_model import RobotModel
-from attachment import make_attachment_candidate
+from attachment import attachment_to_xte
 from tibia_task_map import TibiaTaskMap
 
 def main():
@@ -31,7 +31,7 @@ def main():
    with np.load(file,allow_pickle=False) as z:t,Q,A,savedBF=[np.array(z[k],float) for k in ('time_s','q','A','X_BF')]
    if t.ndim!=1 or len(t)<2 or Q.shape!=(len(t),7) or np.any(np.diff(t)<=0) or not np.isfinite(Q).all() or not np.isfinite(t).all():raise ValueError('Bad saved arrays')
    if abs(t[0]-task.time_s[0])>1e-9 or abs(t[-1]-task.time_s[-1])>1e-9:raise ValueError('Incomplete task')
-   expected=make_attachment_candidate(roll_angle_rad=np.deg2rad(c['roll_deg']),pitch_angle_rad=np.deg2rad(c['pitch_deg']),yaw_angle_rad=np.deg2rad(c['yaw_deg']),tibia_offset_m=.35)
+   expected=np.asarray(c['A'],float);attachment_to_xte(expected)
    if not np.allclose(A,expected,atol=1e-10,rtol=0) or not np.allclose(savedBF,BF,atol=1e-10,rtol=0):raise ValueError('Design identity mismatch')
    if float(report['reserve_deg'])!=reserve or report['budget_id']!=inp['budget']['id']:raise ValueError('Report policy differs')
    hard=float(np.rad2deg(np.minimum(Q-robot.position_lower,robot.position_upper-Q).min()))
@@ -53,7 +53,7 @@ def main():
     if not cases:continue
     qi=np.array([np.interp(v,t,Q[:,j]) for j in range(7)])
     for case in cases:
-     ray=np.asarray(mapper.torque_for_wrench(qi,task.wrenches[case]),float);u=float(np.max(np.abs(ray)/limits))
+     ray=np.asarray(mapper.torque_for_wrench(qi,task.wrench_about_tibia_origin_for_case(case,A)),float);u=float(np.max(np.abs(ray)/limits))
      if not np.isfinite(u) or u<=0:raise ValueError('Invalid/unbounded capacity ray')
      for g in task.groups_at(v):values[g].append(1/u)
    scores={g:min(vals) for g,vals in values.items()};stored={v['group_id']:v['min_lambda'] for v in report['group_capability']}

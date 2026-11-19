@@ -5,6 +5,7 @@ import hashlib,json
 from pathlib import Path
 import numpy as np
 from scipy.spatial.transform import Rotation,Slerp
+from attachment import attachment_origin_wrench_about_tibia
 
 def transform(x):
  x=np.asarray(x,float)
@@ -31,6 +32,35 @@ class TaskEnvelope:
   transform(self.X_GF_reference)
   if self.wrenches.ndim!=2 or self.wrenches.shape[1]!=6 or not np.isfinite(self.wrenches).all() or raw.shape!=(len(t),len(self.wrenches)) or not np.isin(raw,[0,1]).all():raise ValueError('Invalid load arrays')
   self.active=raw.astype(bool);self.phases=m['phases'];self.groups=tuple(m['groups'])
+  loading=m['loading_model']
+  self.loading_model_id=loading['id']
+  if self.loading_model_id=='single_distal_force_zero_distal_couple_v1':
+   self.attachment_origin_loading=False
+  elif self.loading_model_id=='catalog_normalized_attachment_origin_distal_force_v1':
+   self.attachment_origin_loading=True
+   if len(self.wrenches)!=2 or loading.get('case_signs')!=[-1,1]:raise ValueError('Expected two signed cases')
+   if loading.get('force_frame')!='T' or loading.get('application_point')!='selected_attachment_origin':raise ValueError('Invalid loading convention')
+   if loading.get('required_coordinate')!='varus_valgus_rz' or loading.get('model_sha256')!=m['model_sha256']:raise ValueError('Loading model mismatch')
+   if not np.isclose(float(loading['required_generalized_moment_Nm']),10.,atol=1e-12,rtol=0):raise ValueError('Expected VV 10 Nm')
+   self._normalized_cases=[]
+   for name,case in loading['attachments'].items():
+    xte=transform(case['X_TE'])
+    force=np.asarray(case['positive_force_T_N'],float)
+    couple=np.asarray(case['direct_couple_at_attachment_T_Nm'],float)
+    if force.shape!=(3,) or couple.shape!=(3,) or not np.isfinite(force).all() or not np.isfinite(couple).all():raise ValueError('Invalid catalog wrench')
+    if not np.allclose(couple,0.,atol=1e-12,rtol=0):raise ValueError('Expected zero direct couple')
+    err=float(case['max_generalized_moment_error_Nm'])
+    if not np.isfinite(err) or err>1e-5:raise ValueError('Invalid normalization evidence')
+    self._normalized_cases.append((name,xte,np.r_[force,couple]))
+   if len(self._normalized_cases)!=9:raise ValueError('Expected nine normalized attachments')
+  elif self.loading_model_id=='attachment_origin_distal_force_zero_attachment_couple_v1':
+   self.attachment_origin_loading=True
+   self.force_T_N=np.array(loading['force_T_N'],float)
+   self.direct_couple_at_attachment_T_Nm=np.array(loading['direct_couple_at_attachment_T_Nm'],float)
+   if self.force_T_N.shape!=(3,) or not np.isfinite(self.force_T_N).all():raise ValueError('Invalid attachment-origin force')
+   if self.direct_couple_at_attachment_T_Nm.shape!=(3,) or not np.isfinite(self.direct_couple_at_attachment_T_Nm).all():raise ValueError('Invalid attachment-origin couple')
+  else:
+   raise ValueError('Unsupported loading model')
   if not self.phases or len(self.groups)!=len(set(self.groups)):raise ValueError('Invalid phase/groups')
   last=float(t[0])
   for ph in self.phases:
@@ -64,6 +94,39 @@ class TaskEnvelope:
   ph=self.phases_at(v);return min(x['position_tolerance_m'] for x in ph),min(x['orientation_tolerance_rad'] for x in ph)
  def pose_at(self,v):
   v=self._time(v);x=np.eye(4);x[:3,:3]=self._rotation(v).as_matrix();x[:3,3]=[np.interp(v,self.time_s,self.X_FT[:,j,3]) for j in range(3)];return x
+ def wrench_about_tibia_origin_for_case(self,case_index,attachment):
+  """Return a case wrench expressed in T, with moment about T origin."""
+  if isinstance(case_index,(bool,np.bool_)) or not isinstance(case_index,(int,np.integer)):
+   raise ValueError('Wrench case index must be an integer')
+  case_index=int(case_index)
+  if not 0<=case_index<len(self.wrenches):
+   raise ValueError('Invalid wrench case index')
+
+  if not self.attachment_origin_loading:
+   return self.wrenches[case_index].copy()
+
+  if len(self.wrenches)!=2:
+   raise ValueError('This attachment-origin loading implementation requires two signed cases')
+
+  loading=self.meta['loading_model']
+  signs=loading.get('case_signs')
+  if signs!=[-1,1]:
+   raise ValueError('Attachment-origin loading requires explicit case_signs [-1, 1]')
+
+  if self.loading_model_id=='catalog_normalized_attachment_origin_distal_force_v1':
+   xte=np.linalg.inv(transform(attachment))
+   matches=[w for name,T,w in self._normalized_cases if np.allclose(xte,T,atol=1e-10,rtol=0)]
+   if len(matches)!=1:raise ValueError('Attachment does not uniquely match normalized catalog')
+   positive_wrench_at_attachment=matches[0]
+  else:
+   positive_wrench_at_attachment=np.concatenate((
+    self.force_T_N,
+    self.direct_couple_at_attachment_T_Nm,
+   ))
+  return attachment_origin_wrench_about_tibia(
+   attachment,
+   signs[case_index]*positive_wrench_at_attachment,
+  )
  def required_ee(self,v,X_BF,A):return transform(X_BF)@self.pose_at(v)@np.linalg.inv(transform(A))
  def planning_times(self,stride_s):
   if not np.isfinite(stride_s) or stride_s<=0:raise ValueError('Invalid stride')
