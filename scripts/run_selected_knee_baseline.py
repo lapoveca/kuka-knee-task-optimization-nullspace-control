@@ -317,11 +317,25 @@ class SelectedPlanRunner(Node):
             for controller in response.controller
         }
 
-    def switch_controllers(self, activate, deactivate):
+    def clear_task_visualization(self):
+        """Clear markers from a previously completed or interrupted task run.
+
+        This is called when a new executor run starts, before the new homing
+        visualization is shown. It intentionally does not clear the homing
+        visualization.
+        """
+        marker = Marker()
+        marker.header.frame_id = FRAME
+        marker.header.stamp = self.get_clock().now().to_msg()
+        marker.action = Marker.DELETEALL
+
+        self.marker_publisher.publish(MarkerArray(markers=[marker]))
+
+    def switch_controllers(self, activate=None, deactivate=None):
         states = self.controller_states()
 
         activate_controllers = []
-        if states.get(activate) != "active":
+        if activate is not None and states.get(activate) != "active":
             activate_controllers.append(activate)
 
         deactivate_controllers = []
@@ -743,7 +757,8 @@ class SelectedPlanRunner(Node):
         if not np.isfinite(attachment_distance) or attachment_distance <= 1e-9:
             raise ValueError("Invalid tibia-to-EE attachment offset.")
 
-        tibia_axis = attachment_offset / attachment_distance
+        # The tibia frame's +x axis is the cylinder long axis.
+        tibia_axis = np.array([1.0, 0.0, 0.0])
         helper = np.array([0.0, 0.0, 1.0])
 
         if abs(float(np.dot(tibia_axis, helper))) > 0.9:
@@ -901,8 +916,8 @@ def main():
     parser.add_argument(
         "--duration",
         type=float,
-        required=True,
-        help="Task duration to replay in seconds.",
+        default=None,
+        help="Task duration to replay in seconds. Required unless --initialize-only is used.",
     )
     parser.add_argument(
         "--rate",
@@ -919,13 +934,21 @@ def main():
 
     if args.rate <= 0:
         raise ValueError("Reference rate must be positive.")
-    if args.duration <= 0:
+    if args.duration is not None and args.duration <= 0:
         raise ValueError("Duration must be positive.")
 
     plan_dir, plan, reference = load_plan(args.plan_dir)
 
-    duration_s = float(args.duration)
+    duration_s = (
+        float(args.duration)
+        if args.duration is not None
+        else 0.0
+    )
     task_end_s = float(plan["task_duration_s"])
+    if not args.initialize_only and args.duration is None:
+        parser.error(
+            "--duration is required unless --initialize-only is used."
+        )
 
     if duration_s > task_end_s:
         raise ValueError(
@@ -947,6 +970,38 @@ def main():
         OPTIMIZER_ROOT / "models" / "med14_runtime.urdf"
     )
 
+    required_start_position = reference["X_BE_start_required"][:3, 3]
+
+    ee_frames = ("lbr_link_7", "lbr_link_ee")
+    frame_positions = {}
+
+    for frame_name in ee_frames:
+        try:
+            frame_pose = robot.frame_poses(
+                q_start,
+                frames=[frame_name],
+            )[frame_name]
+        except TypeError:
+            frame_pose = robot.frame_poses(q_start)[frame_name]
+
+        frame_position = np.asarray(frame_pose[:3, 3], dtype=float)
+        frame_positions[frame_name] = frame_position
+
+        offset = frame_position - required_start_position
+        print(
+            f"EE-frame diagnostic: {frame_name} position error = "
+            f"{np.linalg.norm(offset):.6f} m"
+        )
+        print(f"  offset [m]: {offset.tolist()}")
+
+    closest_frame = min(
+        ee_frames,
+        key=lambda name: np.linalg.norm(
+            frame_positions[name] - required_start_position
+        ),
+    )
+    print(f"EE-frame diagnostic: closest frame = {closest_frame}")
+
     envelope = TaskEnvelope(plan_dir / "task")
 
     rclpy.init()
@@ -962,10 +1017,25 @@ def main():
     try:
         states = node.controller_states()
 
+        # If a previous CIC task is still active, deactivate it before
+        # initializing the next plan with JIC.
+        if states.get(CIC) == "active":
+            if not node.switch_controllers(deactivate=CIC):
+                raise RuntimeError(
+                    "Could not deactivate CIC before JIC initialization."
+                )
+
+        # Activate JIC automatically if it is not already active.
         if states.get(JIC) != "active":
-            raise RuntimeError("JIC is not active.")
+            if not node.switch_controllers(activate=JIC):
+                raise RuntimeError("Could not activate JIC automatically.")
+
+        # Recheck the final controller state before initialization.
+        states = node.controller_states()
+        if states.get(JIC) != "active":
+            raise RuntimeError("JIC is not active after automatic activation.")
         if states.get(CIC) != "inactive":
-            raise RuntimeError("CIC is not inactive.")
+            raise RuntimeError("CIC is not inactive after deactivation.")
 
         _, measured_q, measured_qd = node.wait_for_fresh_joint_state()
 
@@ -977,6 +1047,7 @@ def main():
         print(f"  q_start [rad]: {q_start.tolist()}")
         print(f"  current q [rad]: {measured_q.tolist()}")
 
+        node.clear_task_visualization()
         node.prepare_homing_visualization(q_start)
         node.show_homing_visualization()
 
