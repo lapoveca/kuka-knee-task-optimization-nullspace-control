@@ -57,3 +57,7 @@ credentials*
 .vscode/
 .idea/
 .pytest_cache/
+
+# Local source backup archives and directories
+optimizer_src_files_before_cleanup_19nov.zip
+optimizer_src_files_before_cleanup_19nov/
